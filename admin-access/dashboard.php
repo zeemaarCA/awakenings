@@ -12,8 +12,8 @@ include '../functions.php';
 <body>
   <!-- Side Navbar -->
   <?php
-include 'nav.php';
-   ?>
+  include 'nav.php';
+  ?>
   <div class="page">
 
     <!-- navbar-->
@@ -22,7 +22,7 @@ include 'nav.php';
         <div class="container-fluid">
           <div class="navbar-holder d-flex align-items-center justify-content-between">
             <div class="navbar-header"><a id="toggle-btn" href="#" class="menu-btn"><i class="icon-bars"> </i></a><a href="dashboard.php" class="navbar-brand">
-                <div class="brand-text d-none d-md-inline-block"><strong class="text-primary">Max Power</strong></div>
+                <div class="brand-text d-none d-md-inline-block"><strong class="text-primary">Awakenings</strong></div>
               </a></div>
             <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
               <!-- Notifications dropdown-->
@@ -93,56 +93,38 @@ include 'nav.php';
       <div class="container-fluid">
         <div class="row">
           <!-- Count item widget-->
-          <div class="col-xl-2 col-md-4 col-6">
+          <div class="col-xl-3 col-md-4 col-6">
             <div class="wrapper count-title d-flex">
               <div class="icon"><i class="icon-user"></i></div>
-              <div class="name"><strong class="text-uppercase">New Customers</strong><span>Last 7 days</span>
+              <div class="name"><strong class="text-uppercase">New Customers</strong>
                 <div class="count-number"><?php echo total_customers(); ?></div>
               </div>
             </div>
           </div>
           <!-- Count item widget-->
-          <div class="col-xl-2 col-md-4 col-6">
+          <div class="col-xl-3 col-md-4 col-6">
             <div class="wrapper count-title d-flex">
               <div class="icon"><i class="icon-padnote"></i></div>
-              <div class="name"><strong class="text-uppercase">Product Orders</strong><span>Last 5 days</span>
+              <div class="name"><strong class="text-uppercase">Product Orders</strong>
                 <div class="count-number"><?php echo total_orders(); ?></div>
               </div>
             </div>
           </div>
           <!-- Count item widget-->
-          <div class="col-xl-2 col-md-4 col-6">
+          <div class="col-xl-3 col-md-4 col-6">
             <div class="wrapper count-title d-flex">
               <div class="icon"><i class="icon-check"></i></div>
-              <div class="name"><strong class="text-uppercase">New Quotes</strong><span>Last 2 months</span>
-                <div class="count-number">342</div>
+              <div class="name"><strong class="text-uppercase">Total articles</strong>
+                <div class="count-number"><?php echo total_articles(); ?></div>
               </div>
             </div>
           </div>
           <!-- Count item widget-->
-          <div class="col-xl-2 col-md-4 col-6">
+          <div class="col-xl-3 col-md-4 col-6">
             <div class="wrapper count-title d-flex">
               <div class="icon"><i class="icon-bill"></i></div>
-              <div class="name"><strong class="text-uppercase">New Invoices</strong><span>Last 2 days</span>
+              <div class="name"><strong class="text-uppercase">Total Payments</strong>
                 <div class="count-number"><?php echo total_payments(); ?></div>
-              </div>
-            </div>
-          </div>
-          <!-- Count item widget-->
-          <div class="col-xl-2 col-md-4 col-6">
-            <div class="wrapper count-title d-flex">
-              <div class="icon"><i class="icon-list"></i></div>
-              <div class="name"><strong class="text-uppercase">Open Cases</strong><span>Last 3 months</span>
-                <div class="count-number">92</div>
-              </div>
-            </div>
-          </div>
-          <!-- Count item widget-->
-          <div class="col-xl-2 col-md-4 col-6">
-            <div class="wrapper count-title d-flex">
-              <div class="icon"><i class="icon-list-1"></i></div>
-              <div class="name"><strong class="text-uppercase">New Cases</strong><span>Last 7 days</span>
-                <div class="count-number">70</div>
               </div>
             </div>
           </div>
@@ -183,10 +165,10 @@ include 'nav.php';
     </section>
     <!-- Updates Section -->
 
-<!-- footer -->
-<?php include 'footer.php'; ?>
+    <!-- footer -->
+    <?php include 'footer.php'; ?>
 
-<!-- footer -->
+    <!-- footer -->
 
 </body>
 

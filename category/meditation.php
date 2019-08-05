@@ -31,7 +31,7 @@ include '../head_inner.php';
         </div>
         <div class="row">
           <?php
-          $get_article = "SELECT * FROM articles WHERE article_sub_cat = 'meditation'  order by posted_at ASC";
+          $get_article = "SELECT * FROM articles WHERE page_name = 'meditation'  order by posted_at ASC";
           $run_article = mysqli_query($con, $get_article);
           while ($row_article = mysqli_fetch_array($run_article)) {
             $article_id = $row_article['article_id'];
@@ -90,36 +90,39 @@ include '../head_inner.php';
 
   <div class="container related-post">
     <div class="row">
-      <div class="col-lg-4">
-        <img src="../assets/img/body1.jpg" alt="">
-        <div class="top-pics-heading">
-          <h4>anti ageing tips</h4>
+      <?php
+      $get_article = "SELECT * FROM articles order by RAND() LIMIT 3";
+      $run_article = mysqli_query($con, $get_article);
+      while ($row_article = mysqli_fetch_array($run_article)) {
+        $article_id = $row_article['article_id'];
+        $article_title = $row_article['article_title'];
+        $article_main_cat = $row_article['article_main_cat'];
+        $article_sub_cat = $row_article['article_sub_cat'];
+        $article_desc = $row_article['article_text'];
+        $article_image = $row_article['featured_image'];
+        $posted_at = $row_article['posted_at'];
+        $trim_desc = (strlen($article_desc) > 100) ? substr($article_desc, 0, 150) . '...' : $article_desc;
+        ?>
+        <div class="col-lg-4">
+          <img src="../includes/article_images/<?php echo $article_image; ?>" alt="">
+          <div class="box">
+            <span class="green-b"><?php echo $article_main_cat ?></span>
+          </div>
+          <div class="top-pics-heading">
+            <a href="article_detail.php?article_id=<?php echo $article_id ?>">
+              <h4><?php echo $article_title ?></h4>
+            </a>
+          </div>
         </div>
-      </div>
-      <div class="col-lg-4">
-        <img src="../assets/img/body2.jpg" alt="">
-        <div class="top-pics-heading">
-          <h4>the year of the dog</h4>
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <img src="../assets/img/body3.jpg" alt="">
-        <div class="top-pics-heading">
-          <h4>how to get the universe on your side</h4>
-        </div>
-      </div>
+      <?php
+      }
+      ?>
     </div>
   </div>
 
-  <?php include '../footer.php'; ?>
+  <?php include '../footer_inner.php'; ?>
+  <?php include '../scripts-inner.php'; ?>
 
-  <script src="../assets/js/jquery-slim.min.js"></script>
-  <script src="../assets/js/popper.min.js"></script>
-  <script src="../assets/js/bootstrap.min.js"></script>
-  <script src="../assets/js/wow.min.js"></script>
-  <script src="../assets/js/owl.carousel.js"></script>
-  <script src="../assets/js/slick.min.js"></script>
-  <script src="../assets/js/my.js"></script>
 
 </body>
 

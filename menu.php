@@ -3,12 +3,31 @@
     <li><a href="index.php">home</a></li>
     <li>
       <div class="dropdown">
-        <button class="dropbtn">Body, Mind, Healing</button> <i class="fa fa-caret-down"></i>
+        <a href="category/body.php"><button class="dropbtn">Body</button> <i class="fa fa-caret-down"></i></a>
         <div class="dropdown-content">
-          <a href="category/mind.php">mind</a>
-          <a href="category/body.php">body</a>
-          <a href="category/spirit.php">spirit</a>
-          <a href="category/lifestyle.php">lifestyle</a>
+          <a href="category/meditation.php">Meditation</a>
+          <a href="category/yoga.php">Yoga</a>
+          <a href="category/nutrition.php">Nutrition</a>
+          <a href="category/weight-loss.php">Weight-loss</a>
+          <a href="category/fitness.php">Fitness</a>
+          <a href="category/beauty.php">Beauty</a>
+          <a href="category/mediumship.php">Mediumship</a>
+          <a href="category/spirituality.php">Spirituality & Energy healing</a>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="dropdown">
+        <a href="category/lifestyle.php"><button class="dropbtn">EcoLife & Style</button> <i class="fa fa-caret-down"></i></a>
+        <div class="dropdown-content">
+          <a href="category/cars.php">cars</a>
+          <a href="#">gadgets</a>
+          <a href="#">home life</a>
+          <a href="#">mums and babies</a>
+          <a href="category/business.php">business</a>
+          <a href="#">environment</a>
+          <a href="#">holistic eating out</a>
+          <a href="#">travel</a>
         </div>
       </div>
     </li>
@@ -48,18 +67,13 @@
     ?>
     <li><i class="fa fa-search" id="search-icon"></i></li>
   </ul>
-  <form method="post" name="" action="search.php">
-    <div id="find">
-      <input name="search-query" id="search-icon" class="nav-search" type="search" placeholder="Search">
-    </div>
-  </form>
 </nav>
 
 <div id="search">
   <button type="button" class="close">×</button>
   <form action="search.php" name="test" method="post">
     <h3>Serach for...</h3>
-    <input type="search" value="" name="search-query" placeholder="type keyword(s) here" />
+    <input type="text" value="" name="search-query" placeholder="type keyword(s) here" autofocus />
     <button type="submit" name="search-trigger" class="btn">Go for Search</button>
   </form>
 </div>

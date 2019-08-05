@@ -77,6 +77,16 @@ function total_customers()
   echo $count_items;
 }
 
+//total articles
+function total_articles()
+{
+  global $con;
+  $get_articles = "SELECT * FROM articles";
+  $run_articles = mysqli_query($con, $get_articles);
+  $count_articles = mysqli_num_rows($run_articles);
+  echo $count_articles;
+}
+
 
 //getting total orders
 

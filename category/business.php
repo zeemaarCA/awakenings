@@ -19,7 +19,7 @@ include '../head_inner.php';
         <li class="breadcrumb-item"><i class="fa fa-home"></i> YOU ARE AT</li>
         <li class="breadcrumb-item"><a href="../index.php">Home</a></li>
         <li class="breadcrumb-item"><a href="#">Category</a></li>
-        <li class="breadcrumb-item"><a href="#">Yoga</a></li>
+        <li class="breadcrumb-item"><a href="#">Business</a></li>
       </ol>
     </nav>
   </div>
@@ -31,7 +31,7 @@ include '../head_inner.php';
         </div>
         <div class="row">
           <?php
-          $get_article = "SELECT * FROM articles  WHERE page_name = 'yoga' order by posted_at ASC";
+          $get_article = "SELECT * FROM articles  WHERE page_name = 'business' order by posted_at ASC";
           $run_article = mysqli_query($con, $get_article);
           while ($row_article = mysqli_fetch_array($run_article)) {
             $article_id = $row_article['article_id'];

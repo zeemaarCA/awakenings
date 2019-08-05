@@ -28,8 +28,3 @@
 </script>
 <script src="../assets/js/my.js"></script>
 <script src="js/front.js"></script>
-<script type="text/javascript">
-  if (typeof window.history.pushState == 'function') {
-    window.history.pushState({}, "Hide", "<?php echo $_SERVER['PHP_SELF']; ?>");
-  }
-</script>

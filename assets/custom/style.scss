@@ -14,8 +14,8 @@ $red: #ea4e3a;
 $black: #333333;
 @mixin main-heading{
   position: relative;
-  top: 50px;
-  font-size: 25px;
+  margin-top: 18px;
+  font-size: 20px;
   text-transform: capitalize;
   font-weight: 500;
   padding-left: 0.4rem;
@@ -739,9 +739,12 @@ header{
   }
 }
 .awakened-last-imgs{
-  img{
-    min-height: 300px;
-
+  .main-page-bg-img{
+    width: 100%;
+    height: 270px;
+    background-size: cover !important;
+    overflow: hidden;
+    margin-bottom: 16px;
   }
   .box{
     position: relative;
@@ -752,7 +755,7 @@ header{
     text-transform: uppercase;
     font-size: 16px;
     font-weight: 500;
-    bottom: 0;
+    bottom: 16px;
     left: 11%;
     padding: 10px;
   }
@@ -771,7 +774,6 @@ header{
   }
 
   .top-pics-heading{
-    min-height: 360px;
     position: relative;
     h1{
       @include main-heading;
@@ -780,13 +782,11 @@ header{
       @include main-para;
     }
     .fa-arrow-right{
-      position: absolute;
-      bottom: 2%;
-      left: 2.4%;
       font-size: 14px;
       border: 1px solid $dark-blue;
       color: $dark-blue;
       border-radius: 50%;
+      margin-bottom: 1rem;
       padding: 11px 12px;
       cursor: pointer;
     }
@@ -861,10 +861,11 @@ header{
     padding-left: 11px;
     border: 0;
   }
-  button{
+
+  .btn-sub {
     background: #19808d;
     border: 0;
-    padding: 6px 10px;
+    padding: 5px 10px;
     color: #fff;
     text-transform: capitalize;
     font-weight: 600;
@@ -939,12 +940,17 @@ header{
   .mini-slider-outer{
     position: relative;
     .mini-slider{
+      .main-page-body-sec-img{
+        height: 324px;
+        background-size: cover!important;
+      }
       h2{
         font-size: 22px;
         font-weight: 500;
         text-transform: capitalize;
         padding-left: 16px;
         margin-top: 1.3rem;
+        color: #333333;
       }
       h3{
         font-size: 14px;
@@ -1168,12 +1174,17 @@ header{
   .mini-slider-outer{
     position: relative;
     .mini-slider{
+      .main-page-body-sec-img{
+        height: 324px;
+        background-size: cover !important;
+      }
       h2{
         font-size: 22px;
         font-weight: 500;
         text-transform: capitalize;
         padding-left: 16px;
         margin-top: 1.3rem;
+        color: #333333;
       }
       h3{
         font-size: 14px;
@@ -1565,7 +1576,7 @@ footer{
   text-align: center;
 }
 
-#search input[type="search"] {
+#search input[type="text"] {
   position: absolute;
   top: 50%;
   left: 0;

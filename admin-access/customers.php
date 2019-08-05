@@ -21,7 +21,7 @@ include '../functions.php';
         <div class="container-fluid">
           <div class="navbar-holder d-flex align-items-center justify-content-between">
             <div class="navbar-header"><a id="toggle-btn" href="#" class="menu-btn"><i class="icon-bars"> </i></a><a href="dashboard.php" class="navbar-brand">
-                <div class="brand-text d-none d-md-inline-block"><strong class="text-primary">Max Power</strong></div>
+                <div class="brand-text d-none d-md-inline-block"><strong class="text-primary">Awakenings</strong></div>
               </a></div>
             <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
               <!-- Notifications dropdown-->
@@ -83,7 +83,7 @@ include '../functions.php';
           <div class="col-lg-12">
             <div class="card">
               <div class="card-header">
-                <h4>All Products</h4>
+                <h4>All Customers</h4>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
@@ -94,7 +94,6 @@ include '../functions.php';
                         <th>Customer IP</th>
                         <th>Customer Name</th>
                         <th>Customer Email</th>
-                        <th>Customer Password</th>
                         <th>Customer Country</th>
                         <th>Customer City</th>
                         <th>Customer Contact</th>
@@ -124,7 +123,6 @@ include '../functions.php';
                           <td><?php echo $cus_ip; ?></td>
                           <td><?php echo $cus_name; ?></td>
                           <td><?php echo $cus_email; ?></td>
-                          <td><?php echo $cus_pass; ?></td>
                           <td><?php echo $cus_country; ?></td>
                           <td><?php echo $cus_city; ?></td>
                           <td><?php echo $cus_contact; ?></td>

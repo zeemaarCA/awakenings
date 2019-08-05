@@ -141,98 +141,40 @@ $article_id = $_GET['article_id'];
   </div>
   <div class="container related-post">
     <div class="row">
-      <div class="col-lg-4">
-        <img src="../assets/img/girl-cake.jpg" alt="">
-        <div class="box">
-          <span class="green-b">body</span>
+      <?php
+      $get_article = "SELECT * FROM articles order by RAND() LIMIT 3";
+      $run_article = mysqli_query($con, $get_article);
+      while ($row_article = mysqli_fetch_array($run_article)) {
+        $article_id = $row_article['article_id'];
+        $article_title = $row_article['article_title'];
+        $article_main_cat = $row_article['article_main_cat'];
+        $article_sub_cat = $row_article['article_sub_cat'];
+        $article_desc = $row_article['article_text'];
+        $article_image = $row_article['featured_image'];
+        $posted_at = $row_article['posted_at'];
+        $trim_desc = (strlen($article_desc) > 100) ? substr($article_desc, 0, 150) . '...' : $article_desc;
+        ?>
+        <div class="col-lg-4">
+          <img src="../includes/article_images/<?php echo $article_image; ?>" alt="">
+          <div class="box">
+            <span class="green-b"><?php echo $article_main_cat ?></span>
+          </div>
+          <div class="top-pics-heading">
+            <a href="article_detail.php?article_id=<?php echo $article_id ?>">
+              <h4><?php echo $article_title ?></h4>
+            </a>
+          </div>
         </div>
-        <div class="top-pics-heading">
-          <h4>Food Allergy or Food Intolerance?</h4>
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <img src="../assets/img/girl-air.jpg" alt="">
-        <div class="box">
-          <span class="orange-b">meditation</span>
-        </div>
-        <div class="top-pics-heading">
-          <h4>10 easy ways to practice Mindfulness</h4>
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <img src="../assets/img/girl-cake.jpg" alt="">
-        <div class="box">
-          <span class="green-b">body</span>
-        </div>
-        <div class="top-pics-heading">
-          <h4>To live longer, cleanse now</h4>
-        </div>
-      </div>
+      <?php
+      }
+      ?>
     </div>
   </div>
   <!-- footer -->
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="footer-items">
-            <h3>RETURNS, REFUNDS AND EXCHANGES</h3>
-            <a href="#">Click here for our policy on returns and
-              subscription cancellations</a>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="footer-items">
-            <h3>TERMS AND CONDITIONS</h3>
-            <a href="#">Click here for our Terms and Conditions</a>
-            <div class="contact-us-btn">
-              <a href="#"><i class="fa fa-phone"></i> contact us</a>
-            </div>
-          </div>
+  <?php include '../footer_inner.php'; ?>
+  <?php include '../scripts-inner.php'; ?>
 
-        </div>
-        <div class="col-lg-4">
-          <div class="footer-items">
-            <h3>PRIVACY POLICY</h3>
-            <a href="#">Click here for our Terms and Conditions</a>
-            <hr>
-            <div class="news-letter">
-              <h3>newsletter</h3>
-              <input type="email" placeholder="Your Email">
-              <button>subscribe</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row align-items-center">
-        <div class="col-lg-7">
-          <img src="../assets/img/footer-logo.png" alt="">
-          <div class="social-icons">
-            <a href="#" class="hvr-grow-rotate" title="Facebook"><i class="fa fa-facebook"></i></a>
-            <a href="#" class="hvr-grow-rotate" title="Twitter"><i class="fa fa-twitter"></i></a>
-            <a href="#" class="hvr-grow-rotate" title="Instagram"><i class="fa fa-instagram"></i></a>
-          </div>
-        </div>
-        <div class="col-lg-5">
-          &nbsp;
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-12">
-          <p>Copyright&copy; Awakenings Magazine</p>
-          <p>All rights reserved. No part of this publication may be reproduced, distributed, or transmitted in any form or by any means, including photocopying, recording, or other electronic or mechanical methods, without the prior written permission of the publisher.</p>
 
-        </div>
-      </div>
-    </div>
-  </footer>
-  <!-- footer -->
-  <script src="../assets/js/jquery-slim.min.js"></script>
-  <script src="../assets/js/popper.min.js"></script>
-  <script src="../assets/js/bootstrap.min.js"></script>
-  <script src="../assets/js/wow.min.js"></script>
-  <script src="../assets/js/slick.min.js"></script>
-  <script src="../assets/js/my.js"></script>
 
 </body>
 

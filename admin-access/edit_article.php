@@ -7,7 +7,7 @@ if (!isset($_SESSION['user_email'])) {
 }
 include 'head.php';
 include '../functions.php';
-$pro_id = $_GET['edit'];
+$article_id = $_GET['edit'];
 
 ?>
 
@@ -71,7 +71,7 @@ $pro_id = $_GET['edit'];
       <div class="container-fluid">
         <ul class="breadcrumb">
           <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
-          <li class="breadcrumb-item active">Edit Products</li>
+          <li class="breadcrumb-item active">Edit Article</li>
         </ul>
       </div>
     </div>
@@ -79,65 +79,97 @@ $pro_id = $_GET['edit'];
       <div class="container-fluid">
         <!-- Page Header-->
         <header>
-          <h1 class="h3 display">Edit Products</h1>
+          <h1 class="h3 display">Edit Article</h1>
         </header>
         <div class="row">
           <div class="col-lg-12">
             <div class="card">
               <div class="card-header d-flex align-items-center">
-                <h4>Edit Product</h4>
+                <h4>Edit Article</h4>
               </div>
               <?php
-              $get_pro = "SELECT * FROM products WHERE product_id = '$pro_id'";
-              $run_pro = mysqli_query($con, $get_pro);
+              $get_article = "SELECT * FROM articles WHERE article_id = '$article_id'";
+              $run_article = mysqli_query($con, $get_article);
 
-              while ($row_pro = mysqli_fetch_array($run_pro)) {
-                $pro_id = $row_pro['product_id'];
-                $pro_cat = $row_pro['product_cat'];
-                $pro_title = $row_pro['product_title'];
-                $pro_price = $row_pro['product_price'];
-                $pro_desc = $row_pro['product_desc'];
-                $pro_image = $row_pro['product_image'];
+              while ($row_article = mysqli_fetch_array($run_article)) {
+                $article_id = $row_article['article_id'];
+                $article_title = $row_article['article_title'];
+                $article_main_cat = $row_article['article_main_cat'];
+                $article_sub_cat = $row_article['article_sub_cat'];
+                $article_page_name = $row_article['page_name'];
+                $article_text = $row_article['article_text'];
+                $article_image = $row_article['featured_image'];
 
                 ?>
                 <div class="card-body">
                   <p>Fill all the fields.</p>
-                  <form action="" method="post" enctype="multipart/form-data">
+                  <form action="edit_article_script.php" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="article_id" value="<?php echo $article_id; ?>">
                     <div class="form-group">
-                      <label>Product Title</label>
-                      <input type="text" placeholder="Product Name" name="product_title" value="<?php echo $pro_title; ?>" class="form-control">
+                      <label>Article Title</label>
+                      <input type="text" placeholder="Product Name" name="article_title" value="<?php echo $article_title; ?>" class="form-control">
                     </div>
 
                     <div class="form-group">
-                      <label>Product Category</label>
-                      <select class="form-control" name="product_cat">
-                        <option value="">Select a Category</option>
+                      <label>Article Main Category</label>
+                      <select class="form-control" name="article_main_cat">
+                        <option value="<?php echo $article_main_cat ?>"><?php echo $article_main_cat ?></option>
                         <?php
-                        $get_cats = "SELECT * FROM categories";
+                        $get_cats = "SELECT * FROM article_categories";
                         $run_cats = mysqli_query($con, $get_cats);
 
                         while ($row_cats = mysqli_fetch_array($run_cats)) {
-                          $cat_id = $row_cats['cat_id'];
-                          $cat_title = $row_cats['cat_title'];
-                          echo "<option value='$cat_id'>$cat_title</option>";
+                          $cat_id = $row_cats['article_cat_id'];
+                          $cat_title = $row_cats['article_main_cat'];
+                          // echo "<option value='$cat_id'>$article_main_cat</option>";
+                          echo "<option value='$cat_title'>$cat_title</option>";
                         }
                         ?>
                       </select>
                     </div>
                     <div class="form-group">
-                      <label>Product Image</label>
-                      <input type="file" placeholder="Image" name="product_image" class="form-control">
+                      <label>Article Sub Category</label>
+                      <select class="form-control" name="article_sub_cat">
+                        <option value="<?php echo $article_sub_cat ?>"><?php echo $article_sub_cat ?></option>
+                        <?php
+                        $get_sub_cats = "SELECT * FROM article_sub_categories";
+                        $run_sub_cats = mysqli_query($con, $get_sub_cats);
+
+                        while ($row_sub_cats = mysqli_fetch_array($run_sub_cats)) {
+                          $cat_sub_id = $row_sub_cats['article_cat_sub_id'];
+                          $cat_sub_title = $row_sub_cats['article_sub_cat'];
+                          // echo "<option value='$cat_id'>$article_main_cat</option>";
+                          echo "<option value='$cat_sub_title'>$cat_sub_title</option>";
+                        }
+                        ?>
+                      </select>
                     </div>
                     <div class="form-group">
-                      <label>Product Price</label>
-                      <input type="number" placeholder="Product Price" name="product_price" value="<?php echo $pro_price; ?>" class="form-control">
+                      <label>Article Page Name</label>
+                      <select class="form-control" name="page_name">
+                        <option value="<?php echo $article_page_name ?>"><?php echo $article_page_name ?></option>
+                        <?php
+                        $get_page_name = "SELECT * FROM article_page_name";
+                        $run_page_name = mysqli_query($con, $get_page_name);
+
+                        while ($row_page_name = mysqli_fetch_array($run_page_name)) {
+                          $page_id = $row_page_name['page_id'];
+                          $page_name = $row_page_name['page_name'];
+                          echo "<option value='$page_name'>$page_name</option>";
+                        }
+                        ?>
+                      </select>
                     </div>
+                    <!-- <div class="form-group">
+                        <label>Product Image</label>
+                        <input type="file" placeholder="Image" name="article_image" value="<?php echo $article_image ?>" class="form-control">
+                      </div> -->
                     <div class="form-group">
                       <label>Product Description</label>
-                      <textarea name="product_desc" class="form-control" value=""><?php echo $pro_desc; ?></textarea>
+                      <textarea name="article_desc" class="form-control" value=""><?php echo $article_text; ?></textarea>
                     </div>
                     <div class="form-group">
-                      <input type="submit" name="update_product" value="Update Product" class="btn btn-primary">
+                      <input type="submit" name="update_article" value="Update Article" class="btn btn-primary">
                     </div>
                   </form>
                 </div>

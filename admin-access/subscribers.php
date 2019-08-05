@@ -69,7 +69,7 @@ include '../functions.php';
       <div class="container-fluid">
         <ul class="breadcrumb">
           <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
-          <li class="breadcrumb-item active">All Orders</li>
+          <li class="breadcrumb-item active">All Subscribers</li>
         </ul>
       </div>
     </div>
@@ -77,96 +77,39 @@ include '../functions.php';
       <div class="container-fluid">
         <!-- Page Header-->
         <header>
-          <h1 class="h3 display">Tables </h1>
+          <h1 class="h3 display">Subscribers</h1>
         </header>
         <div class="row">
           <div class="col-lg-12">
             <div class="card">
               <div class="card-header">
-                <h4>All Orders</h4>
+                <h4>All Subscribers</h4>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
                   <table class="table">
                     <thead>
                       <tr>
-                        <th>#</th>
-                        <th>Customer Email</th>
-                        <th>Product (S)</th>
-                        <th>Quantity</th>
-                        <th>Invoice No</th>
-                        <th>Order Date</th>
-                        <th>Status</th>
-                        <th>Action <i class="fa fa-check"></i></th>
+                        <th>Email</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
                       </tr>
                     </thead>
                     <?php
+                    $get_cus = "SELECT * FROM subscriber";
+                    $run_cus = mysqli_query($con, $get_cus);
 
-
-                    $get_c = "select * from customers";
-
-                    $run_c = mysqli_query($con, $get_c);
-
-                    $row_c = mysqli_fetch_array($run_c);
-
-                    $c_id = $row_c['customer_id'];
-                    $c_email = $row_c['customer_email'];
-                    $c_name = $row_c['customer_name'];
-
-
-
-
-                    $get_order = "SELECT * FROM orders WHERE c_id = '$c_id'";
-
-                    $run_order = mysqli_query($con, $get_order);
-
-                    $i = 0;
-
-                    while ($row_order = mysqli_fetch_array($run_order)) {
-
-                      $order_id = $row_order['order_id'];
-                      $qty = $row_order['qty'];
-                      $pro_id = $row_order['p_id'];
-                      $invoice_no = $row_order['invoice_no'];
-                      $order_date = $row_order['order_date'];
-                      $status = $row_order['status'];
-                      $i++;
-
-                      $get_pro = "select * from products where product_id='$pro_id'";
-                      $run_pro = mysqli_query($con, $get_pro);
-
-                      $row_pro = mysqli_fetch_array($run_pro);
-
-                      $pro_title = $row_pro['product_title'];
+                    while ($row_cus = mysqli_fetch_array($run_cus)) {
+                      $cus_email = $row_cus['user_email'];
+                      $sub_f_name = $row_cus['user_first_name'];
+                      $sub_l_name = $row_cus['user_last_name'];
 
                       ?>
                       <tbody>
                         <tr>
-                          <th scope="row"><?php echo $i; ?></th>
-                          <th scope="row"><?php echo $c_email; ?></th>
-                          <td><?php echo $pro_title; ?></td>
-                          <td><?php echo $qty; ?></td>
-                          <td><?php echo $invoice_no; ?></td>
-                          <td><?php echo $order_date; ?></td>
-                          <td><?php echo $status; ?></td>
-                          <?php if ($status == 'Completed') {
-                            ?>
-                            <td>
-                              <i class="fa fa-check" style="color: #19c719;"></i>
-                            <?php
-                            } else {
-                              ?>
-                            <td><a style="color: orange;" href="confirm_order.php?confirm_order=<?php echo $order_id; ?>"><i class="fa fa-check"></i> Complete Order</td>
-                          <?php
-                          }
-                          ?>
-                          </td>
-
-
-
-
-
-
+                          <td><?php echo $cus_email; ?></td>
+                          <td><?php echo $sub_f_name; ?></td>
+                          <td><?php echo $sub_l_name; ?></td>
                         </tr>
                       </tbody>
                     <?php } ?>

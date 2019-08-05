@@ -411,13 +411,8 @@ include 'functions.php';
 
   </div>
   <?php include 'footer.php'; ?>
-  <script src="assets/js/jquery-slim.min.js"></script>
-  <script src="assets/js/popper.min.js"></script>
-  <script src="assets/js/bootstrap.min.js"></script>
-  <script src="assets/js/wow.min.js"></script>
-  <script src="assets/js/owl.carousel.js"></script>
-  <script src="assets/js/slick.min.js"></script>
-  <script src="assets/js/my.js"></script>
+  <?php include 'scripts.php'; ?>
+
 
 </body>
 

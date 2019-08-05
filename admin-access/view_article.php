@@ -69,7 +69,7 @@ include '../functions.php';
       <div class="container-fluid">
         <ul class="breadcrumb">
           <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
-          <li class="breadcrumb-item active">All Orders</li>
+          <li class="breadcrumb-item active">All Articles</li>
         </ul>
       </div>
     </div>
@@ -77,104 +77,31 @@ include '../functions.php';
       <div class="container-fluid">
         <!-- Page Header-->
         <header>
-          <h1 class="h3 display">Tables </h1>
+          <h1 class="h3 display">All Articles</h1>
         </header>
         <div class="row">
-          <div class="col-lg-12">
-            <div class="card">
-              <div class="card-header">
-                <h4>All Orders</h4>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>Customer Email</th>
-                        <th>Product (S)</th>
-                        <th>Quantity</th>
-                        <th>Invoice No</th>
-                        <th>Order Date</th>
-                        <th>Status</th>
-                        <th>Action <i class="fa fa-check"></i></th>
-                      </tr>
-                    </thead>
-                    <?php
+          <?php
+          $get_article = "SELECT * FROM articles";
+          $run_article = mysqli_query($con, $get_article);
 
+          while ($row_article = mysqli_fetch_array($run_article)) {
+            $article_id = $row_article['article_id'];
+            $article_title = $row_article['article_title'];
+            $article_main_cat = $row_article['article_main_cat'];
+            $article_img = $row_article['featured_image'];
 
-                    $get_c = "select * from customers";
-
-                    $run_c = mysqli_query($con, $get_c);
-
-                    $row_c = mysqli_fetch_array($run_c);
-
-                    $c_id = $row_c['customer_id'];
-                    $c_email = $row_c['customer_email'];
-                    $c_name = $row_c['customer_name'];
-
-
-
-
-                    $get_order = "SELECT * FROM orders WHERE c_id = '$c_id'";
-
-                    $run_order = mysqli_query($con, $get_order);
-
-                    $i = 0;
-
-                    while ($row_order = mysqli_fetch_array($run_order)) {
-
-                      $order_id = $row_order['order_id'];
-                      $qty = $row_order['qty'];
-                      $pro_id = $row_order['p_id'];
-                      $invoice_no = $row_order['invoice_no'];
-                      $order_date = $row_order['order_date'];
-                      $status = $row_order['status'];
-                      $i++;
-
-                      $get_pro = "select * from products where product_id='$pro_id'";
-                      $run_pro = mysqli_query($con, $get_pro);
-
-                      $row_pro = mysqli_fetch_array($run_pro);
-
-                      $pro_title = $row_pro['product_title'];
-
-                      ?>
-                      <tbody>
-                        <tr>
-                          <th scope="row"><?php echo $i; ?></th>
-                          <th scope="row"><?php echo $c_email; ?></th>
-                          <td><?php echo $pro_title; ?></td>
-                          <td><?php echo $qty; ?></td>
-                          <td><?php echo $invoice_no; ?></td>
-                          <td><?php echo $order_date; ?></td>
-                          <td><?php echo $status; ?></td>
-                          <?php if ($status == 'Completed') {
-                            ?>
-                            <td>
-                              <i class="fa fa-check" style="color: #19c719;"></i>
-                            <?php
-                            } else {
-                              ?>
-                            <td><a style="color: orange;" href="confirm_order.php?confirm_order=<?php echo $order_id; ?>"><i class="fa fa-check"></i> Complete Order</td>
-                          <?php
-                          }
-                          ?>
-                          </td>
-
-
-
-
-
-
-                        </tr>
-                      </tbody>
-                    <?php } ?>
-                  </table>
+            ?>
+            <div class="col-lg-4">
+              <div class="card" style="width: 18rem;">
+                <img src="../includes/article_images/<?php echo $article_img; ?>" class="card-img-top">
+                <div class="card-body">
+                  <h5 class="card-title"><?php echo $article_title ?></h5>
+                  <a href="edit_article.php?edit=<?php echo $article_id; ?>" class="btn btn-default"><i class="fa fa-edit"></i>Edit</a>
+                  <a href="delete_article.php?del=<?php echo $article_id; ?>" onClick="return confirm('Delete This item?')" class="btn btn-danger"><i class="fa fa-trash"></i>Delete</a>
                 </div>
               </div>
             </div>
-          </div>
+          <?php } ?>
         </div>
       </div>
     </section>

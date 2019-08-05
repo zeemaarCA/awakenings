@@ -22,6 +22,7 @@
         <li><a href="customers.php"> <i class="icon-user"></i>View All Customers </a></li>
         <li><a href="orders.php"> <i class="fa fa-shopping-bag"></i>View All Orders </a></li>
         <li><a href="payments.php"> <i class="fa fa-usd"></i>View All Payments </a></li>
+        <li><a href="subscribers.php"> <i class="fa fa-user"></i>View All Subscribers </a></li>
       </ul>
     </div>
 

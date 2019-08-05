@@ -3,7 +3,7 @@
     <li><a href="../index.php">home</a></li>
     <li>
       <div class="dropdown">
-        <button class="dropbtn">Body, Mind, Healing</button> <i class="fa fa-caret-down"></i>
+        <a href="body.php"><button class="dropbtn">Body</button> <i class="fa fa-caret-down"></i></a>
         <div class="dropdown-content">
           <a href="meditation.php">Meditation</a>
           <a href="yoga.php">Yoga</a>
@@ -13,6 +13,21 @@
           <a href="beauty.php">Beauty</a>
           <a href="mediumship.php">Mediumship</a>
           <a href="spirituality.php">Spirituality & Energy healing</a>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="dropdown">
+        <a href="lifestyle.php"><button class="dropbtn">EcoLife & Style</button> <i class="fa fa-caret-down"></i></a>
+        <div class="dropdown-content">
+          <a href="cars.php">cars</a>
+          <a href="gadgets.php">gadgets</a>
+          <a href="homelife.php">home life</a>
+          <a href="mums-and-babies.php">mums and babies</a>
+          <a href="business.php">business</a>
+          <a href="environment.php">enviroment</a>
+          <a href="holistic-eating-out.php">holistic eating out</a>
+          <a href="travel.php">travel</a>
         </div>
       </div>
     </li>
@@ -46,24 +61,20 @@
       echo "";
     } else {
       ?>
-      <li><a href="cart.php"><i class="fa fa-cart-arrow-down"></i><span class="cart-qty"><?php echo total_items(); ?></span></a></li>
+      <li><a href="../cart.php"><i class="fa fa-cart-arrow-down"></i><span class="cart-qty"><?php echo total_items(); ?></span></a></li>
     <?php
     }
     ?>
     <li><i class="fa fa-search" id="search-icon"></i></li>
   </ul>
-  <form method="post" name="" action="search.php">
-    <div id="find">
-      <input name="search-query" id="search-icon" class="nav-search" type="search" placeholder="Search">
-    </div>
-  </form>
+
 </nav>
 
 <div id="search">
   <button type="button" class="close">×</button>
   <form action="../search.php" name="test" method="post">
     <h3>Serach for...</h3>
-    <input type="search" value="" name="search-query" placeholder="type keyword(s) here" />
+    <input type="text" value="" name="search-query" placeholder="type keyword(s) here" autofocus />
     <button type="submit" name="search-trigger" class="btn">Go for Search</button>
   </form>
 </div>

@@ -12,7 +12,7 @@
         <div class="col-lg-4">
           <div class="footer-items">
             <h3>TERMS AND CONDITIONS</h3>
-            <a href="terms_and_conditions.php">Click here for our Terms and Conditions</a>
+            <a href="../terms_and_conditions.php">Click here for our Terms and Conditions</a>
             <div class="contact-us-btn">
               <a href="#"><i class="fa fa-phone"></i> contact us</a>
             </div>
@@ -22,7 +22,7 @@
         <div class="col-lg-4">
           <div class="footer-items">
             <h3>PRIVACY POLICY</h3>
-            <a href="privacy_policy.php">Click here for our Terms and Conditions</a>
+            <a href="../privacy_policy.php">Click here for our Terms and Conditions</a>
           </div>
         </div>
       </div>
