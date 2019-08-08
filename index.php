@@ -126,7 +126,16 @@ include 'functions.php';
 		</div>
 	</div> -->
 	<!-- awakening events -->
-
+	<!-- toast -->
+	<div class="container-toast">
+		<div class="rectangle">
+			<div class="notification-text">
+				<i class="fa fa-exclamation-circle"></i>
+				<span>&nbsp;&nbsp;Please Login First to add item.&nbsp;&nbsp;</span><i class="fa fa-times" id="close-trigger"></i>
+			</div>
+		</div>
+	</div>
+	<!-- toast -->
 	<!-- signup form -->
 	<div class="container signup-form">
 		<div class="row">

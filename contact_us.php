@@ -4,6 +4,7 @@
 session_start();
 include 'functions.php';
 include 'head.php';
+include 'modals.php';
 ?>
 
 <body>
@@ -53,6 +54,7 @@ include 'head.php';
           <p><b>Social Media Manager & Sub Editor: Reema Aidasani</b></p>
           <p>Tel. +971 (0)56 725 0908<br>reema@awakeningsme.com<br>Contact Reema for social media ideas or queries or editorial.</p>
           <p><b>Online content: Sharon Taylor</b><br>sharon@awakeningsme.com<br><i>Again, contact Sharon if you want your business listed on the directory or an event uploading to the calendar or to have something promoted on our Facebook page</i></p>
+          <a href="about_us.php">To find out even more about us, click here…</a>
         </div>
       </div>
       <div class="col-lg-3">

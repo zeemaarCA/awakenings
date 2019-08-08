@@ -21,13 +21,13 @@
         <a href="category/lifestyle.php"><button class="dropbtn">EcoLife & Style</button> <i class="fa fa-caret-down"></i></a>
         <div class="dropdown-content">
           <a href="category/cars.php">cars</a>
-          <a href="#">gadgets</a>
-          <a href="#">home life</a>
-          <a href="#">mums and babies</a>
+          <a href="category/gadgets.php">gadgets</a>
+          <a href="category/homelife.php">home life</a>
+          <a href="category/mums-and-babies.php">mums and babies</a>
           <a href="category/business.php">business</a>
-          <a href="#">environment</a>
-          <a href="#">holistic eating out</a>
-          <a href="#">travel</a>
+          <a href="category/environment.php">environment</a>
+          <a href="category/holistic-eating-out.php">holistic eating out</a>
+          <a href="category/travel.php">travel</a>
         </div>
       </div>
     </li>
@@ -35,10 +35,13 @@
     <li><a href="products.php">shop</a></li>
     <li>
       <div class="dropdown">
-        <button class="dropbtn">About us</button> <i class="fa fa-caret-down"></i>
+        <a href="about_us.php"><button class="dropbtn">About us</button> <i class="fa fa-caret-down"></i></a>
         <div class="dropdown-content">
-          <a href="#">events</a>
-          <a href="#">about us</a>
+          <a href="contact_us.php">about us</a>
+          <a href="subscribe_to_awakenings.php">subscribe to awakenings</a>
+          <a href="write_for_us.php">write for us</a>
+          <a href="advertise.php">advertise with awakenings</a>
+          <a href="events.php">UAE events</a>
         </div>
       </div>
     </li>
@@ -72,7 +75,7 @@
 <div id="search">
   <button type="button" class="close">×</button>
   <form action="search.php" name="test" method="post">
-    <h3>Serach for...</h3>
+    <h3>Search for...</h3>
     <input type="text" value="" name="search-query" placeholder="type keyword(s) here" autofocus />
     <button type="submit" name="search-trigger" class="btn">Go for Search</button>
   </form>

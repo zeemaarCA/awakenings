@@ -4,6 +4,7 @@
 session_start();
 include 'functions.php';
 include 'head.php';
+include 'modals.php';
 ?>
 
 <body>
@@ -65,16 +66,7 @@ include 'head.php';
 
   <div style="height:36px;"></div>
   <?php include 'footer.php'; ?>
-
-
-  <!-- <div style="height:300px"></div> -->
-  <script src="assets/js/jquery-slim.min.js"></script>
-  <script src="assets/js/popper.min.js"></script>
-  <script src="assets/js/bootstrap.min.js"></script>
-  <script src="assets/js/wow.min.js"></script>
-  <script src="assets/js/owl.carousel.js"></script>
-  <script src="assets/js/slick.min.js"></script>
-  <script src="assets/js/my.js"></script>
+  <?php include 'scripts.php'; ?>
 
 </body>
 

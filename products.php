@@ -4,6 +4,7 @@
 session_start();
 include 'head.php';
 include 'functions.php';
+include 'modals.php';
 ?>
 
 <body>

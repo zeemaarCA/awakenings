@@ -82,6 +82,105 @@ $('#close-trigger').click(function () {
 
   });
 
+   $('#customer_signup').validate({ // initialize the plugin
+     rules: {
+       c_name: {
+         required: true
+       },
+       c_email: {
+         required: true,
+         email: true
+       },
+       c_pass: {
+         required: true,
+         minlength: 6
+
+       },
+       c_country: {
+         required: true
+       },
+       c_city: {
+         required: true
+       },
+       c_contact: {
+         required: true
+
+       },
+       c_code: {
+         required: true
+
+       },
+       c_address: {
+         required: true
+
+       }
+     },
+     messages: {}
+   });
+
+   $('#customer_login').validate({
+     rules: {
+       email: {
+         required: true,
+         email: true
+       },
+       pass: {
+         required: true
+       }
+     }
+   });
+
+   $('#admin_login').validate({
+     rules: {
+       email: {
+         required: true,
+         email: true
+       },
+       password: {
+         required: true
+       }
+     }
+   });
+
+
+   $('#change_password').validate({
+     rules: {
+       old_password: {
+         required: true,
+         minlength: 6
+       },
+       new_password: {
+         required: true,
+         minlength: 6
+       },
+       confirm_password: {
+         required: true,
+         minlength: 6
+       }
+     }
+   });
+
+   $('#change_profile').validate({
+     rules: {
+       customer_name: {
+         required: true
+       },
+       customer_country: {
+         required: true
+       },
+       customer_city: {
+         required: true
+       },
+       customer_contact: {
+         required: true
+       },
+       customer_address: {
+         required: true
+
+       }
+     }
+   });
+
     // full page search
 $(function () {
   $('#search-icon').on('click', function (event) {

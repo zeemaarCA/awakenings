@@ -3,4 +3,5 @@
 	<script src="../assets/js/bootstrap.min.js"></script>
 	<script src="../assets/js/wow.min.js"></script>
 	<script src="../assets/js/slick.min.js"></script>
+	<script src="../assets/js/validate.js"></script>
 	<script src="../assets/js/my.js"></script>

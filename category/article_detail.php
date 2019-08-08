@@ -40,9 +40,16 @@ $article_id = $_GET['article_id'];
   <link rel="stylesheet" href="../assets/css/slick-theme.css">
   <link rel="stylesheet" href="../fonts/font-awesome-4.3.0/css/font-awesome.min.css" />
 </head>
-
+<?php include '../modals_inner.php'; ?>
 <body>
+  <?php
+  function getAddress()
+  {
+    $protocol = $_SERVER['HTTPS'] == 'on' ? 'https' : 'http';
+    return $protocol . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+  }
 
+  ?>
   <div class="container header">
     <div class="row">
       <img src="../assets/img/footer-logo.png" alt="">
@@ -100,6 +107,24 @@ $article_id = $_GET['article_id'];
             </div>
           </div>
         <?php } ?>
+        <hr>
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <h4 class="my-0">Share this article via:</h4>
+          </div>
+          <div class="col-lg-6">
+            <div class="share-icons float-right">
+              <a href="https://www.addtoany.com/add_to/facebook?linkurl=<?php echo getAddress();  ?>&amp;linkname=Awakenings" target="_blank"><img src="https://static.addtoany.com/buttons/facebook.svg" width="32" height="32" style="background-color:#3b5998"></a>
+              <a href="https://www.addtoany.com/add_to/twitter?linkurl=<?php echo getAddress();  ?>&amp;linkname=Awakenings" target="_blank"><img src="https://static.addtoany.com/buttons/twitter.svg" width="32" height="32" style="background-color:#55acee"></a>
+              <a href="https://www.addtoany.com/add_to/pinterest?linkurl=<?php echo getAddress();  ?>&amp;linkname=Awakenings" target="_blank"><img src="https://static.addtoany.com/buttons/pinterest.svg" width="32" height="32" style="background-color:#bd081c"></a>
+              <a href="https://www.addtoany.com/add_to/linkedin?linkurl=<?php echo getAddress();  ?>&amp;linkname=Awakenings" target="_blank"><img src="https://static.addtoany.com/buttons/linkedin.svg" width="32" height="32" style="background-color:#0077b5"></a>
+              <a href="https://www.addtoany.com/add_to/tumblr?linkurl=<?php echo getAddress();  ?>&amp;linkname=Awakenings" target="_blank"><img src="https://static.addtoany.com/buttons/tumblr.svg" width="32" height="32" style="background-color:#00405d"></a>
+              <a href="https://www.addtoany.com/add_to/email?linkurl=<?php echo getAddress();  ?>&amp;linkname=Awakenings" target="_blank"><img src="https://static.addtoany.com/buttons/email.svg" width="32" height="32" style="background-color:#dc4e41"></a>
+            </div>
+          </div>
+
+        </div>
+        <hr>
       </div>
       <div class="col-lg-3">
         <div class="right-img-directory">
