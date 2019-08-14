@@ -7,7 +7,7 @@ include '../head_inner.php';
 include '../modals_inner.php';
 ?>
 
-<body>
+<body> 
   <div class="container header">
     <div class="row">
       <img src="../assets/img/footer-logo.png" alt="">
@@ -32,7 +32,7 @@ include '../modals_inner.php';
         </div>
         <div class="row">
           <?php
-          $get_article = "SELECT * FROM articles WHERE article_sub_cat = 'weight-loss'  order by posted_at ASC";
+          $get_article = "SELECT * FROM articles WHERE second_page = 'weight-loss'  order by posted_at ASC";
           $run_article = mysqli_query($con, $get_article);
           while ($row_article = mysqli_fetch_array($run_article)) {
             $article_id = $row_article['article_id'];

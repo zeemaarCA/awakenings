@@ -32,7 +32,7 @@ include '../modals_inner.php';
         </div>
         <div class="row">
           <?php
-          $get_article = "SELECT * FROM articles WHERE article_sub_cat = 'fitness'  order by posted_at ASC";
+          $get_article = "SELECT * FROM articles WHERE third_page = 'fitness'  order by posted_at ASC";
           $run_article = mysqli_query($con, $get_article);
           while ($row_article = mysqli_fetch_array($run_article)) {
             $article_id = $row_article['article_id'];
