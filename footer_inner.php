@@ -5,7 +5,7 @@
         <div class="col-lg-4">
           <div class="footer-items">
             <h3>RETURNS, REFUNDS AND EXCHANGES</h3>
-            <a href="#">Click here for our policy on returns and
+            <a href="terms_use.php">Click here for our policy on returns and
               subscription cancellations</a>
           </div>
         </div>
@@ -14,7 +14,7 @@
             <h3>TERMS AND CONDITIONS</h3>
             <a href="../terms_and_conditions.php">Click here for our Terms and Conditions</a>
             <div class="contact-us-btn">
-              <a href="#"><i class="fa fa-phone"></i> contact us</a>
+              <a href="contact_us.php"><i class="fa fa-phone"></i> contact us</a>
             </div>
           </div>
 
