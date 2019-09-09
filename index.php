@@ -47,7 +47,7 @@ include 'functions.php';
 						$posted_at = $row_article['posted_at'];
 						$trim_desc = (strlen($article_desc) > 100) ? substr($article_desc, 0, 150) . '...' : $article_desc;
 						?>
-						<div class="col-lg-6 pr-0">
+						<div class="col-lg-6 pr-0 col-md-6">
 							<div class="main-page-bg-img" style="background: url(includes/article_images/<?php echo $article_image; ?>)"></div>
 							<div class="box">
 								<span class="green-b"><?php echo $article_main_cat ?></span>
@@ -117,7 +117,7 @@ include 'functions.php';
 				</div>
 				<div class="col-lg-4">
 					<img src="assets/img/event3.png" alt="">
-					
+
 					<h4>Title</h4>
 					<h6>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, dolorem consectetur ea perferendis vel aut.</h6>
 					<button>Intrested</button>
@@ -166,7 +166,7 @@ include 'functions.php';
 			</div>
 		</div>
 		<div class="row justify-content-end">
-			<div class="col-lg-6">
+			<div class="col-lg-6 col-12">
 				<div class="mini-nav">
 					<ul>
 						<li><a href="category/body.php">all</a></li>
@@ -180,7 +180,7 @@ include 'functions.php';
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-lg-8 pr-0">
+			<div class="col-lg-8 col-md-6 pr-0 padding-default">
 				<div class="center-girl-sec">
 					<img src="assets/img/center-girl.jpg" alt="">
 					<div class="center-girl-title">
@@ -191,7 +191,7 @@ include 'functions.php';
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-4 pl-0">
+			<div class="col-lg-4 col-md-6 pl-0 padding-default">
 				<div class="mini-slider-outer">
 					<div class="mini-slider">
 						<?php
@@ -231,13 +231,13 @@ include 'functions.php';
 			<div class="col-lg-4 col-12 pl-0">
 				<h1>Awakened Mind & Spirit</h1>
 			</div>
-			<div class="col-lg-8 col-12">
+			<div class="col-lg-8 col-12 px-0">
 				<div class="heading-line">
 				</div>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-lg-4 pr-0">
+			<div class="col-lg-4 col-md-6 pr-0 padding-default">
 				<div class="mini-slider-outer">
 					<div class="mini-slider">
 						<?php
@@ -265,7 +265,7 @@ include 'functions.php';
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-8 pl-0">
+			<div class="col-lg-8 col-md-6 pl-0 padding-default">
 				<div class="center-girl-sec">
 					<img src="assets/img/center-girl-2.jpg" alt="">
 					<div class="center-girl-title">
@@ -293,7 +293,7 @@ include 'functions.php';
 		<div class="products-sec">
 			<div class="row">
 				<?php
-				$get_pro = "SELECT * FROM products";
+				$get_pro = "SELECT * FROM products LIMIT 4";
 				$run_pro = mysqli_query($con, $get_pro);
 				while ($row_pro = mysqli_fetch_array($run_pro)) {
 					$pro_id = $row_pro['product_id'];
@@ -305,7 +305,7 @@ include 'functions.php';
 					cart();
 					if (!isset($_SESSION['customer_name'])) {
 						?>
-						<div class="col">
+						<div class="col-lg-3 col-12 col-md-6">
 							<img src="includes/product_images/<?php echo $pro_image; ?>" alt="">
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
 							<div class="row">
@@ -332,7 +332,7 @@ include 'functions.php';
 					<?php
 					} else {
 						?>
-						<div class="col">
+						<div class="col-lg-3 col-12 col-md-6">
 							<img src="includes/product_images/<?php echo $pro_image; ?>" alt="">
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
 							<div class="row">
@@ -369,13 +369,13 @@ include 'functions.php';
 			<div class="col-lg-4 col-12">
 				<h1>Awakened Lifestyle</h1>
 			</div>
-			<div class="col-lg-8 col-12">
+			<div class="col-lg-8 col-12 px-0">
 				<div class="heading-line">
 				</div>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-lg-8 pr-0">
+			<div class="col-lg-8 col-md-6 pr-0 padding-default">
 				<div class="center-girl-sec">
 					<img src="assets/img/lemon.jpg" alt="">
 					<div class="center-girl-title">
@@ -386,7 +386,7 @@ include 'functions.php';
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-4 pl-0">
+			<div class="col-lg-4 col-md-6 pl-0 padding-default">
 				<div class="mini-slider-outer">
 					<div class="mini-slider">
 						<?php
@@ -436,7 +436,7 @@ include 'functions.php';
 		<div class="products-sec">
 			<div class="row">
 				<?php
-				$get_pro = "SELECT * FROM products";
+				$get_pro = "SELECT * FROM products LIMIT 4";
 				$run_pro = mysqli_query($con, $get_pro);
 				while ($row_pro = mysqli_fetch_array($run_pro)) {
 					$pro_id = $row_pro['product_id'];
@@ -448,7 +448,7 @@ include 'functions.php';
 					cart();
 					if (!isset($_SESSION['customer_name'])) {
 						?>
-						<div class="col">
+						<div class="col-lg-3 col-12 col-md-6">
 							<img src="includes/product_images/<?php echo $pro_image; ?>" alt="">
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
 							<div class="row">
@@ -475,7 +475,7 @@ include 'functions.php';
 					<?php
 					} else {
 						?>
-						<div class="col">
+						<div class="col-lg-3 col-12 col-md-6">
 							<img src="includes/product_images/<?php echo $pro_image; ?>" alt="">
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
 							<div class="row">

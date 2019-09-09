@@ -134,11 +134,10 @@ if (isset($_POST['update_cart'])) {
                     <tr>
                       <td data-toggle="modal" data-target="#cart-item-des-popup"><img src="includes/product_images/<?php echo $product_image; ?>" alt="">
                         <h4><?php echo $product_title; ?></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At optio debitis mollitia veniam ut rem distinctio iste ea repellat, fugiat.</p>
                       </td>
                       <td class="text-center">&dollar;<?php echo $single_price; ?></td>
                       <td width="14%" class="text-center">
-                        <div class="container">
+                        <div class="container px-0">
                           <input type="hidden" name="pro_id_cart_qty[]" value="<?php echo $pro_id; ?>">
                           <input type="number" name="qty[]" class="form-control input-number-2 c-in-2" min="1" value="<?php echo $qtyd ?>">
                         </div>

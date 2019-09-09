@@ -27,7 +27,7 @@
         </div>
       </div>
       <div class="row align-items-center">
-        <div class="col-lg-7">
+        <div class="col-lg-7 col-md-12 footer-logo">
           <img src="assets/img/footer-logo.png" alt="">
           <div class="social-icons">
             <a href="#" class="hvr-grow-rotate" title="Facebook"><i class="fa fa-facebook"></i></a>

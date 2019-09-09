@@ -77,23 +77,6 @@ $dir_id = $_GET['dir_id'];
       </div>
     </div>
   </div>
-  <div class="container color-bg">
-    <div class="row">
-      <div class="col-lg-12">
-        <ul>
-          <li>For more information and to book your appointment please call: 800 ALLIED (255433)</li>
-          <li>Phone: 04 3328111 / 04 3329928</li>
-          <li>Fax: 04 3328222
-          </li>
-          <li>www.facebook.com/AlliedMedCenter
-          </li>
-          <li>www.instagram.com/alliedmedicalcenter
-          </li>
-          <li>Email: dubai-adc@allieddiagnostics.net</li>
-        </ul>
-      </div>
-    </div>
-  </div>
   <div class="container c-f-2 awakened-last">
     <div class="row align-items-center">
       <div class="col-lg-3 col-12">

@@ -33,6 +33,7 @@ $article_id = $_GET['article_id'];
   <link rel="stylesheet" href="../assets/custom/products.min.css">
   <link rel="stylesheet" href="../assets/custom/checkout.min.css">
   <link rel="stylesheet" href="../assets/custom/other.min.css">
+  <link rel="stylesheet" href="../assets/custom/responsiveness.min.css">
   <link rel="stylesheet" href="../assets/css/animate.css">
   <link rel="stylesheet" href="../assets/css/button.min.css">
   <link rel="stylesheet" href="../assets/css/hover-min.css">
@@ -108,7 +109,7 @@ $article_id = $_GET['article_id'];
           </div>
         <?php } ?>
         <hr>
-        <div class="row align-items-center">
+        <div class="row align-items-center sharing_article">
           <div class="col-lg-6">
             <h4 class="my-0">Share this article via:</h4>
           </div>
@@ -173,7 +174,7 @@ $article_id = $_GET['article_id'];
             </a>
           </div>
         </div>
-      <?php
+        <?php
       }
       ?>
     </div>

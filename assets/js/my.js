@@ -30,7 +30,7 @@ $('#close-trigger').click(function () {
     $('#user_first_name').html('');
     $('#user_last_name').html('');
     $('#message').html('');
-        
+
     var user_email = $("#user_email").val();
     var user_first_name = $("#user_first_name").val();
     var user_last_name = $('#user_last_name').val();
@@ -54,7 +54,7 @@ $('#close-trigger').click(function () {
                $("#user_last_name").css("border", "1px solid grey");
               $("#user_last_name").focus();
         }
-        
+
       else
       {
            $.ajax({
@@ -183,7 +183,7 @@ $('#close-trigger').click(function () {
 
     // full page search
 $(function () {
-  $('#search-icon').on('click', function (event) {
+  $('.search-icon').on('click', function (event) {
     event.preventDefault();
     $('#search').addClass('open');
     $('#search > form > input[type="search"]').focus();
@@ -207,3 +207,18 @@ $('.responsive-slide').slick({
      slidesToShow: 4,
      slidesToScroll: 4
 });
+
+	var touch 	= $('#resp-menu');
+	var menu 	= $('.menu');
+
+	$(touch).on('click', function(e) {
+		e.preventDefault();
+		menu.slideToggle();
+	});
+
+	$(window).resize(function(){
+		var w = $(window).width();
+		if(w > 767 && menu.is(':hidden')) {
+			menu.removeAttr('style');
+		}
+	});

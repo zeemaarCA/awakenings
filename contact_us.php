@@ -13,7 +13,7 @@ include 'modals.php';
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><i class="fa fa-home"></i> YOU ARE AT</li>
-        <li class="breadcrumb-item" aria-current="page">About Us</li>
+        <li class="breadcrumb-item" aria-current="page">Contact Us</li>
       </ol>
     </nav>
   </div>

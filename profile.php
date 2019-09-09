@@ -97,6 +97,7 @@ include 'modals.php';
           </div>
           <div class="address col-lg-12">
             <div class="row">
+              <div class="table-responsive">
               <table class="table cart-table">
                 <thead>
                   <tr>
@@ -168,6 +169,7 @@ include 'modals.php';
                 }
                 ?>
               </table>
+              </div>
             </div>
           </div>
         </div>

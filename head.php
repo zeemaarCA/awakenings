@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="assets/custom/products.min.css">
   <link rel="stylesheet" href="assets/custom/checkout.min.css">
   <link rel="stylesheet" href="assets/custom/other.min.css">
+  <link rel="stylesheet" href="assets/custom/responsiveness.min.css">
   <link rel="stylesheet" href="assets/css/animate.css">
   <link rel="stylesheet" href="assets/css/button.min.css">
   <link rel="stylesheet" href="assets/css/hover-min.css">
