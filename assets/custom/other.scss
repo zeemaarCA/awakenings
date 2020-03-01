@@ -1,14 +1,14 @@
 $roboto: 'Roboto', sans-serif;
-$blue: #45b5c6;
+$blue: #d8b966;
 $blue2: #3399cc;
-$green: #44b61c;
-$green-btn: #8bbb5a;
+$green: #d8b966;
+$green-btn: #d8b966;
 $green-btn-hvr: #ffcc00;
 $dark-blue: #134563;
 $light-green: #8bbb5a;
-$yellow: #ffcc00;
-$yellow2: #ff9900;
-$orange: #ff6600;
+$yellow: #d8b966;
+$yellow2: #d8b966;
+$orange: #d8b966;
 $footer-grey: #57585c;
 $red: #ea4e3a;
 $black: #333333;
@@ -26,7 +26,7 @@ $white: #ffffff;
   position: relative;
   top: 50px;
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 600;
   padding-left: 0.4rem;
   color: #999999;
 }
@@ -38,10 +38,9 @@ $white: #ffffff;
 @mixin mini-heading{
   font-size: 30px;
   text-transform: capitalize;
-  font-weight: 500;
+  font-weight: 600;
   text-align: left;
   color: #c1a040;
-  font-family: main-heading;
   white-space: nowrap;
 }
 @mixin other-page-heading{
@@ -73,7 +72,7 @@ $white: #ffffff;
         display: inline-block;
         text-transform: uppercase;
         margin-right: 32px;
-        font-weight: 500;
+        font-weight: 600;
         font-size: 16px;
         .fa-search{
           cursor: pointer;
@@ -180,7 +179,7 @@ $white: #ffffff;
     list-style-type: none;
     li{
       margin: 1rem 0;
-      font-weight: 500;
+      font-weight: 600;
       color: #fff;
     }
   }
@@ -209,7 +208,7 @@ $white: #ffffff;
     color: #fff;
     text-transform: uppercase;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 600;
     bottom: 0;
     left: 11%;
     padding: 10px;
@@ -271,8 +270,9 @@ $white: #ffffff;
       -webkit-box-flex: 0;
       flex: 0 0 25%;
       max-width: 25%;
-      background: #45b5c6;
+      background: #e8ca79;
       margin: 14px;
+      font-size: 18px;
       padding: 12px 8px 8px 4px;
       align-self: center;
       a{
@@ -295,13 +295,13 @@ $white: #ffffff;
     margin-top: 2rem;
   }
   h2{
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     color: $blue;
     margin: 2rem 0 0.5rem;
   }
   p{
     color: #5d5c5c;
-    font-size: 14px;
+    font-size: 18px;
   }
   table{
     color: #696969;
@@ -323,7 +323,7 @@ $white: #ffffff;
   }
   a{
     text-transform: capitalize;
-    font-weight: 500;
+    font-weight: 600;
     color: #0b84b1;
   }
   span{
@@ -355,10 +355,9 @@ $white: #ffffff;
   h1{
     font-size: 30px;
     text-transform: capitalize;
-    font-weight: 500;
+    font-weight: 600;
     text-align: left;
     color: #c1a040;
-    font-family: main-heading;
   }
   .mini-nav{
     ul{
@@ -370,7 +369,7 @@ $white: #ffffff;
         display: inline-block;
         text-transform: uppercase;
         margin-right: 1.6rem;
-        font-weight: 500;
+        font-weight: 600;
         font-size: 14px;
         a{
           color: $black;
@@ -402,7 +401,7 @@ $white: #ffffff;
       margin-top: 0;
       margin-bottom: 0;
       text-transform: capitalize;
-      font-size: 18px;
+      font-size: 22px;
     }
     i{
       font-size: 11px;

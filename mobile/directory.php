@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<?php
+session_start();
+include '../functions.php';
+include 'head.php';
+include '../modals.php';
+?>
+
+<body>
+  <?php include 'menu.php'; ?>
+  <div class="body-wrapper">
+    <div class="posts-heading">
+      <h2>UAE holistic directory</h2>
+    </div>
+    <div class="directory">
+      <form action="">
+        <i id="filtersubmit" class="fa fa-search"></i>
+        <input type="search" name="" value="" class="search-d" id="myInput" placeholder="Search" autofocus>
+      </form>
+      <ul id="myList">
+        <?php
+        $get_dir = "SELECT * FROM holistic_directory";
+        $run_dir = mysqli_query($con, $get_dir);
+
+        while ($row_dir = mysqli_fetch_array($run_dir)) {
+          $dir_id = $row_dir['dir_id'];
+          $dir_title = $row_dir['dir_name'];
+
+        ?>
+          <li><a href="directory_detail.php?dir_id=<?php echo $dir_id ?>"><?php echo $dir_title; ?></a></li>
+        <?php } ?>
+      </ul>
+    </div>
+    <?php include 'footer.php'; ?>
+    <?php include 'scripts.php'; ?>
+
+    <script>
+      $(document).ready(function() {
+        $("#myInput").on("keyup", function() {
+          var value = $(this).val().toLowerCase();
+          $("#myList li").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+          });
+        });
+      });
+    </script>
+</body>
+
+</html>

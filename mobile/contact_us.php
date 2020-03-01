@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<?php
+include '../functions.php';
+include 'head.php';
+include 'modals.php';
+?>
+
+
+<body>
+  <?php include 'menu.php'; ?>
+  <div class="body-wrapper">
+
+    <!-- products section -->
+    <div class="posts-heading">
+      <h2>contact <span class="gold">us</span></h2>
+    </div>
+    <div class="container about_us_block info-para">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="about_us">
+            <p><i>Awakenings Middle East</i> magazine was launched on 1 December 2012. A quarterly title in print and digital formats, its mission is to the be the guide to holistic and healthy living in the UAE.</p>
+            <br>
+
+            <p>The idea behind Awakenings magazine, as well as its website, Facebook page, Meet-up group, and other platforms, is to provide a focal point for the fast-growing wellbeing, fitness and alternative health community in the UAE.</p>
+            <br>
+            <p>About 10,000 copies are distributed throughout the UAE. About 5,000 print copies go to individual subscribers and another 5,000 are spread through the public space via the retail space (supermarkets, book shops etc) as well as medical clinics and alternative health centres; mind & body-related businesses and shops; spas, hotels; yoga and Pilates studios; fitness centres; health food shops, etc.</p>
+            <br>
+            <p>Subscription is available via the website.</p>
+            <br>
+            <p>The magazine is published by MBS GROUP FZLLE (license number NMC-ML-02-F03) and is approved by the National Media Council of the UAE.</p>
+            <br>
+            <p>MBS Group FZLLE<br>DubaiMob. 050 4507149<br>Email: mbsgroupme@gmail.com</p>
+            <br>
+            <p><b>Now, meet the team…</b></p>
+            <br>
+            <p><b>Publisher & Editor: Sharon Taylor</b></p>
+            <p>Tel. +971 (0)50 450 7149<br>sharon@awakeningsme.com<br><i>Contact Sharon for anything and everything to do with the magazine – if you have a great story idea and you want to write for us or if you want to buy advertising space or advertorial for your business, get in touch! We’d love to hear from you…</i></p>
+            <br>
+            <p><b>Social Media Manager & Sub Editor: Reema Aidasani</b></p>
+            <p>Tel. +971 (0)56 725 0908<br>reema@awakeningsme.com<br>Contact Reema for social media ideas or queries or editorial.</p>
+            <p><b>Online content: Sharon Taylor</b><br>sharon@awakeningsme.com<br><i>Again, contact Sharon if you want your business listed on the directory or an event uploading to the calendar or to have something promoted on our Facebook page</i></p>
+            <a href="about-us.php">To find out even more about us, click here…</a>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <?php include 'footer.php'; ?>
+</div>
+  <?php include 'scripts.php'; ?>
+
+
+</body>
+
+</html>

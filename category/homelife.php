@@ -69,10 +69,7 @@ include '../modals_inner.php';
       </div>
       <div class="col-lg-3">
         <div class="right-img-directory">
-          <img src="../assets/img/right-side-img.jpg" alt="">
-          <img src="../assets/img/right-side-img.jpg" class="mt-3" alt="">
-          <img src="../assets/img/right-side-img.jpg" class="mt-3" alt="">
-          <img src="../assets/img/right-side-img.jpg" class="mt-3" alt="">
+          &nbsp;
         </div>
       </div>
     </div>

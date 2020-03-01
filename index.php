@@ -29,7 +29,6 @@ include 'functions.php';
 			</div>
 		</div>
 	</div>
-
 	<div class="container pl-0 awakened-last-imgs">
 		<div class="row">
 			<div class="col-lg-8">
@@ -46,7 +45,7 @@ include 'functions.php';
 						$article_image = $row_article['featured_image'];
 						$posted_at = $row_article['posted_at'];
 						$trim_desc = (strlen($article_desc) > 100) ? substr($article_desc, 0, 150) . '...' : $article_desc;
-						?>
+					?>
 						<div class="col-lg-6 pr-0 col-md-6">
 							<div class="main-page-bg-img" style="background: url(includes/article_images/<?php echo $article_image; ?>)"></div>
 							<div class="box">
@@ -67,65 +66,24 @@ include 'functions.php';
 					<h2>search holistic directory</h2>
 					<ul>
 						<?php
-						$get_dir = "SELECT * FROM holistic_directory ORDER BY RAND() LIMIT 6";
+						$get_dir = "SELECT * FROM holistic_directory ORDER BY RAND() LIMIT 14";
 						$run_dir = mysqli_query($con, $get_dir);
 
 						while ($row_dir = mysqli_fetch_array($run_dir)) {
 							$dir_id = $row_dir['dir_id'];
 							$dir_title = $row_dir['dir_name'];
 
-							?>
+						?>
 							<li><a href="directory_detail.php?dir_id=<?php echo $dir_id ?>"><?php echo $dir_title; ?></a></li>
 						<?php } ?>
 						<li><a href="directory.php">more</a></li>
 					</ul>
-				</div>
-				<div class="right-side-img">
-					<img src="assets/img/right-side-img.jpg" alt="">
 				</div>
 
 			</div>
 		</div>
 	</div>
 	<!-- Awakened Latest end -->
-
-	<!-- awakening events -->
-	<!-- <div class="container awakened-last events">
-		<div class="row align-items-center">
-			<div class="col-lg-3 col-12">
-				<h1>Awakened Events</h1>
-			</div>
-			<div class="col-lg-9 col-12">
-				<div class="heading-line">
-				</div>
-			</div>
-		</div>
-		<div class="events-items">
-			<div class="row align-items-center">
-				<div class="col-lg-4">
-					<img src="assets/img/event1.png" alt="">
-					<h4>Title</h4>
-					<h6>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, dolorem consectetur ea perferendis vel aut.</h6>
-					<button>Intrested</button>
-				</div>
-				<div class="col-lg-4">
-					<img src="assets/img/event2.png" alt="">
-
-					<h4>Title</h4>
-					<h6>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, dolorem consectetur ea perferendis vel aut.</h6>
-					<button>Intrested</button>
-				</div>
-				<div class="col-lg-4">
-					<img src="assets/img/event3.png" alt="">
-
-					<h4>Title</h4>
-					<h6>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, dolorem consectetur ea perferendis vel aut.</h6>
-					<button>Intrested</button>
-				</div>
-			</div>
-		</div>
-	</div> -->
-	<!-- awakening events -->
 	<!-- toast -->
 	<div class="container-toast">
 		<div class="rectangle">
@@ -136,25 +94,6 @@ include 'functions.php';
 		</div>
 	</div>
 	<!-- toast -->
-	<!-- signup form -->
-	<div class="container signup-form">
-		<div class="row">
-			<div class="col-lg-12">
-				<h2>sign up now for your chance to <span class="bold-font">win a night's stay</span><br>for 2 at the retreat palm dubai MGallery by sofitel</h2>
-				<form class="login-form" id="myForm" action="" method="POST">
-					<input type="email" name="user_email" class="my-form" placeholder="Enter your Email" id="user_email">
-					<span id="uemail"></span>
-					<input type="text" name="user_first_name" class="my-form" placeholder="First Name" id="user_first_name">
-					<span id="ufname"></span>
-					<input type="text" name="user_last_name" class="my-form" placeholder="Last Name" id="user_last_name">
-					<span id="ulname"></span>
-					<input type="submit" class="btn-sub" name="submit" id="submit" value="Subscribe">
-					<div id="message"></div>
-				</form>
-			</div>
-		</div>
-	</div>
-	<!-- signup form end-->
 	<div class="container c-f-2 awakened-last mini-nav-sec">
 		<div class="row align-items-center">
 			<div class="col-lg-3 col-12">
@@ -206,7 +145,7 @@ include 'functions.php';
 							$article_image = $row_article['featured_image'];
 							$posted_at = $row_article['posted_at'];
 							$trim_desc = (strlen($article_desc) > 100) ? substr($article_desc, 0, 150) . '...' : $article_desc;
-							?>
+						?>
 							<div>
 								<div class="main-page-body-sec-img" style="background: url(includes/article_images/<?php echo $article_image; ?>)"></div>
 
@@ -252,7 +191,7 @@ include 'functions.php';
 							$article_image = $row_article['featured_image'];
 							$posted_at = $row_article['posted_at'];
 							$trim_desc = (strlen($article_desc) > 100) ? substr($article_desc, 0, 150) . '...' : $article_desc;
-							?>
+						?>
 							<div>
 								<div class="main-page-body-sec-img" style="background: url(includes/article_images/<?php echo $article_image; ?>)"></div>
 								<a href="category/article_detail.php?article_id=<?php echo $article_id ?>">
@@ -304,10 +243,9 @@ include 'functions.php';
 					$pro_image = $row_pro['product_image'];
 					cart();
 					if (!isset($_SESSION['customer_name'])) {
-						?>
-						<div class="col-lg-3 col-12 col-md-6">
+				?>
+						<div class="col-lg-3 col-12 col-md-6 border">
 							<img src="includes/product_images/<?php echo $pro_image; ?>" alt="">
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
 							<div class="row">
 								<div class="col-lg-12">
 									<h4><?php echo $pro_title; ?></h4>
@@ -331,10 +269,9 @@ include 'functions.php';
 						</div>
 					<?php
 					} else {
-						?>
-						<div class="col-lg-3 col-12 col-md-6">
+					?>
+						<div class="col-lg-3 col-12 col-md-6 border">
 							<img src="includes/product_images/<?php echo $pro_image; ?>" alt="">
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
 							<div class="row">
 								<div class="col-lg-12">
 									<h4><?php echo $pro_title; ?></h4>
@@ -356,7 +293,7 @@ include 'functions.php';
 								</div>
 							</div>
 						</div>
-					<?php
+				<?php
 					}
 				} ?>
 			</div>
@@ -401,7 +338,7 @@ include 'functions.php';
 							$article_image = $row_article['featured_image'];
 							$posted_at = $row_article['posted_at'];
 							$trim_desc = (strlen($article_desc) > 100) ? substr($article_desc, 0, 150) . '...' : $article_desc;
-							?>
+						?>
 							<div>
 								<div class="main-page-body-sec-img" style="background: url(includes/article_images/<?php echo $article_image; ?>)"></div>
 								<a href="category/article_detail.php?article_id=<?php echo $article_id ?>">
@@ -447,10 +384,9 @@ include 'functions.php';
 					$pro_image = $row_pro['product_image'];
 					cart();
 					if (!isset($_SESSION['customer_name'])) {
-						?>
-						<div class="col-lg-3 col-12 col-md-6">
+				?>
+						<div class="col-lg-3 col-12 col-md-6 border">
 							<img src="includes/product_images/<?php echo $pro_image; ?>" alt="">
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
 							<div class="row">
 								<div class="col-lg-12">
 									<h4><?php echo $pro_title; ?></h4>
@@ -474,10 +410,9 @@ include 'functions.php';
 						</div>
 					<?php
 					} else {
-						?>
-						<div class="col-lg-3 col-12 col-md-6">
+					?>
+						<div class="col-lg-3 col-12 col-md-6 border">
 							<img src="includes/product_images/<?php echo $pro_image; ?>" alt="">
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
 							<div class="row">
 								<div class="col-lg-12">
 									<h4><?php echo $pro_title; ?></h4>
@@ -499,7 +434,7 @@ include 'functions.php';
 								</div>
 							</div>
 						</div>
-					<?php
+				<?php
 					}
 				} ?>
 			</div>

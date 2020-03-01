@@ -1,6 +1,6 @@
 $green: #339900;
-$roboto: 'Roboto', sans-serif!important;
-$light-gold: #45b5c6;
+$body-font: 'Cormorant Garamond';
+$light-gold: #d8b966;
 $orange: #ef8701;
 $red: #ea4e3a;
 $black: #333333;
@@ -10,6 +10,9 @@ $black: #333333;
   .box-head{
     border-bottom: 1px solid #ccc;
     padding-bottom: 15px;
+  }
+  body{
+    font-family: $body-font;
   }
   img{
     float: left;
@@ -35,7 +38,6 @@ $black: #333333;
 }
 
 .two-check{
-  font-family: $roboto;
   margin-top: 2rem;
   margin-bottom: 1rem;
   .w-should{
@@ -95,7 +97,6 @@ $black: #333333;
   }
 }
 .three-check{
-  font-family: $roboto;
   margin-top: 2.5rem;
   .w-should{
     display: block;
@@ -144,7 +145,7 @@ $black: #333333;
       text-align: center;
     }
     .table{
-      font-family: $roboto;
+
     }
     .crown-point {
       display: inline-block!important;
@@ -159,7 +160,7 @@ $black: #333333;
   margin-top: 8rem;
 }
 .four-check{
-  font-family: $roboto;
+
 
   margin-top: 2.5rem;
   .w-should{
@@ -370,7 +371,7 @@ $black: #333333;
 
 .cnfirm-head{
   margin-top: 3rem;
-  font-family: $roboto;
+
   h1{
     font-size: 30px;
     text-transform: uppercase;
@@ -380,7 +381,7 @@ $black: #333333;
 ///////////////
 .shopping-cart{
   box-sizing: border-box;
-  font-family: $roboto;
+
   color: #333333;
   .col-lg-12{
     margin: 6px 0px 8px 0px;
@@ -427,7 +428,7 @@ $black: #333333;
     }
   }
   tbody{
-    font-family: $roboto;
+
     color: #666666;
     tr{
       td{
@@ -568,6 +569,7 @@ $black: #333333;
     p {
       text-align: center;
       margin-top: 2rem;
+      font-size: 18px;
 
       a {
         color: $green;
@@ -717,7 +719,6 @@ $black: #333333;
   }
 }
 .c-box-1n2{
-  font-family: $roboto;
   .box-border{
     position: relative;
     border: 1px solid #ccc;
@@ -817,7 +818,7 @@ $black: #333333;
 }
 // Distributor signup
 .d-signup{
-  font-family: $roboto;
+  
   h1{
     text-transform: capitalize;
     color: $green;

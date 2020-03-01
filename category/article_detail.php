@@ -129,10 +129,6 @@ $article_id = $_GET['article_id'];
       </div>
       <div class="col-lg-3">
         <div class="right-img-directory">
-          <img src="../assets/img/right-side-img.jpg" alt="">
-          <img src="../assets/img/right-side-img.jpg" class="mt-3" alt="">
-          <img src="../assets/img/right-side-img.jpg" class="mt-3" alt="">
-          <img src="../assets/img/right-side-img.jpg" class="mt-3" alt="">
         </div>
       </div>
     </div>

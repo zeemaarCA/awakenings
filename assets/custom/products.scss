@@ -1,18 +1,20 @@
 @import url("style.min.css");
 $roboto: 'Roboto', sans-serif;
-$blue: #45b5c6;
+$default_font: 'Cormorant Garamond';
+$blue: #e8ca79;
 $blue2: #3399cc;
-$green: #44b61c;
-$green-btn: #8bbb5a;
+$green: #e8ca79;
+$green-btn: #e8ca79;
 $green-btn-hvr: #ffcc00;
 $dark-blue: #134563;
 $light-green: #8bbb5a;
-$yellow: #ffcc00;
-$yellow2: #ff9900;
-$orange: #ff6600;
+$yellow: #e8ca79;
+$yellow2: #e8ca79;
+$orange: #e8ca79;
 $footer-grey: #57585c;
 $red: #ea4e3a;
 $black: #333333;
+$white: #ffffff;
 $border: 1px solid #ccc;
 @mixin main-heading{
   position: relative;
@@ -50,7 +52,7 @@ body{
   margin: 0;
   padding: 0;
   color: $black;
-  font-family: $roboto!important;
+  font-family: $default_font!important;
   overflow-x: hidden;
 }
 
@@ -81,6 +83,7 @@ img{
     text-transform: capitalize;
     margin-top: 1rem;
     font-size: 22px;
+    font-weight: 700;
   }
   p{
     font-size: 14px;
@@ -91,7 +94,7 @@ img{
     font-weight: 600;
   }
   .ui.animated.button {
-    font-family: $roboto;
+    font-family: $default_font;
     position: relative;
     overflow: hidden;
     background: $blue;
@@ -127,7 +130,7 @@ img{
       margin-bottom: 1rem;
     }
     a{
-      font-family: $roboto;
+      font-family: $default_font;
       background: #f7f7f7;
       color: #333;
       font-size: 22px;
