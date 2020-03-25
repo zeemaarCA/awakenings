@@ -36,6 +36,11 @@ $article_id = $_GET['article_id'];
   <link rel="stylesheet" href="../../assets/css/slick.css">
   <link rel="stylesheet" href="../../assets/css/slick-theme.css">
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css' />
+  <script type="text/javascript">
+    if (screen.width >= 699) {
+      window.location = "../../index.php";
+    }
+  </script>
 </head>
 <?php include '../../modals_inner.php'; ?>
 
@@ -62,10 +67,13 @@ $article_id = $_GET['article_id'];
       $article_title = $row_article_detail['article_title'];
       $article_main_cat = $row_article_detail['article_main_cat'];
       $article_sub_cat = $row_article_detail['article_sub_cat'];
+      $article_tag = $row_article_detail['article_tag'];
       $article_desc = $row_article_detail['article_text'];
       $article_image = $row_article_detail['featured_image'];
       $posted_at = $row_article_detail['posted_at'];
-
+      $tags = $article_tag;
+      $dt = new DateTime($posted_at);
+      $timestamp = strtotime($posted_at);
     ?>
       <div class="detail-post">
         <div class="feature-img">
@@ -76,13 +84,99 @@ $article_id = $_GET['article_id'];
             <span><?php echo $article_main_cat ?></span><span><?php echo $article_sub_cat ?></span>
           </div>
           <div class="date">
-            <span><?php echo $posted_at ?></span>
+            <span><?php echo $dt->format('Y-m-d'); ?></span>
           </div>
           <div class="title">
             <h3><?php echo $article_title; ?></h3>
           </div>
           <div class="description">
             <?php echo $article_desc; ?>
+          </div>
+          <div class="tag">
+            <p>Tags:</p>
+            <?php
+            $str_arr = explode(",", $tags);
+            foreach ($str_arr as $out) {
+              echo '<span><i class="fa fa-tag"></i> ' . $out . '</span>';
+            }
+            ?>
+          </div>
+        </div>
+      </div>
+
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Add Comment</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Comments</a>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <div class="comments">
+            <form method="post" action="../comments.php">
+              <h2>Your Comments :</h2>
+              <div class="row">
+                <input id="name" class="form-control" type="hidden" name="article_id" value="<?php echo $article_id; ?>">
+                <div class="form-group col-lg-6">
+                  <label for="name">Your Name</label>
+                  <input id="name" class="form-control" type="text" name="c_name">
+                </div>
+                <div class="form-group col-lg-6">
+                  <label for="email">Your Email</label>
+                  <input id="email" class="form-control" type="email" name="c_email">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="comment">Your Comment</label>
+                <textarea name="c_comment" id="comment" class="form-control" cols="30" rows="4"></textarea>
+              </div>
+              <button class="comment-btn" name="submit_comment" type="submit">Post</button>
+            </form>
+          </div>
+
+        </div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+          <div class="comments_preview">
+            <div class="row">
+              <?php
+              $get_article_comment = "SELECT * FROM comments WHERE article_id = '$article_id'";
+              $run_article_comment = mysqli_query($con, $get_article_comment);
+
+              while ($row_article_comment = mysqli_fetch_array($run_article_comment)) {
+                $article_comment_id = $row_article_comment['article_id'];
+                $c_name = $row_article_comment['c_name'];
+                $c_email = $row_article_comment['c_email'];
+                $c_comment = $row_article_comment['c_comment'];
+                $posted_comment_at = $row_article_comment['posted_at'];
+                $timestamp_comment = strtotime($posted_comment_at);
+                $comment_time = strtotime($posted_comment_at);
+
+
+              ?>
+                <div class="col-12">
+                  <div class="card card-white post border-0">
+                    <div class="post-heading">
+                      <div class="float-left image">
+                        <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
+                      </div>
+                      <div class="float-left meta">
+                        <div class="title h5">
+                          <a href="#"><b><?php echo $c_name; ?></b></a>
+                          write a comment.
+                        </div>
+                        <h6 class="text-muted time"><?php echo date('d/m/Y', $comment_time); ?></h6>
+                      </div>
+                    </div>
+                    <div class="post-description">
+                      <p><?php echo $c_comment; ?></p>
+
+                    </div>
+                  </div>
+                </div>
+              <?php } ?>
+
+            </div>
           </div>
         </div>
       </div>

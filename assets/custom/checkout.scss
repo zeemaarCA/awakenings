@@ -144,9 +144,6 @@ $black: #333333;
       text-decoration: none;
       text-align: center;
     }
-    .table{
-
-    }
     .crown-point {
       display: inline-block!important;
       position: relative;
@@ -244,7 +241,7 @@ $black: #333333;
       }
       a{
         float: right;
-        display: inline-block;
+        display: block;
         background: $light-gold;
         padding: 0.5rem 2.1rem;
         font-size: 20px;
@@ -724,9 +721,6 @@ $black: #333333;
     border: 1px solid #ccc;
     padding: 1.3rem;
     min-height: 306px;
-    img{
-
-    }
     .grey-text{
       color: #666666;
     }
@@ -818,7 +812,7 @@ $black: #333333;
 }
 // Distributor signup
 .d-signup{
-  
+
   h1{
     text-transform: capitalize;
     color: $green;
@@ -830,3 +824,25 @@ $black: #333333;
   }
 }
 // Distributor signup
+// guest address
+.guest-address{
+  h4{
+    float: right;
+    font-size: 1.3rem;
+    a{
+      background-color: $light-gold;
+      color: #ffffff;
+      padding: 3px 10px;
+      border-radius: 7px;
+      }
+    }
+  
+  .btn{
+    background-color: $light-gold;
+    color: #ffffff;
+    font-weight: 600;
+    float: right;
+  }
+}
+
+// guest address

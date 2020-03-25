@@ -180,6 +180,10 @@ include '../includes/conn.php';
                     </div>
                   </div>
                   <div class="form-group">
+                    <label>Article Tags</label>
+                    <input type="text" name="article_tag" class="form-control" placeholder="Separate with commas">
+                  </div>
+                  <div class="form-group">
                     <label>Article Body</label>
                     <textarea name="article_desc" class="form-control"></textarea>
                   </div>

@@ -1,19 +1,38 @@
 <!DOCTYPE html>
 
 <body lang="en">
+
   <?php
   session_start();
   include 'head.php';
   include 'modals.php';
   include '../functions.php';
+  $guest_id = session_id();
+  $_SESSION['guest_id'] = $guest_id;
   ?>
 
   <body>
+    <!-- <div class="pre-loader">
+      <img class="img-fluid" src="../assets/img/footer-logo.png" alt="">
+      <div class="lds-roller">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div> -->
     <?php
     include 'menu.php';
     ?>
 
     <div class="body-wrapper">
+      <div class="posts-heading">
+        <h2>Popular <span class="gold">posts</span></h2>
+      </div>
       <?php
       $get_article = "SELECT * FROM articles order by RAND() LIMIT 4";
       $run_article = mysqli_query($con, $get_article);
@@ -26,25 +45,35 @@
         $article_image = $row_article['featured_image'];
         $posted_at = $row_article['posted_at'];
         $trim_desc = (strlen($article_desc) > 100) ? substr($article_desc, 0, 150) . '...' : $article_desc;
+        $dt = new DateTime($posted_at);
+        $timestamp = strtotime($posted_at);
+
       ?>
+
         <div class="random-posts">
-          <div class="feature-img">
-            <img class="img-fluid" src="../includes/article_images/<?php echo $article_image; ?>" alt="">
-          </div>
-          <div class="feature-text">
-            <div class="categories">
-              <span><?php echo $article_main_cat ?></span><span><?php echo $article_sub_cat ?></span>
+          <a href="category/article_detail.php?article_id=<?php echo $article_id ?>">
+            <div class="feature-img">
+              <div class="bg-img" style="background: url(../includes/article_images/<?php echo $article_image; ?>)">
+              </div>
+
             </div>
-            <div class="date">
-              <span><?php echo $posted_at ?></span>
+            <div class="feature-text">
+              <!-- <div class="date">
+                <span class="numeric"><?php echo $dt->format('Y-m-d'); ?></span>
+              </div> -->
+              <div class="title">
+                <h3><?php echo $article_title ?></h3>
+              </div>
+              <div class="categories">
+                <span><?php echo $article_main_cat ?></span><span><?php echo $article_sub_cat ?></span>
+                <div class="date">
+                  <span class="article_date">
+                    <?php echo date('d/m/Y', $timestamp); ?>
+                  </span>
+                </div>
+              </div>
             </div>
-            <div class="title">
-              <h3><?php echo $article_title ?></h3>
-            </div>
-            <div class="read-more">
-              <a href="category/article_detail.php?article_id=<?php echo $article_id ?>">read more</a>
-            </div>
-          </div>
+          </a>
         </div>
       <?php
       }
@@ -55,6 +84,7 @@
         <h2>latest <span class="gold">posts</span></h2>
       </div>
       <?php
+
       $get_article = "SELECT * FROM articles order by posted_at DESC LIMIT 2";
       $run_article = mysqli_query($con, $get_article);
       while ($row_article = mysqli_fetch_array($run_article)) {
@@ -66,26 +96,29 @@
         $article_image = $row_article['featured_image'];
         $posted_at = $row_article['posted_at'];
         $trim_desc = (strlen($article_desc) > 100) ? substr($article_desc, 0, 150) . '...' : $article_desc;
+        $dt = new DateTime($posted_at);
+        $timestamp = strtotime($posted_at);
       ?>
         <div class="random-posts">
-          <div class="feature-img">
-            <img class="img-fluid" src="../includes/article_images/<?php echo $article_image; ?>" alt="">
-          </div>
-          <div class="feature-text">
-            <div class="title">
-              <h3><?php echo $article_title ?></h3>
+          <a href="category/article_detail.php?article_id=<?php echo $article_id ?>">
+            <div class="feature-img">
+              <div class="bg-img" style="background: url(../includes/article_images/<?php echo $article_image; ?>)">
+              </div>
             </div>
-            <div class="categories">
-              <span><?php echo $article_main_cat ?></span><span><?php echo $article_sub_cat ?></span>
+            <div class="feature-text">
+              <div class="title">
+                <h3><?php echo $article_title ?></h3>
+              </div>
+              <div class="categories">
+                <span><?php echo $article_main_cat ?></span><span><?php echo $article_sub_cat ?></span>
+              </div>
+              <div class="date">
+                <span class="article_date">
+                  <?php echo date('d/m/Y', $timestamp); ?>
+                </span>
+              </div>
             </div>
-            <div class="date">
-              <span><?php echo $posted_at ?></span>
-            </div>
-            <hr>
-            <div class="read-more">
-              <a href="category/article_detail.php?article_id=<?php echo $article_id ?>">read more</a>
-            </div>
-          </div>
+          </a>
         </div>
       <?php
       }
@@ -107,26 +140,29 @@
         $article_image = $row_article['featured_image'];
         $posted_at = $row_article['posted_at'];
         $trim_desc = (strlen($article_desc) > 100) ? substr($article_desc, 0, 150) . '...' : $article_desc;
+        $dt = new DateTime($posted_at);
+        $timestamp = strtotime($posted_at);
       ?>
         <div class="random-posts">
-          <div class="feature-img">
-            <img class="img-fluid" src="../includes/article_images/<?php echo $article_image; ?>" alt="">
-          </div>
-          <div class="feature-text">
-            <div class="title">
-              <h3><?php echo $article_title ?></h3>
+          <a href="category/article_detail.php?article_id=<?php echo $article_id ?>">
+            <div class="feature-img">
+              <div class="bg-img" style="background: url(../includes/article_images/<?php echo $article_image; ?>)">
+              </div>
             </div>
-            <div class="categories">
-              <span><?php echo $article_main_cat ?></span>
+            <div class="feature-text">
+              <div class="title">
+                <h3><?php echo $article_title ?></h3>
+              </div>
+              <div class="categories">
+                <span><?php echo $article_main_cat ?></span>
+              </div>
+              <div class="date">
+                <span class="article_date">
+                  <?php echo date('d/m/Y', $timestamp); ?>
+                </span>
+              </div>
             </div>
-            <div class="date">
-              <span><?php echo $posted_at ?></span>
-            </div>
-            <hr>
-            <div class="read-more">
-              <a href="category/article_detail.php?article_id=<?php echo $article_id ?>">read more</a>
-            </div>
-          </div>
+          </a>
         </div>
       <?php
       }
@@ -149,26 +185,29 @@
         $article_image = $row_article['featured_image'];
         $posted_at = $row_article['posted_at'];
         $trim_desc = (strlen($article_desc) > 100) ? substr($article_desc, 0, 150) . '...' : $article_desc;
+        $dt = new DateTime($posted_at);
+        $timestamp = strtotime($posted_at);
       ?>
         <div class="random-posts">
-          <div class="feature-img">
-            <img class="img-fluid" src="../includes/article_images/<?php echo $article_image; ?>" alt="">
-          </div>
-          <div class="feature-text">
-            <div class="title">
-              <h3><?php echo $article_title ?></h3>
+          <a href="category/article_detail.php?article_id=<?php echo $article_id ?>">
+            <div class="feature-img">
+              <div class="bg-img" style="background: url(../includes/article_images/<?php echo $article_image; ?>)">
+              </div>
             </div>
-            <div class="categories">
-              <span><?php echo $article_main_cat ?></span>
+            <div class="feature-text">
+              <div class="title">
+                <h3><?php echo $article_title ?></h3>
+              </div>
+              <div class="categories">
+                <span><?php echo $article_main_cat ?></span>
+              </div>
+              <div class="date">
+                <span class="article_date">
+                  <?php echo date('d/m/Y', $timestamp); ?>
+                </span>
+              </div>
             </div>
-            <div class="date">
-              <span><?php echo $posted_at ?></span>
-            </div>
-            <hr>
-            <div class="read-more">
-              <a href="category/article_detail.php?article_id=<?php echo $article_id ?>">read more</a>
-            </div>
-          </div>
+          </a>
         </div>
       <?php
       }
@@ -189,41 +228,34 @@
         $article_image = $row_article['featured_image'];
         $posted_at = $row_article['posted_at'];
         $trim_desc = (strlen($article_desc) > 100) ? substr($article_desc, 0, 150) . '...' : $article_desc;
+        $dt = new DateTime($posted_at);
+        $timestamp = strtotime($posted_at);
       ?>
         <div class="random-posts">
-          <div class="feature-img">
-            <img class="img-fluid" src="../includes/article_images/<?php echo $article_image; ?>" alt="">
-          </div>
-          <div class="feature-text">
-            <div class="title">
-              <h3><?php echo $article_title ?></h3>
+          <a href="category/article_detail.php?article_id=<?php echo $article_id ?>">
+            <div class="feature-img">
+              <div class="bg-img" style="background: url(../includes/article_images/<?php echo $article_image; ?>)">
+              </div>
             </div>
-            <div class="categories">
-              <span><?php echo $article_main_cat ?></span><span><?php echo $article_sub_cat ?></span>
+            <div class="feature-text">
+              <div class="title">
+                <h3><?php echo $article_title ?></h3>
+              </div>
+              <div class="categories">
+                <span><?php echo $article_main_cat ?></span><span><?php echo $article_sub_cat ?></span>
+              </div>
+              <div class="date">
+                <span class="article_date">
+                  <?php echo date('d/m/Y', $timestamp); ?>
+                </span>
+              </div>
             </div>
-            <div class="date">
-              <span><?php echo $posted_at ?></span>
-            </div>
-            <hr>
-            <div class="read-more">
-              <a href="category/article_detail.php?article_id=<?php echo $article_id ?>">read more</a>
-            </div>
-          </div>
+          </a>
         </div>
       <?php
       }
       ?>
       <!-- -------------------------------------------- -->
-      <!-- toast -->
-      <div class="container-toast">
-        <div class="rectangle">
-          <div class="notification-text">
-            <i class="fa fa-exclamation-circle"></i>
-            <span>&nbsp;&nbsp;Please Login First to add item.&nbsp;&nbsp;</span><i class="fa fa-times" id="close-trigger"></i>
-          </div>
-        </div>
-      </div>
-      <!-- toast -->
 
       <!-- random categories -->
       <!-- products section -->
@@ -242,38 +274,47 @@
             $pro_price = $row_pro['product_price'];
             $pro_desc = $row_pro['product_desc'];
             $pro_image = $row_pro['product_image'];
-            cart();
             if (!isset($_SESSION['customer_name'])) {
+              guest_cart();
           ?>
               <div class="col-12 col-sm-8 col-md-6 col-lg-4 p-0 my-3">
                 <div class="card">
-                  <img class="card-img" src="../includes/product_images/<?php echo $pro_image; ?>" alt="">
+                  <div class="card-img-div">
+                    <img class="card-img" src="../includes/product_images/<?php echo $pro_image; ?>" alt="">
+                    <button class="view_pro_btn" name="view_pro" id="<?php echo $pro_id; ?>">View</button>
+                    <a href="index.php?add_wishlist=<?php echo $pro_id; ?>" class="wishlist_btn" name="view_pro" id="<?php echo $pro_id; ?>" data-toggle="tooltip" data-html="true" title="Add to wishlist"><i class="fa fa-heart"></i></a>
+                    <?php wishlist_guest(); ?>
+                  </div>
                   <div class="card-body">
                     <h4 class="card-title"><?php echo $pro_title; ?></h4>
                     <p class="card-text">
                       <?php echo $pro_desc; ?></p>
                     <div class="buy d-flex justify-content-between align-items-center">
                       <div class="price">
-                        <h5 class="mt-4">&dollar;<?php echo $pro_price; ?></h5>
+                        <h5 class="mt-4 numeric">&dollar;<?php echo $pro_price; ?></h5>
                       </div>
-                      <a href="javascript:void(0)" class="btn btn-custom mt-3 trigger-toast"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                      <a href="index.php?add_cart=<?php echo $pro_id; ?>" class="btn btn-custom mt-3 trigger-toast"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
                     </div>
                   </div>
                 </div>
               </div>
             <?php
             } else {
+              cart();
             ?>
               <div class="col-12 col-sm-8 col-md-6 col-lg-4 p-0 my-3">
                 <div class="card">
-                  <img class="card-img" src="../includes/product_images/<?php echo $pro_image; ?>" alt="">
+                  <div class="card-img-div">
+                    <img class="card-img" src="../includes/product_images/<?php echo $pro_image; ?>" alt="">
+                    <button class="view_pro_btn" name="view_pro" id="<?php echo $pro_id; ?>">View</button>
+                  </div>
                   <div class="card-body">
                     <h4 class="card-title"><?php echo $pro_title; ?></h4>
                     <p class="card-text">
                       <?php echo $pro_desc; ?></p>
                     <div class="buy d-flex justify-content-between align-items-center">
                       <div class="price">
-                        <h5 class="mt-4">&dollar;<?php echo $pro_price; ?></h5>
+                        <h5 class="mt-4 numeric">&dollar;<?php echo $pro_price; ?></h5>
                       </div>
                       <a href="index.php?add_cart=<?php echo $pro_id; ?>" class="btn btn-custom mt-3"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
                     </div>
@@ -303,26 +344,29 @@
         $article_image = $row_article['featured_image'];
         $posted_at = $row_article['posted_at'];
         $trim_desc = (strlen($article_desc) > 100) ? substr($article_desc, 0, 150) . '...' : $article_desc;
+        $dt = new DateTime($posted_at);
+        $timestamp = strtotime($posted_at);
       ?>
         <div class="random-posts">
-          <div class="feature-img">
-            <img class="img-fluid" src="../includes/article_images/<?php echo $article_image; ?>" alt="">
-          </div>
-          <div class="feature-text">
-            <div class="title">
-              <h3><?php echo $article_title ?></h3>
+          <a href="category/article_detail.php?article_id=<?php echo $article_id ?>">
+            <div class="feature-img">
+              <div class="bg-img" style="background: url(../includes/article_images/<?php echo $article_image; ?>)">
+              </div>
             </div>
-            <div class="categories">
-              <span><?php echo $article_main_cat ?></span><span><?php echo $article_sub_cat ?></span>
+            <div class="feature-text">
+              <div class="title">
+                <h3><?php echo $article_title ?></h3>
+              </div>
+              <div class="categories">
+                <span><?php echo $article_main_cat ?></span><span><?php echo $article_sub_cat ?></span>
+              </div>
+              <div class="date">
+                <span class="article_date">
+                  <?php echo date('d/m/Y', $timestamp); ?>
+                </span>
+              </div>
             </div>
-            <div class="date">
-              <span><?php echo $posted_at ?></span>
-            </div>
-            <hr>
-            <div class="read-more">
-              <a href="category/article_detail.php?article_id=<?php echo $article_id ?>">read more</a>
-            </div>
-          </div>
+          </a>
         </div>
       <?php
       }
@@ -359,6 +403,23 @@
                 <h4>See all</h4>
               </a>
             </div>
+          </div>
+        </div>
+      </div>
+      <div class="posts-heading">
+        <h2>Awakened<span class="gold"> Magazines</span></h2>
+        <div class="row">
+          <div class="col-4">
+            <a href="../assets/pdf/AWAKENINGS_ISSUE_16_ONLINE.pdf"><img src="../assets/img/magzine-5.jpg" alt="">
+            </a>
+          </div>
+          <div class="col-4">
+            <a href="../assets/pdf/AwakeningsMag_Issue_15.pdf"><img src="../assets/img/magzine-2.jpg" alt="">
+            </a>
+          </div>
+          <div class="col-4">
+            <a href="../assets/pdf/AwakeningsMag_Issue_14.pdf"><img src="../assets/img/magzine-3.jpg" alt="">
+            </a>
           </div>
         </div>
       </div>

@@ -5,6 +5,7 @@
       <div class="dropdown">
         <a href="body.php"><button class="dropbtn">Body</button> <i class="fa fa-caret-down"></i></a>
         <div class="dropdown-content">
+          <a href="mind.php">Mind</a>
           <a href="meditation.php">Meditation</a>
           <a href="yoga.php">Yoga</a>
           <a href="nutrition.php">Nutrition</a>
@@ -37,11 +38,9 @@
       <div class="dropdown">
         <a href="../about_us.php"><button class="dropbtn">About us</button> <i class="fa fa-caret-down"></i></a>
         <div class="dropdown-content">
-          <a href="../contact_us.php">about us</a>
-          <a href="../subscribe_to_awakenings.php">subscribe to awakenings</a>
+          <a href="../contact_us.php">contact us</a>
           <a href="../write_for_us.php">write for us</a>
           <a href="../advertise.php">advertise with awakenings</a>
-          <a href="../events.php">UAE events</a>
         </div>
       </div>
     </li>
@@ -60,15 +59,8 @@
         </div>
       </li>
     <?php } ?>
-    <?php if (!isset($_SESSION['customer_name'])) {
-      echo "";
-    } else {
-      ?>
-      <li><a href="../cart.php"><i class="fa fa-cart-arrow-down"></i><span class="cart-qty"><?php echo total_items(); ?></span></a></li>
-    <?php
-    }
-    ?>
-    <li><i class="fa fa-search" id="search-icon"></i></li>
+      <li><a href="../cart.php"><i class="fa fa-cart-arrow-down"></i></a></li>
+    <li><i class="fa fa-search search-icon" id="search-icon"></i></li>
   </ul>
 
 </nav>
@@ -80,14 +72,14 @@
       echo "";
     } else {
       ?>
-      <a id="resp-menu" class="responsive-menu col-4" href="../cart.php"><span class="cart-qty"><?php echo total_items(); ?></span><i class="fa fa-cart-arrow-down"></i> Cart</a>
+      <a id="resp-menu" class="responsive-menu col-4" href="../cart.php"><i class="fa fa-cart-arrow-down"></i> Cart</a>
       <?php
     }
     ?>
     <a id="resp-menu" class="responsive-menu col-2" href="#"><i class="fa fa-search search-icon"></i></a>
   </div>
 
-  <ul class="menu">../
+  <ul class="menu">
     <li><a class="homer" href="../index.php"><i class="fa fa-home"></i> HOME</a>
     </li>
     <li><a class="homer" href="javascript:void(0)">Body <i class="fa fa-caret-down"></i></a>

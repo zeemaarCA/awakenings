@@ -4,7 +4,7 @@ include '../includes/conn.php';
 if (isset($_POST['insert_post'])) {
   $post_title = $_POST['post_title'];
   $dir_cat = $_POST['dir_cat'];
-  $post_desc = $_POST['post_desc'];
+  $post_desc = $_POST['article_desc'];
   // getting images
   $featured_image = $_FILES['featured_image']['name'];
   $featured_image_tmp = $_FILES['featured_image']['tmp_name'];

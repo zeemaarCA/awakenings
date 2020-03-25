@@ -2,10 +2,7 @@
 <html lang="en" class="no-js">
 <?php
 session_start();
-if (!isset($_SESSION['customer_name'])) {
-  header('location:index.php?loginmsg=Please Login First to add items in cart');
-  echo "<script>window.open('index.php?loginmsg=Please Login First to add items in cart','_self')</script>";
-}
+
 include 'functions.php';
 include 'head.php';
 include 'modals.php';
@@ -44,7 +41,7 @@ include 'modals.php';
                   <div class="container paypal-results">
                     <div class="paypal-notification">
                       <div class="success-img">
-                        <img src="assets/img/paypal_canel_icon.png" alt="">
+                        <img src="assets/img/paypal_canel_icon.png" alt="" class="mb-3">
                         <h3>Payment was cancelled</h3>
                       </div>
                       <h2>Dear <?php echo $_SESSION['customer_name']; ?></h2>

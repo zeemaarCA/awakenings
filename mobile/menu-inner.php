@@ -3,13 +3,14 @@
         <a href="../index.php"><img class="img-fluid" src="../../assets/img/footer-logo.png" alt=""></a>
       </div>
     </div>
-    <div class="button_container" id="toggle"><span class="top"></span><span class="middle"></span><span class="bottom"></span></div>
+    <div class="button_container animated" id="toggle"><span class="top"></span><span class="middle"></span><span class="bottom"></span></div>
     <div class="overlay" id="overlay">
       <nav class="overlay-menu">
         <ul>
           <li><a href="../index.php">Home</a></li>
           <li><a href="body.php">Body &nbsp;&nbsp; </a> <i class="fas fa-caret-down mb-nav onee"></i>
             <ul class="mobile-nav s-onee">
+              <li><a href="mind.php">Mind</a></li>
               <li><a href="meditation.php">Meditation</a></li>
               <li><a href="yoga.php">Yoga</a></li>
               <li><a href="nutrition.php">Nutrition</a></li>
@@ -57,8 +58,8 @@
       </nav>
     </div>
     <div class="container">
-      <div class="search-top">
-        <i class="fas fa-search search-icon"></i>
+      <div class="search-top animated">
+        <img src="../../assets/img/search-icon.png" class="search-icon" alt="">
       </div>
     </div>
 

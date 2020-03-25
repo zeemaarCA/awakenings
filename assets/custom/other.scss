@@ -1,4 +1,7 @@
 $roboto: 'Roboto', sans-serif;
+$default_font: 'Cormorant Garamond';
+$date_font: 'Open Sans',
+sans-serif;
 $blue: #d8b966;
 $blue2: #3399cc;
 $green: #d8b966;
@@ -51,7 +54,9 @@ $white: #ffffff;
   font-family: main-heading;
   src: url(../css/fonts/monbaiti.ttf);
 }
-
+body{
+  font-family: $default_font;
+}
 .header{
   text-align: center;
   margin-top: 3rem;
@@ -72,7 +77,6 @@ $white: #ffffff;
         display: inline-block;
         text-transform: uppercase;
         margin-right: 32px;
-        font-weight: 600;
         font-size: 16px;
         .fa-search{
           cursor: pointer;
@@ -202,16 +206,18 @@ $white: #ffffff;
   h4{
     margin: 1.5rem 0;
     text-transform: capitalize;
+    font-size: 18px;
   }
   span{
-    position: absolute;
-    color: #fff;
-    text-transform: uppercase;
-    font-size: 16px;
-    font-weight: 600;
-    bottom: 0;
-    left: 11%;
-    padding: 10px;
+    position: absolute!important;
+    color: #fff!important;
+    text-transform: uppercase!important;
+    font-size: 16px!important;
+    font-weight: 500!important;
+    bottom: 0!important;
+    left: 11%!important;
+    padding: 10px!important;
+    top: -42px!important;
   }
   .green-b{
     background: $green;
@@ -326,6 +332,20 @@ $white: #ffffff;
     font-weight: 600;
     color: #0b84b1;
   }
+  .tag{
+    p{
+      font-size: 14px;
+    }
+    span{
+      display: inline-block;
+      background: #ccc;
+      color: #999;
+      margin-right: 5px;
+      padding: 1px 8px;
+      border-top-right-radius: 13px;
+      border-bottom-right-radius: 13px;
+    }
+  }
   span{
     margin: 0;
     color: #5d5c5c;
@@ -345,19 +365,60 @@ $white: #ffffff;
     }
   }
 }
+.comments{
+  position: relative;
+  border-radius: 5px;
+  padding: 5px 30px 30px;
+  margin: 1.3rem 0;
+  height: auto;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
+  0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
+  0 1px 2px rgba(0, 0, 0, 0.24);
+  float: left;
+  width: 100%;
+  .comment-btn{
+    margin-top: 0.7rem;
+    background: $green-btn;
+    color: #fff;
+    padding: 5px 10px;
+    border: 0;
+    text-transform: capitalize;
+    cursor: pointer;
+    width: 10%;
+    border-radius: 12px;
+    text-align: center;
+    float: right;
+    &:focus{
+      outline: 0;
+    }
+  }
+
+}
+.comments_preview{
+  font-family: $date_font;
+}
 // .show__more{
 //   height: auto!important;
 //   overflow: auto!important;
 // }
 // directory-detail
 // body page
+.col-lg-9{
+  border-right: 1px solid #ccc;
+  height: 100%;
+  padding-right: 14px!important;
 .body-heading{
+  margin: 20px 0px 10px 17px;
   h1{
-    font-size: 30px;
-    text-transform: capitalize;
-    font-weight: 600;
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: 500;
     text-align: left;
     color: #c1a040;
+    position: relative;
+    border-left: 5px solid $yellow2;
+    padding-left: 10px;
   }
   .mini-nav{
     ul{
@@ -391,6 +452,8 @@ $white: #ffffff;
     background-size: cover!important;
     overflow: hidden;
     margin-bottom: 16px;
+    position: relative;
+    background-position: center!important;
   }
   img{
     margin-bottom: 2rem;
@@ -402,22 +465,15 @@ $white: #ffffff;
       margin-bottom: 0;
       text-transform: capitalize;
       font-size: 22px;
+      border-left: 4px solid $green;
+      padding-left: 9px;
     }
-    i{
-      font-size: 11px;
-      color: $footer-grey;
-    }
-
-
     a{
-      background: $green-btn;
-      color: $white;
-      text-transform: capitalize;
-      padding: 6px;
+      color: $black;
     }
-  }
 }
-
+}
+}
     .categories-article {
       display: flex;
       margin-bottom: 24px;
@@ -426,6 +482,7 @@ $white: #ffffff;
         margin: 0;
         margin-right: 4px;
         line-height: 16px;
+        border-radius: 0;
         i{
           display: block;
           margin-top: 4px;
@@ -433,4 +490,152 @@ $white: #ffffff;
         }
       }
     }
+  .box {
+    span {
+      position: absolute;
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 16px;
+      font-weight: 500;
+      top: 0;
+      left: 11%;
+      padding: 10px;
+      margin: 0 !important;
+    }
+
+    .green-b {
+      background: $green;
+    }
+  }
+  .bg-gold{
+    background: $yellow2;
+  }
 // body page
+.card-white .card-heading {
+  color: #333;
+  background-color: #fff;
+  border-color: #ddd;
+  border: 1px solid #dddddd;
+}
+
+.card-white .card-footer {
+  background-color: #fff;
+  border-color: #ddd;
+}
+
+.card-white .h5 {
+  font-size: 14px;
+  //font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.card-white .time {
+  font-size: 12px;
+  //font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.post .post-heading {
+  height: 95px;
+  padding: 20px 15px;
+}
+
+.post .post-heading .avatar {
+  width: 60px;
+  height: 60px;
+  display: block;
+  margin-right: 15px;
+}
+
+.post .post-heading .meta .title {
+  margin-bottom: 0;
+}
+
+.post .post-heading .meta .title a {
+  color: black;
+}
+
+.post .post-heading .meta .title a:hover {
+  color: #aaaaaa;
+}
+
+.post .post-heading .meta .time {
+  margin-top: 8px;
+  color: #999;
+}
+
+.post .post-image .image {
+  width: 100%;
+  height: auto;
+}
+
+.post .post-description {
+  padding: 15px;
+}
+
+.post .post-description p {
+  font-size: 14px;
+}
+
+.post .post-description .stats {
+  margin-top: 20px;
+}
+
+.post .post-description .stats .stat-item {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.post .post-description .stats .stat-item .icon {
+  margin-right: 8px;
+}
+
+.post .post-footer {
+  border-top: 1px solid #ddd;
+  padding: 15px;
+}
+
+.post .post-footer .input-group-addon a {
+  color: #454545;
+}
+
+.post .post-footer .comments-list {
+  padding: 0;
+  margin-top: 20px;
+  list-style-type: none;
+}
+
+.post .post-footer .comments-list .comment {
+  display: block;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.post .post-footer .comments-list .comment .avatar {
+  width: 35px;
+  height: 35px;
+}
+
+.post .post-footer .comments-list .comment .comment-heading {
+  display: block;
+  width: 100%;
+}
+
+.post .post-footer .comments-list .comment .comment-heading .user {
+  font-size: 14px;
+  font-weight: bold;
+  display: inline;
+  margin-right: 10px;
+}
+
+.post .post-footer .comments-list .comment .comment-heading .time {
+  font-size: 12px;
+  color: #aaa;
+  display: inline;
+}
+
+.post .post-footer .comments-list .comment .comment-body {
+  margin-left: 50px;
+}
+
+.post .post-footer .comments-list .comment>.comments-list {
+  margin-left: 50px;
+}

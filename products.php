@@ -12,17 +12,6 @@ include 'modals.php';
   include 'header_inner.php';
   ?>
   <!-- header end-->
-
-  <!-- toast -->
-  <div class="container-toast">
-    <div class="rectangle">
-      <div class="notification-text">
-        <i class="fa fa-exclamation-circle"></i>
-        <span>&nbsp;&nbsp;Please Login First to add item.&nbsp;&nbsp;</span><i class="fa fa-times" id="close-trigger"></i>
-      </div>
-    </div>
-  </div>
-  <!-- toast -->
   <!-- tabs -->
   <!-- products page -->
   <div class="container c-f-2 awakened-last">
@@ -38,10 +27,11 @@ include 'modals.php';
   </div>
   <?php
 
-  if (isset($_GET['add_cart'])) {
-    cart();
-  }
+  // if (isset($_GET['add_cart'])) {
+  //   cart();
+  // }
 
+  //
   ?>
   <div class="container products-section all-pro">
     <div class="row">
@@ -91,30 +81,17 @@ include 'modals.php';
             $pro_image = $row_pro['product_image'];
 
             if (!isset($_SESSION['customer_name'])) {
-              ?>
+              guest_cart();
+          ?>
               <div class="col-lg-4 pro-box">
                 <div class="single-product">
-                  <img src="includes/product_images/<?php echo $pro_image; ?>" alt="">
-                  <h3><?php echo $pro_title; ?></h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
-                  <h4>&dollar;<?php echo $pro_price; ?></h4>
-                  <a href="javascript:void()" class="trigger-toast">
-                    <div class="ui vertical animated button" tabindex="0">
-                      <div class="hidden content">add to cart</div>
-                      <div class="visible content">
-                        <i class="fa fa-shopping-cart"></i>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            <?php
-            } else {
+                  <div class="product-box">
+                    <img src="includes/product_images/<?php echo $pro_image; ?>" alt="">
+                    <button class="view_pro_btn" name="view_pro" id="<?php echo $pro_id; ?>">View</button>
+                    <a href="index.php?add_wishlist=<?php echo $pro_id; ?>" class="wishlist_btn" name="view_pro" id="<?php echo $pro_id; ?>" data-toggle="tooltip" data-html="true" title="Add to wishlist"><i class="fa fa-heart"></i></a>
+                    <?php wishlist_guest(); ?>
 
-              ?>
-              <div class="col-lg-4 pro-box">
-                <div class="single-product">
-                  <img src="includes/product_images/<?php echo $pro_image; ?>" alt="">
+                  </div>
                   <h3><?php echo $pro_title; ?></h3>
                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
                   <h4>&dollar;<?php echo $pro_price; ?></h4>
@@ -128,7 +105,33 @@ include 'modals.php';
                   </a>
                 </div>
               </div>
-            <?php }
+            <?php
+            } else {
+              isset($_SESSION['customer_name']);
+              cart();
+            ?>
+              <div class="col-lg-4 pro-box">
+                <div class="single-product">
+                  <div class="product-box">
+                    <img src="includes/product_images/<?php echo $pro_image; ?>" alt="">
+                    <button class="view_pro_btn" name="view_pro" id="<?php echo $pro_id; ?>">View</button>
+                    <a href="wishlist.php?add_wishlist=<?php echo $pro_id; ?>" class="wishlist_btn" name="view_pro" id="<?php echo $pro_id; ?>" data-toggle="tooltip" data-html="true" title="Add to wishlist"><i class="fa fa-heart"></i></a>
+                    <?php wishlist(); ?>
+                  </div>
+                  <h3><?php echo $pro_title; ?></h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+                  <h4>&dollar;<?php echo $pro_price; ?></h4>
+                  <a href="products.php?add_cart=<?php echo $pro_id; ?>">
+                    <div class="ui vertical animated button" tabindex="0">
+                      <div class="hidden content">add to cart</div>
+                      <div class="visible content">
+                        <i class="fa fa-shopping-cart"></i>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+          <?php }
           } ?>
         </div>
       </div>

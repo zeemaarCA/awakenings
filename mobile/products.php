@@ -28,38 +28,49 @@ include 'modals.php';
           $pro_price = $row_pro['product_price'];
           $pro_desc = $row_pro['product_desc'];
           $pro_image = $row_pro['product_image'];
-          cart();
           if (!isset($_SESSION['customer_name'])) {
+            guest_cart();
         ?>
             <div class="col-12 col-sm-8 col-md-6 col-lg-4 p-0 my-3">
               <div class="card">
-                <img class="card-img" src="../includes/product_images/<?php echo $pro_image; ?>" alt="">
+                <div class="card-img-div">
+                  <img class="card-img" src="../includes/product_images/<?php echo $pro_image; ?>" alt="">
+                  <button class="view_pro_btn" name="view_pro" id="<?php echo $pro_id; ?>">View</button>
+                  <a href="index.php?add_wishlist=<?php echo $pro_id; ?>" class="wishlist_btn" name="view_pro" id="<?php echo $pro_id; ?>" data-toggle="tooltip" data-html="true" title="Add to wishlist"><i class="fa fa-heart"></i></a>
+                  <?php wishlist_guest(); ?>
+                </div>
                 <div class="card-body">
                   <h4 class="card-title"><?php echo $pro_title; ?></h4>
                   <p class="card-text">
                     <?php echo $pro_desc; ?></p>
                   <div class="buy d-flex justify-content-between align-items-center">
                     <div class="price">
-                      <h5 class="mt-4">&dollar;<?php echo $pro_price; ?></h5>
+                      <h5 class="mt-4 numeric">&dollar;<?php echo $pro_price; ?></h5>
                     </div>
-                    <a href="javascript:void(0)" class="btn btn-custom mt-3 trigger-toast"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                    <a href="products.php?add_cart=<?php echo $pro_id; ?>" class="btn btn-custom mt-3"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
                   </div>
                 </div>
               </div>
             </div>
           <?php
           } else {
+            cart();
           ?>
             <div class="col-12 col-sm-8 col-md-6 col-lg-4 p-0 my-3">
               <div class="card">
-                <img class="card-img" src="../includes/product_images/<?php echo $pro_image; ?>" alt="">
+                <div class="card-img-div">
+                  <img class="card-img" src="../includes/product_images/<?php echo $pro_image; ?>" alt="">
+                  <button class="view_pro_btn" name="view_pro" id="<?php echo $pro_id; ?>">View</button>
+                  <a href="wishlist.php?add_wishlist=<?php echo $pro_id; ?>" class="wishlist_btn" name="view_pro" id="<?php echo $pro_id; ?>" data-toggle="tooltip" data-html="true" title="Add to wishlist"><i class="fa fa-heart"></i></a>
+                  <?php wishlist(); ?>
+                </div>
                 <div class="card-body">
                   <h4 class="card-title"><?php echo $pro_title; ?></h4>
                   <p class="card-text">
                     <?php echo $pro_desc; ?></p>
                   <div class="buy d-flex justify-content-between align-items-center">
                     <div class="price">
-                      <h5 class="mt-4">&dollar;<?php echo $pro_price; ?></h5>
+                      <h5 class="mt-4 numeric">&dollar;<?php echo $pro_price; ?></h5>
                     </div>
                     <a href="products.php?add_cart=<?php echo $pro_id; ?>" class="btn btn-custom mt-3"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
                   </div>
@@ -72,16 +83,6 @@ include 'modals.php';
       </div>
     </div>
     <!-- products section end -->
-    <!-- toast -->
-    <div class="container-toast">
-      <div class="rectangle">
-        <div class="notification-text">
-          <i class="fa fa-exclamation-circle"></i>
-          <span>&nbsp;&nbsp;Please Login First to add item.&nbsp;&nbsp;</span><i class="fa fa-times" id="close-trigger"></i>
-        </div>
-      </div>
-    </div>
-    <!-- toast -->
     <?php include 'footer.php'; ?>
     <?php include 'scripts.php'; ?>
 

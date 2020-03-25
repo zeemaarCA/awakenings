@@ -2,10 +2,6 @@
 <html lang="en" class="no-js">
 <?php
 session_start();
-if (!isset($_SESSION['customer_name'])) {
-  header('location:index.php?loginmsg=Please Login First to add items in cart');
-  echo "<script>window.open('index.php?loginmsg=Please Login First to add items in cart','_self')</script>";
-}
 include '../functions.php';
 include 'head.php';
 include 'modals.php';
@@ -28,9 +24,7 @@ if (isset($_POST['update_cart'])) {
     $total = $total * $qtyd;
   }
 }
-
 ?>
-
 <body>
   <?php include 'menu.php'; ?>
   <div class="body-wrapper">
@@ -42,8 +36,6 @@ if (isset($_POST['update_cart'])) {
     if (isset($_GET['add_cart'])) {
       cart();
     }
-
-
     ?>
     <div class="wrap cf">
       <div class="heading cf">
@@ -61,17 +53,19 @@ if (isset($_POST['update_cart'])) {
       <div class="cart">
         <ul class="cartWrap p-0">
           <?php
-          $get_items = "SELECT * FROM cart WHERE c_id = '" . $_SESSION['customer_id'] . "'";
+          if (!isset($_SESSION['customer_name'])) {
+            $get_items = "SELECT * FROM cart WHERE guest_id = '" . $_SESSION['guest_id'] . "'";
+          } else {
+            $get_items = "SELECT * FROM cart WHERE c_id = '" . $_SESSION['customer_id'] . "'";
+          }
           $run_items = mysqli_query($con, $get_items);
           $count_items = mysqli_num_rows($run_items);
           $cart_item_qty = $count_items;
           if ($cart_item_qty == 0) {
-
           ?>
             <li class="items even">
-
               <div class="infoWrap">
-                <p>Your cart is empty.</p>
+                <img class="img-fluid" src="../assets/img/empty-cart.png" alt="">
               </div>
             </li>
           <?php } else {
@@ -81,7 +75,11 @@ if (isset($_POST['update_cart'])) {
             $total = 0;
             global $con;
             $ip = getIp();
-            $sel_price = "SELECT * FROM cart WHERE c_id = '" . $_SESSION['customer_id'] . "'";
+            if (!isset($_SESSION['customer_name'])) {
+              $sel_price = "SELECT * FROM cart WHERE guest_id = '" . $_SESSION['guest_id'] . "'";
+            } else {
+              $sel_price = "SELECT * FROM cart WHERE c_id = '" . $_SESSION['customer_id'] . "'";
+            }
             $run_price = mysqli_query($con, $sel_price);
             while ($p_price = mysqli_fetch_array($run_price)) {
               $pro_id = $p_price['p_id'];
@@ -98,67 +96,58 @@ if (isset($_POST['update_cart'])) {
                 $values = array_sum($product_price);
                 $mega_total = $values * $qtyd;
                 $total += $mega_total;
-
-
             ?>
                 <li class="items even">
                   <div class="infoWrap">
                     <div class="cartSection info">
-
                       <img src="../includes/product_images/<?php echo $product_image; ?>" alt="" class="itemImg" />
                       <h3><?php echo $product_title; ?></h3>
-
-                      <p>
+                      <p class="numeric">
                         <input type="hidden" name="pro_id_cart_qty[]" value="<?php echo $pro_id; ?>">
                         <input type="number" name="qty[]" min="1" class="qty" value="<?php echo $qtyd ?>"> x &dollar;<?php echo $single_price; ?> = &dollar;<?php echo $total_qty_price; ?></p>
 
-                      <p class="stockStatus"> In Stock</p>
-
-
                     </div>
-
                     <div class="cartSection removeWrap">
                       <a href="cart.php?del=<?php echo $pro_id; ?>" onClick="return confirm('Delete This item?')" class="remove" name="del_product"> <i class="fa fa-times"></i></a>
                     </div>
                   </div>
                 </li>
-          <?php }
+            <?php }
             }
-          } ?>
-          <!--<li class="items even">Item 2</li>-->
-
+            ?>
         </ul>
       </div>
-
       <div class="subtotal cf">
         <input type="submit" class="primary-btn" name="update_cart" value="update cart">
         <ul class="pl-0">
           <!-- <li class="totalRow"><span class="label">Subtotal</span><span class="value">$35.00</span></li>
-          
+
           <li class="totalRow"><span class="label">Shipping</span><span class="value">$5.00</span></li>
-          
+
           <li class="totalRow"><span class="label">Tax</span><span class="value">$4.00</span></li> -->
-          <li class="totalRow final"><span class="label">Total</span><span class="value">&dollar;<?php echo $total; ?></span></li>
+          <li class="totalRow final"><span class="label">Total</span><span class="value numeric">&dollar;<?php echo $total; ?></span></li>
           <li class="totalRow"><a href="checkout.php" class="btnn continue">Checkout</a></li>
         </ul>
         </form>
       </div>
     </div>
-    <?php
-    $ip = getIp();
-    if (isset($_GET['del'])) {
-      $del_id = $_GET['del'];
-      $delete_product = "DELETE FROM cart WHERE p_id = '$del_id' AND ip_add = '$ip'";
-      $run_delete = mysqli_query($con, $delete_product);
-      if ($run_delete) {
-        echo "<script>window.open('cart.php', '_self')</script>";
-      }
+  <?php } ?>
+  <?php
+  $ip = getIp();
+  if (isset($_GET['del'])) {
+    $del_id = $_GET['del'];
+    if (!isset($_SESSION['customer_id'])) {
+      $delete_product = "DELETE FROM cart WHERE p_id = '$del_id' AND guest_id = '" . $_SESSION['guest_id'] . "'";
+    } else {
+      $delete_product = "DELETE FROM cart WHERE p_id = '$del_id' AND c_id = '" . $_SESSION['customer_id'] . "'";
     }
-
-    ?>
-    <?php include 'footer.php'; ?>
-    <?php include 'scripts.php'; ?>
-
+    $run_delete = mysqli_query($con, $delete_product);
+    if ($run_delete) {
+      echo "<script>window.open('cart.php', '_self')</script>";
+    }
+  }
+  ?>
+  <?php include 'footer.php'; ?>
+  <?php include 'scripts.php'; ?>
 </body>
-
 </html>

@@ -35,6 +35,7 @@
     <div class="arrow-home">
       <div id="scroll-down" style="opacity: 1;">
         <span class="arrow-down">
+          <i class="fa fa-angle-down"></i>
         </span>
       </div>
     </div>

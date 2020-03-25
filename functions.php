@@ -24,7 +24,7 @@ function cart()
 
     $run_check = mysqli_query($con, $check_pro);
     if (mysqli_num_rows($run_check) > 0) {
-      echo "<script>alert('This product already added')</script>";
+      echo "<script>window.open('cart.php', '_self')</script>";
 
     }
     else{
@@ -33,6 +33,7 @@ function cart()
     $cart_item_price_array = mysqli_fetch_array($run_get_price_for_cart);
 
     $cart_item_price = $cart_item_price_array['product_price'];
+      $guest_id = session_id();
 
 
     $insert_pro = "INSERT INTO cart (c_id,p_id,cart_price,ip_add,qty) VALUES ('".$_SESSION['customer_id']."','$pro_id','$cart_item_price','$ip',1)";
@@ -43,28 +44,94 @@ function cart()
 
 }
 }
-//getting total items in cart
 
-function total_items()
+
+function guest_cart()
 {
   if (isset($_GET['add_cart'])) {
     global $con;
     $ip = getIp();
-    $get_items = "SELECT * FROM cart WHERE c_id = '".$_SESSION['customer_id']."'";
-    $run_items = mysqli_query($con, $get_items);
-    $count_items = mysqli_num_rows($run_items);
+    $pro_id = $_GET['add_cart'];
+
+    $check_pro = "SELECT * FROM cart WHERE guest_id='" . $_SESSION['guest_id'] . "' AND p_id='$pro_id'";
+
+    $run_check = mysqli_query($con, $check_pro);
+    if (mysqli_num_rows($run_check) > 0) {
+      echo "<script>window.open('cart.php', '_self')</script>";
+    } else {
+      $get_price_for_cart = "SELECT product_price FROM products WHERE product_id='$pro_id'";
+      $run_get_price_for_cart = mysqli_query($con, $get_price_for_cart);
+      $cart_item_price_array = mysqli_fetch_array($run_get_price_for_cart);
+
+      $cart_item_price = $cart_item_price_array['product_price'];
+      $guest_id = session_id();
+
+
+      $insert_pro = "INSERT INTO cart (guest_id,p_id,cart_price,ip_add,qty) VALUES ('" . $_SESSION['guest_id'] . "','$pro_id','$cart_item_price','$ip',1)";
+      $run_pro = mysqli_query($con, $insert_pro);
+
+      echo "<script>window.open('cart.php', '_self')</script>";
+    }
   }
-  else {
+}
+// wishlist
+function wishlist()
+{
+  if (isset($_GET['add_wishlist'])) {
     global $con;
     $ip = getIp();
-    $get_items = "SELECT * FROM cart WHERE c_id = '".$_SESSION['customer_id']."'";
-    $run_items = mysqli_query($con, $get_items);
-    $count_items = mysqli_num_rows($run_items);
+    $pro_id = $_GET['add_wishlist'];
+
+    $check_pro = "SELECT * FROM wishlist WHERE c_id='" . $_SESSION['customer_id'] . "' AND p_id='$pro_id'";
+
+    $run_check = mysqli_query($con, $check_pro);
+    if (mysqli_num_rows($run_check) > 0) {
+      echo "<script>window.open('wishlist.php', '_self')</script>";
+    } else {
+      $get_price_for_cart = "SELECT product_price FROM products WHERE product_id='$pro_id'";
+      $run_get_price_for_cart = mysqli_query($con, $get_price_for_cart);
+      $cart_item_price_array = mysqli_fetch_array($run_get_price_for_cart);
+
+      $cart_item_price = $cart_item_price_array['product_price'];
+      $guest_id = session_id();
+
+
+      $insert_pro = "INSERT INTO wishlist (c_id,p_id,wishlist_price) VALUES ('" . $_SESSION['customer_id'] . "','$pro_id','$cart_item_price')";
+      $run_pro = mysqli_query($con, $insert_pro);
+
+      echo "<script>window.open('wishlist.php', '_self')</script>";
+    }
   }
-  echo $count_items;
 }
 
+function wishlist_guest()
+{
+  if (isset($_GET['add_wishlist'])) {
+    global $con;
+    $ip = getIp();
+    $pro_id = $_GET['add_wishlist'];
 
+    $check_pro = "SELECT * FROM wishlist WHERE guest_id='" . $_SESSION['guest_id'] . "' AND p_id='$pro_id'";
+
+    $run_check = mysqli_query($con, $check_pro);
+    if (mysqli_num_rows($run_check) > 0) {
+      echo "<script>window.open('wishlist.php', '_self')</script>";
+    } else {
+      $get_price_for_cart = "SELECT product_price FROM products WHERE product_id='$pro_id'";
+      $run_get_price_for_cart = mysqli_query($con, $get_price_for_cart);
+      $cart_item_price_array = mysqli_fetch_array($run_get_price_for_cart);
+
+      $cart_item_price = $cart_item_price_array['product_price'];
+      $guest_id = session_id();
+
+
+      $insert_pro = "INSERT INTO wishlist (guest_id,p_id,wishlist_price) VALUES ('" . $_SESSION['guest_id'] . "','$pro_id','$cart_item_price')";
+      $run_pro = mysqli_query($con, $insert_pro);
+
+      echo "<script>window.open('wishlist.php', '_self')</script>";
+    }
+  }
+}
 //getting total customers
 
 function total_customers()
@@ -86,6 +153,7 @@ function total_articles()
   $count_articles = mysqli_num_rows($run_articles);
   echo $count_articles;
 }
+
 
 
 //getting total orders

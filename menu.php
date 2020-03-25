@@ -5,6 +5,7 @@
       <div class="dropdown">
         <a href="category/body.php"><button class="dropbtn">Body</button> <i class="fa fa-caret-down"></i></a>
         <div class="dropdown-content">
+          <a href="category/mind.php">Mind</a>
           <a href="category/meditation.php">Meditation</a>
           <a href="category/yoga.php">Yoga</a>
           <a href="category/nutrition.php">Nutrition</a>
@@ -37,20 +38,18 @@
       <div class="dropdown">
         <a href="about_us.php"><button class="dropbtn">About us</button> <i class="fa fa-caret-down"></i></a>
         <div class="dropdown-content">
-          <a href="contact_us.php">about us</a>
-          <a href="subscribe_to_awakenings.php">subscribe to awakenings</a>
+          <a href="contact_us.php">contact us</a>
           <a href="write_for_us.php">write for us</a>
           <a href="advertise.php">advertise with awakenings</a>
-          <a href="events.php">UAE events</a>
         </div>
       </div>
     </li>
     <?php if (!isset($_SESSION['customer_name'])) {
-      ?>
+    ?>
       <li><a href="javascript:void(0)" data-toggle="modal" data-target="#login">Login</a></li>
     <?php } else {
 
-      ?>
+    ?>
       <li>
         <div class="dropdown">
           <button class="dropbtn"><a href="profile.php"><?php echo $_SESSION['customer_name']; ?></a></button> <i class="fa fa-caret-down"></i>
@@ -60,14 +59,7 @@
         </div>
       </li>
     <?php } ?>
-    <?php if (!isset($_SESSION['customer_name'])) {
-      echo "";
-    } else {
-      ?>
-      <li><a href="cart.php"><i class="fa fa-cart-arrow-down"></i><span class="cart-qty"><?php echo total_items(); ?></span></a></li>
-      <?php
-    }
-    ?>
+    <li><a href="cart.php"><i class="fa fa-cart-arrow-down"></i></a></li>
     <li><i class="fa fa-search search-icon"></i></li>
   </ul>
 </nav>
@@ -79,9 +71,11 @@
     <?php if (!isset($_SESSION['customer_name'])) {
       echo "";
     } else {
-      ?>
-      <a id="resp-menu" class="responsive-menu col-4" href="cart.php"><span class="cart-qty"><?php echo total_items(); ?></span><i class="fa fa-cart-arrow-down"></i> Cart</a>
-      <?php
+    ?>
+      <a id="resp-menu" class="responsive-menu col-4" href="cart.php">
+        <<i class="fa fa-cart-arrow-down"></i> Cart
+      </a>
+    <?php
     }
     ?>
     <a id="resp-menu" class="responsive-menu col-2" href="#"><i class="fa fa-search search-icon"></i></a>
@@ -129,11 +123,11 @@
       </ul>
     </li>
     <?php if (!isset($_SESSION['customer_name'])) {
-      ?>
+    ?>
       <li><a href="javascript:void(0)" data-toggle="modal" data-target="#login">Login</a></li>
     <?php } else {
 
-      ?>
+    ?>
       <li><a class="homer" href="javascript:void(0)"><?php echo $_SESSION['customer_name']; ?> <i class="fa fa-caret-down"></i></a>
         <ul class="sub-menu">
           <li><a href="profile.php"><?php echo $_SESSION['customer_name']; ?></a></li>

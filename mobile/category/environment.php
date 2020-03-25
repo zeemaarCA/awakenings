@@ -25,25 +25,29 @@ include '../modals_inner.php';
       $article_image = $row_article['featured_image'];
       $posted_at = $row_article['posted_at'];
       $trim_desc = (strlen($article_desc) > 100) ? substr($article_desc, 0, 150) . '...' : $article_desc;
+      $dt = new DateTime($posted_at);
+      $timestamp = strtotime($posted_at);
     ?>
       <div class="random-posts">
-        <div class="feature-img">
-          <img class="img-fluid" src="../../includes/article_images/<?php echo $article_image; ?>" alt="">
-        </div>
-        <div class="feature-text">
-          <div class="categories">
-            <span><?php echo $article_main_cat ?></span><span><?php echo $article_sub_cat ?></span>
+        <a href="article_detail.php?article_id=<?php echo $article_id ?>">
+          <div class="feature-img">
+            <div class="bg-img" style="background: url(../../includes/article_images/<?php echo $article_image; ?>)">
+            </div>
           </div>
-          <div class="date">
-            <span><?php echo $posted_at ?></span>
+          <div class="feature-text">
+            <div class="title">
+              <h3><?php echo $article_title ?></h3>
+            </div>
+            <div class="categories">
+              <span><?php echo $article_main_cat ?></span><span><?php echo $article_sub_cat ?></span>
+            </div>
+            <div class="date">
+              <span class="article_date">
+                <?php echo date('d/m/Y', $timestamp); ?>
+              </span>
+            </div>
           </div>
-          <div class="title">
-            <h3><?php echo $article_title ?></h3>
-          </div>
-          <div class="read-more">
-            <a href="article_detail.php?article_id=<?php echo $article_id ?>">read more</a>
-          </div>
-        </div>
+        </a>
       </div>
     <?php
     }
@@ -63,26 +67,29 @@ include '../modals_inner.php';
       $article_image = $row_article['featured_image'];
       $posted_at = $row_article['posted_at'];
       $trim_desc = (strlen($article_desc) > 100) ? substr($article_desc, 0, 150) . '...' : $article_desc;
+      $dt = new DateTime($posted_at);
+      $timestamp = strtotime($posted_at);
     ?>
       <div class="random-posts">
-        <div class="feature-img">
-          <img class="img-fluid" src="../../includes/article_images/<?php echo $article_image; ?>" alt="">
-        </div>
-        <div class="feature-text">
-          <div class="title">
-            <h3><?php echo $article_title ?></h3>
+        <a href="article_detail.php?article_id=<?php echo $article_id ?>">
+          <div class="feature-img">
+            <div class="bg-img" style="background: url(../../includes/article_images/<?php echo $article_image; ?>)">
+            </div>
           </div>
-          <div class="categories">
-            <span><?php echo $article_main_cat ?></span>
+          <div class="feature-text">
+            <div class="title">
+              <h3><?php echo $article_title ?></h3>
+            </div>
+            <div class="categories">
+              <span><?php echo $article_main_cat ?></span>
+            </div>
+            <div class="date">
+              <span class="article_date">
+                <?php echo date('d/m/Y', $timestamp); ?>
+              </span>
+            </div>
           </div>
-          <div class="date">
-            <span>12-04-2020</span>
-          </div>
-          <hr>
-          <div class="read-more">
-            <a href="article_detail.php?article_id=<?php echo $article_id ?>">read more</a>
-          </div>
-        </div>
+        </a>
       </div>
     <?php
     }

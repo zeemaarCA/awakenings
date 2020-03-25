@@ -57,9 +57,7 @@
                 <input type="text" name="c_city" value="" placeholder="City">
               </div>
 
-              <div class="form-group">
-                <input type="number" name="c_contact" value="" placeholder="Mobile Number">
-              </div>
+
 
 
             </div>
@@ -312,12 +310,10 @@
                 </select>
               </div>
               <div class="form-group">
-                <select class="" name="c_code">
-                  <option value="">Country code</option>
-                  <option value="0">+970</option>
-                  <option value="0">+546</option>
-                </select>
+                <input type="number" name="c_contact" value="" placeholder="Mobile Number">
               </div>
+            </div>
+            <div class="col-lg-12">
               <div class="form-group">
                 <input type="text" name="c_address" value="" placeholder="Your Address">
               </div>

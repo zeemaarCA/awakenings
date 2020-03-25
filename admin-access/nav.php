@@ -19,7 +19,9 @@
         <li><a href="add_article.php"> <i class="fa fa-plus-square-o"></i> Add New Article </a></li>
         <li><a href="view_article.php"> <i class="fa fa-newspaper-o"></i> View All Articles </a></li>
         <li><a href="holistic_directory.php"> <i class="fa fa-newspaper-o"></i> Holistic Directory </a></li>
+        <li><a href="view_directory.php"> <i class="icon-user"></i>View All Directories </a></li>
         <li><a href="customers.php"> <i class="icon-user"></i>View All Customers </a></li>
+        <li><a href="guests.php"> <i class="icon-user"></i>View All Guests </a></li>
         <li><a href="orders.php"> <i class="fa fa-shopping-bag"></i>View All Orders </a></li>
         <li><a href="payments.php"> <i class="fa fa-usd"></i>View All Payments </a></li>
         <li><a href="subscribers.php"> <i class="fa fa-user"></i>View All Subscribers </a></li>

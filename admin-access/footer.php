@@ -19,12 +19,12 @@
 <script src="vendor/jquery.cookie/jquery.cookie.js"> </script>
 <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
 <script src="vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
-<script src="https://cloud.tinymce.com/5/tinymce.min.js"></script>
-<!-- <script>tinymce.init({ selector:'textarea' });</script> -->
-<script src="https://cdn.ckeditor.com/4.11.4/standard/ckeditor.js"></script>
+<script src="ckeditor/ckeditor.js"></script>
 <script>
-  CKEDITOR.replace('article_desc');
-  
+  CKEDITOR.replace('article_desc', {
+    filebrowserUploadUrl: 'ckeditor/ck_upload.php',
+    filebrowserUploadMethod: 'form'
+  });
 </script>
 <script src="../assets/js/my.js"></script>
 <script src="js/front.js"></script>

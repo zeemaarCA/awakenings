@@ -83,7 +83,7 @@ include '../functions.php';
           <div class="col-lg-12">
             <div class="card">
               <div class="card-header">
-                <h4>All Orders</h4>
+                <h4>Customer Orders</h4>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
@@ -108,15 +108,99 @@ include '../functions.php';
                     $run_c = mysqli_query($con, $get_c);
 
                     $row_c = mysqli_fetch_array($run_c);
-
                     $c_id = $row_c['customer_id'];
                     $c_email = $row_c['customer_email'];
                     $c_name = $row_c['customer_name'];
+                    echo $c_id;
+
+                    $get_customer_order = "SELECT * FROM orders WHERE c_id = '$c_id'";
+
+                    $run_customer_order = mysqli_query($con, $get_customer_order);
+
+
+
+                    $i = 0;
+
+                    while ($row_customer_order = mysqli_fetch_array($run_customer_order)) {
+
+                      $order_id = $row_customer_order['order_id'];
+                      $qty = $row_customer_order['qty'];
+                      $pro_id = $row_customer_order['p_id'];
+                      $invoice_no = $row_customer_order['invoice_no'];
+                      $order_date = $row_customer_order['order_date'];
+                      $status = $row_customer_order['status'];
+                      $i++;
+
+                      $get_pro = "select * from products where product_id='$pro_id'";
+                      $run_pro = mysqli_query($con, $get_pro);
+
+                      $row_pro = mysqli_fetch_array($run_pro);
+
+                      $pro_title = $row_pro['product_title'];
+
+                    ?>
+
+                      <tbody>
+                        <tr>
+                          <th scope="row"><?php echo $i; ?></th>
+                          <td><?php echo $c_email; ?></td>
+                          <td><?php echo $pro_title; ?></td>
+                          <td><?php echo $qty; ?></td>
+                          <td><?php echo $invoice_no; ?></td>
+                          <td><?php echo $order_date; ?></td>
+                          <td><?php echo $status; ?></td>
+                          <?php if ($status == 'Completed') {
+                          ?>
+                            <td>
+                              <i class="fa fa-check" style="color: #19c719;"></i>
+                            <?php
+                          } else {
+                            ?>
+                            <td><a style="color: orange;" href="confirm_order.php?confirm_order=<?php echo $order_id; ?>"><i class="fa fa-check"></i> Complete Order</td>
+                          <?php
+                          }
+                          ?>
+                          </td>
 
 
 
 
-                    $get_order = "SELECT * FROM orders WHERE c_id = '$c_id'";
+
+
+                        </tr>
+                      </tbody>
+                    <?php } ?>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-header">
+                <h4>Guest Orders</h4>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+   
+                    </thead>
+                    <?php
+
+                    $get_g = "select * from guests";
+                    $run_g = mysqli_query($con, $get_g);
+
+                    $row_g = mysqli_fetch_array($run_g);
+                    $g_id = $row_g['guest_id'];
+                    $g_email = $row_g['guest_email'];
+                    $g_name = $row_g['guest_name'];
+
+                    $get_order = "SELECT * FROM orders WHERE guest_id = '$g_id'";
 
                     $run_order = mysqli_query($con, $get_order);
 
@@ -131,7 +215,7 @@ include '../functions.php';
                       $order_date = $row_order['order_date'];
                       $status = $row_order['status'];
                       $i++;
-
+echo $pro_id;
                       $get_pro = "select * from products where product_id='$pro_id'";
                       $run_pro = mysqli_query($con, $get_pro);
 
@@ -139,23 +223,24 @@ include '../functions.php';
 
                       $pro_title = $row_pro['product_title'];
 
-                      ?>
+                    ?>
+
                       <tbody>
                         <tr>
                           <th scope="row"><?php echo $i; ?></th>
-                          <th scope="row"><?php echo $c_email; ?></th>
+                          <td><?php echo $g_email; ?></td>
                           <td><?php echo $pro_title; ?></td>
                           <td><?php echo $qty; ?></td>
                           <td><?php echo $invoice_no; ?></td>
                           <td><?php echo $order_date; ?></td>
                           <td><?php echo $status; ?></td>
                           <?php if ($status == 'Completed') {
-                            ?>
+                          ?>
                             <td>
                               <i class="fa fa-check" style="color: #19c719;"></i>
                             <?php
-                            } else {
-                              ?>
+                          } else {
+                            ?>
                             <td><a style="color: orange;" href="confirm_order.php?confirm_order=<?php echo $order_id; ?>"><i class="fa fa-check"></i> Complete Order</td>
                           <?php
                           }

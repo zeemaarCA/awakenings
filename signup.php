@@ -21,10 +21,6 @@ if(isset($_POST['register'])){
   $insert_c = "insert into customers (customer_ip,customer_name,customer_email,customer_pass,customer_country,customer_city,customer_contact,customer_address) values ('$ip','$c_name','$c_email','$hashed_password','$c_country','$c_city','$c_contact','$c_address')";
 
   $run_c = mysqli_query($con, $insert_c);
-  $_SESSION['customer_id']=$c_id;
-  $_SESSION['customer_name']=$c_name;
-  $_SESSION['customer_email']=$c_email;
-  $_SESSION['customer_address']=$c_address;
   $sel_cart = "select * from cart where ip_add='$ip'";
 
   $run_cart = mysqli_query($con, $sel_cart);
@@ -33,15 +29,15 @@ if(isset($_POST['register'])){
 
   if($check_cart==0){
 
-    echo "<script>alert('Account has been created successfully, Thanks!')</script>";
-    echo "<script>window.open('profile.php','_self')</script>";
+    echo "<script>alert('Account has been created successfully, Now login with your email and password!')</script>";
+    echo "<script>window.open('index.php','_self')</script>";
 
   }
   else {
 
-    echo "<script>alert('Account has been created successfully, Thanks!')</script>";
+    echo "<script>alert('Account has been created successfully, Now login with your email and password!')</script>";
 
-    echo "<script>window.open('profile.php','_self')</script>";
+    echo "<script>window.open('index.php','_self')</script>";
 
 
   }

@@ -6,3 +6,4 @@
 	<script src="../../assets/js/validate.js"></script>
 	<script src="../../assets/js/my.js"></script>
 	<script src="../assets/js/mobile.js"></script>
+	<script src="../assets/js/onScreen.js"></script>

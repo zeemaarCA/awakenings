@@ -3,13 +3,33 @@
 
 <?php
 session_start();
+
 include 'head.php';
 include 'modals.php';
 include 'functions.php';
+$guest_id = session_id();
+$_SESSION['guest_id'] = $guest_id;
+// echo $guest_id;
+// echo (!isset($_SESSION['customer_id'])) ? $guest_id : $_SESSION['customer_id'];
+
 ?>
 
 <body>
+	<div class="pre-loader">
+		<img class="img-fluid" src="assets/img/main-logo.png" alt="">
+		<div class="lds-roller">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
 	<!-- header -->
+
 	<header>
 		<?php
 		include 'header.php';
@@ -20,10 +40,10 @@ include 'functions.php';
 
 	<div class="container c-f-2 awakened-last">
 		<div class="row align-items-center">
-			<div class="col-lg-3 col-12">
+			<div class="col-lg-3-custom col-12">
 				<h1>Awakened Latest</h1>
 			</div>
-			<div class="col-lg-9 col-12">
+			<div class="col-lg-9-custom col-12">
 				<div class="heading-line">
 				</div>
 			</div>
@@ -44,16 +64,35 @@ include 'functions.php';
 						$article_desc = $row_article['article_text'];
 						$article_image = $row_article['featured_image'];
 						$posted_at = $row_article['posted_at'];
-						$trim_desc = (strlen($article_desc) > 100) ? substr($article_desc, 0, 150) . '...' : $article_desc;
+						$trim_desc = (strlen($article_desc) > 100) ? substr($article_desc, 0, 200) . '...' : $article_desc;
+						$string_x = strip_tags($trim_desc);
+						$string_y = trim($string_x);
+						$timestamp = strtotime($posted_at);
 					?>
 						<div class="col-lg-6 pr-0 col-md-6">
-							<div class="main-page-bg-img" style="background: url(includes/article_images/<?php echo $article_image; ?>)"></div>
+							<a href="category/article_detail.php?article_id=<?php echo $article_id ?>">
+								<div class="main-page-bg-img" style="background: url(includes/article_images/<?php echo $article_image; ?>)">
+									<div class="date-line date_font">
+										<?php echo date('d/m/Y', $timestamp); ?>
+										<?php
+										$get_comments = "SELECT * FROM comments WHERE article_id = $article_id ";
+										$run_comments = mysqli_query($con, $get_comments);
+										$count_comments = mysqli_num_rows($run_comments);
+
+										?>
+										<i class="fa fa-comment float-right pr-2"> <?php echo $count_comments; ?></i>
+									</div>
+								</div>
+							</a>
 							<div class="box">
 								<span class="green-b"><?php echo $article_main_cat ?></span>
 							</div>
-							<div class="top-pics-heading border-right">
-								<h1><?php echo $article_title ?></h1>
-								<a href="category/article_detail.php?article_id=<?php echo $article_id ?>"><i class="fa fa-arrow-right"></i></a>
+							<div class="top-pics-heading">
+								<a href="category/article_detail.php?article_id=<?php echo $article_id ?>">
+									<h1><?php echo $article_title ?></h1>
+								</a>
+								<p><?php echo $string_y; ?></p>
+
 							</div>
 						</div>
 					<?php
@@ -84,22 +123,12 @@ include 'functions.php';
 		</div>
 	</div>
 	<!-- Awakened Latest end -->
-	<!-- toast -->
-	<div class="container-toast">
-		<div class="rectangle">
-			<div class="notification-text">
-				<i class="fa fa-exclamation-circle"></i>
-				<span>&nbsp;&nbsp;Please Login First to add item.&nbsp;&nbsp;</span><i class="fa fa-times" id="close-trigger"></i>
-			</div>
-		</div>
-	</div>
-	<!-- toast -->
 	<div class="container c-f-2 awakened-last mini-nav-sec">
 		<div class="row align-items-center">
-			<div class="col-lg-3 col-12">
+			<div class="col-lg-3-custom col-12">
 				<h1>Awakened Body</h1>
 			</div>
-			<div class="col-lg-9 col-12">
+			<div class="col-lg-9-custom col-12">
 				<div class="heading-line">
 				</div>
 			</div>
@@ -121,11 +150,13 @@ include 'functions.php';
 		<div class="row">
 			<div class="col-lg-8 col-md-6 pr-0 padding-default">
 				<div class="center-girl-sec">
-					<img src="assets/img/center-girl.jpg" alt="">
+					<a href="category/article_detail.php?article_id=12"><img src="assets/img/center-girl.jpg" alt=""></a>
 					<div class="center-girl-title">
-						<h1>A Surgery-Free Micro Lift with Ultherapy&reg;</h1>
+						<a href="category/article_detail.php?article_id=12">
+							<h1>A Surgery-Free Micro Lift with Ultherapy&reg;</h1>
+						</a>
 						<div class="arrow-right">
-							<a href="category/article_detail.php?article_id=12" <i class="fa fa-arrow-right"></i></a>
+							<a href="category/article_detail.php?article_id=12"><i class="fa fa-arrow-right"></i></a>
 						</div>
 					</div>
 				</div>
@@ -144,14 +175,19 @@ include 'functions.php';
 							$article_desc = $row_article['article_text'];
 							$article_image = $row_article['featured_image'];
 							$posted_at = $row_article['posted_at'];
-							$trim_desc = (strlen($article_desc) > 100) ? substr($article_desc, 0, 150) . '...' : $article_desc;
+							$trim_desc = (strlen($article_desc) > 100) ? substr($article_desc, 0, 410) . '...' : $article_desc;
+							$string_x = strip_tags($trim_desc);
+							$string_y = trim($string_x);
 						?>
 							<div>
-								<div class="main-page-body-sec-img" style="background: url(includes/article_images/<?php echo $article_image; ?>)"></div>
+								<a href="category/article_detail.php?article_id=<?php echo $article_id ?>">
+									<div class="main-page-body-sec-img" style="background: url(includes/article_images/<?php echo $article_image; ?>)"></div>
+								</a>
 
 								<a href="category/article_detail.php?article_id=<?php echo $article_id ?>">
 									<h2><?php echo $article_title ?></h2>
 								</a>
+								<p><?php echo $string_y; ?></p>
 							</div>
 						<?php
 						}
@@ -167,10 +203,10 @@ include 'functions.php';
 	<!-- mind and spirit -->
 	<div class="container c-f-2 awakened-last mini-nav-sec-2">
 		<div class="row align-items-center" style="margin: -23px 0 2rem 0;">
-			<div class="col-lg-4 col-12 pl-0">
+			<div class="col-lg-4-custom-3 col-12 pl-0">
 				<h1>Awakened Mind & Spirit</h1>
 			</div>
-			<div class="col-lg-8 col-12 px-0">
+			<div class="col-lg-8-custom-3 col-12 px-0">
 				<div class="heading-line">
 				</div>
 			</div>
@@ -190,13 +226,16 @@ include 'functions.php';
 							$article_desc = $row_article['article_text'];
 							$article_image = $row_article['featured_image'];
 							$posted_at = $row_article['posted_at'];
-							$trim_desc = (strlen($article_desc) > 100) ? substr($article_desc, 0, 150) . '...' : $article_desc;
+							$trim_desc = (strlen($article_desc) > 100) ? substr($article_desc, 0, 410) . '...' : $article_desc;
+							$string_x = strip_tags($trim_desc);
+							$string_y = trim($string_x);
 						?>
 							<div>
-								<div class="main-page-body-sec-img" style="background: url(includes/article_images/<?php echo $article_image; ?>)"></div>
 								<a href="category/article_detail.php?article_id=<?php echo $article_id ?>">
+									<div class="main-page-body-sec-img" style="background: url(includes/article_images/<?php echo $article_image; ?>)"></div>
 									<h2><?php echo $article_title ?></h2>
 								</a>
+								<p><?php echo $string_y; ?></p>
 							</div>
 						<?php
 						}
@@ -206,25 +245,27 @@ include 'functions.php';
 			</div>
 			<div class="col-lg-8 col-md-6 pl-0 padding-default">
 				<div class="center-girl-sec">
-					<img src="assets/img/center-girl-2.jpg" alt="">
-					<div class="center-girl-title">
-						<h1>How To Get The Universe On Your Side</h1>
-						<div class="arrow-right">
-							<a href="category/article_detail.php?article_id=94"> <i class="fa fa-arrow-right"></i></a>
-						</div>
+					<a href="category/article_detail.php?article_id=94">
+						<img src="assets/img/center-girl-2.jpg" alt="">
+						<div class="center-girl-title">
+							<h1>How To Get The Universe On Your Side</h1>
+					</a>
+					<div class="arrow-right">
+						<a href="category/article_detail.php?article_id=94"> <i class="fa fa-arrow-right"></i></a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	</div>
 	<!-- mind and spirit end-->
 	<!-- .new-arrivals -->
 	<div class="container c-f-2 awakened-last">
 		<div class="row align-items-center">
-			<div class="col-lg-4 col-12">
-				<h1>Awakened New arrivals</h1>
+			<div class="col-lg-4-custom-4 pl-0 col-12">
+				<h1 class="ml-3">Awakened New arrivals</h1>
 			</div>
-			<div class="col-lg-8 col-12">
+			<div class="col-lg-8-custom-4 col-12">
 				<div class="heading-line">
 				</div>
 			</div>
@@ -241,11 +282,17 @@ include 'functions.php';
 					$pro_price = $row_pro['product_price'];
 					$pro_desc = $row_pro['product_desc'];
 					$pro_image = $row_pro['product_image'];
-					cart();
+
 					if (!isset($_SESSION['customer_name'])) {
+						guest_cart();
 				?>
 						<div class="col-lg-3 col-12 col-md-6 border">
-							<img src="includes/product_images/<?php echo $pro_image; ?>" alt="">
+							<div class="product-box">
+								<img src="includes/product_images/<?php echo $pro_image; ?>" alt="">
+								<button class="view_pro_btn" name="view_pro" id="<?php echo $pro_id; ?>">View</button>
+								<a href="index.php?add_wishlist=<?php echo $pro_id; ?>" class="wishlist_btn" name="view_pro" id="<?php echo $pro_id; ?>" data-toggle="tooltip" data-html="true" title="Add to wishlist"><i class="fa fa-heart"></i></a>
+								<?php wishlist_guest(); ?>
+							</div>
 							<div class="row">
 								<div class="col-lg-12">
 									<h4><?php echo $pro_title; ?></h4>
@@ -253,7 +300,7 @@ include 'functions.php';
 							</div>
 							<div class="row">
 								<div class="col-lg-6 px-0">
-									<a href="javascript:void(0)" class="trigger-toast">
+									<a href="index.php?add_cart=<?php echo $pro_id; ?>">
 										<div class="ui vertical animated button" tabindex="0">
 											<div class="hidden content">add to cart</div>
 											<div class="visible content">
@@ -267,11 +314,18 @@ include 'functions.php';
 								</div>
 							</div>
 						</div>
+						</form>
 					<?php
 					} else {
+						cart();
 					?>
 						<div class="col-lg-3 col-12 col-md-6 border">
-							<img src="includes/product_images/<?php echo $pro_image; ?>" alt="">
+							<div class="product-box">
+								<img src="includes/product_images/<?php echo $pro_image; ?>" alt="">
+								<button class="view_pro_btn" name="view_pro" id="<?php echo $pro_id; ?>">View</button>
+								<a href="wishlist.php?add_wishlist=<?php echo $pro_id; ?>" class="wishlist_btn" name="view_pro" id="<?php echo $pro_id; ?>" data-toggle="tooltip" data-html="true" title="Add to wishlist"><i class="fa fa-heart"></i></a>
+								<?php wishlist(); ?>
+							</div>
 							<div class="row">
 								<div class="col-lg-12">
 									<h4><?php echo $pro_title; ?></h4>
@@ -303,10 +357,10 @@ include 'functions.php';
 	<!-- lifestyle -->
 	<div class="container c-f-2 awakened-last mini-nav-sec">
 		<div class="row align-items-center" style="margin: -23px 0 2rem 0;">
-			<div class="col-lg-4 col-12">
+			<div class="col-lg-4-custom-5 pl-0 col-12">
 				<h1>Awakened Lifestyle</h1>
 			</div>
-			<div class="col-lg-8 col-12 px-0">
+			<div class="col-lg-8-custom-5 col-12 px-0">
 				<div class="heading-line">
 				</div>
 			</div>
@@ -314,58 +368,60 @@ include 'functions.php';
 		<div class="row">
 			<div class="col-lg-8 col-md-6 pr-0 padding-default">
 				<div class="center-girl-sec">
-					<img src="assets/img/lemon.jpg" alt="">
-					<div class="center-girl-title">
-						<h1>Top 10 Green Picks for A Healthy Body</h1>
-						<div class="arrow-right">
-							<a href="category/article_detail.php?article_id=14"> <i class="fa fa-arrow-right"></i></a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-6 pl-0 padding-default">
-				<div class="mini-slider-outer">
-					<div class="mini-slider">
-						<?php
-						$get_article = "SELECT * FROM articles WHERE article_main_cat = 'eco&lifestyle'  order by RAND() LIMIT 4";
-						$run_article = mysqli_query($con, $get_article);
-						while ($row_article = mysqli_fetch_array($run_article)) {
-							$article_id = $row_article['article_id'];
-							$article_title = $row_article['article_title'];
-							$article_main_cat = $row_article['article_main_cat'];
-							$article_sub_cat = $row_article['article_sub_cat'];
-							$article_desc = $row_article['article_text'];
-							$article_image = $row_article['featured_image'];
-							$posted_at = $row_article['posted_at'];
-							$trim_desc = (strlen($article_desc) > 100) ? substr($article_desc, 0, 150) . '...' : $article_desc;
-						?>
-							<div>
-								<div class="main-page-body-sec-img" style="background: url(includes/article_images/<?php echo $article_image; ?>)"></div>
-								<a href="category/article_detail.php?article_id=<?php echo $article_id ?>">
-									<h2><?php echo $article_title ?></h2>
-								</a>
-							</div>
-						<?php
-						}
-						?>
-					</div>
+					<a href="category/article_detail.php?article_id=14">
+						<img src="assets/img/lemon.jpg" alt="">
+						<div class="center-girl-title">
+							<h1>Top 10 Green Picks for A Healthy Body</h1>
+					</a>
 					<div class="arrow-right">
-						<i class="fa fa-arrow-right"></i>
+						<a href="category/article_detail.php?article_id=14"> <i class="fa fa-arrow-right"></i></a>
 					</div>
 				</div>
-
 			</div>
 		</div>
+		<div class="col-lg-4 col-md-6 pl-0 padding-default">
+			<div class="mini-slider-outer">
+				<div class="mini-slider">
+					<?php
+					$get_article = "SELECT * FROM articles WHERE article_main_cat = 'eco&lifestyle'  order by RAND() LIMIT 4";
+					$run_article = mysqli_query($con, $get_article);
+					while ($row_article = mysqli_fetch_array($run_article)) {
+						$article_id = $row_article['article_id'];
+						$article_title = $row_article['article_title'];
+						$article_main_cat = $row_article['article_main_cat'];
+						$article_sub_cat = $row_article['article_sub_cat'];
+						$article_desc = $row_article['article_text'];
+						$article_image = $row_article['featured_image'];
+						$posted_at = $row_article['posted_at'];
+						$trim_desc = (strlen($article_desc) > 100) ? substr($article_desc, 0, 410) . '...' : $article_desc;
+						$string_x = strip_tags($trim_desc);
+						$string_y = trim($string_x);
+					?>
+						<div>
+							<a href="category/article_detail.php?article_id=<?php echo $article_id ?>">
+								<div class="main-page-body-sec-img" style="background: url(includes/article_images/<?php echo $article_image; ?>)"></div>
+								<h2><?php echo $article_title ?></h2>
+							</a>
+							<p><?php echo $string_y; ?></p>
+						</div>
+					<?php
+					}
+					?>
+				</div>
+			</div>
+
+		</div>
+	</div>
 	</div>
 	<!-- lifestyle end-->
 
 	<!-- shop -->
 	<div class="container c-f-2 awakened-last">
 		<div class="row align-items-center">
-			<div class="col-lg-3 col-12">
+			<div class="col-lg-3-custom col-12">
 				<h1>Awakened shop</h1>
 			</div>
-			<div class="col-lg-9 col-12">
+			<div class="col-lg-9-custom col-12">
 				<div class="heading-line">
 				</div>
 			</div>
@@ -382,11 +438,17 @@ include 'functions.php';
 					$pro_price = $row_pro['product_price'];
 					$pro_desc = $row_pro['product_desc'];
 					$pro_image = $row_pro['product_image'];
-					cart();
+
 					if (!isset($_SESSION['customer_name'])) {
+						guest_cart();
 				?>
 						<div class="col-lg-3 col-12 col-md-6 border">
-							<img src="includes/product_images/<?php echo $pro_image; ?>" alt="">
+							<div class="product-box">
+								<img src="includes/product_images/<?php echo $pro_image; ?>" alt="">
+								<button class="view_pro_btn" name="view_pro" id="<?php echo $pro_id; ?>">View</button>
+								<a href="index.php?add_wishlist=<?php echo $pro_id; ?>" class="wishlist_btn" name="view_pro" id="<?php echo $pro_id; ?>" data-toggle="tooltip" data-html="true" title="Add to wishlist"><i class="fa fa-heart"></i></a>
+								<?php wishlist_guest(); ?>
+							</div>
 							<div class="row">
 								<div class="col-lg-12">
 									<h4><?php echo $pro_title; ?></h4>
@@ -394,7 +456,7 @@ include 'functions.php';
 							</div>
 							<div class="row">
 								<div class="col-lg-6 px-0">
-									<a href="javascript:void(0)" class="trigger-toast">
+									<a href="index.php?add_cart=<?php echo $pro_id; ?>">
 										<div class="ui vertical animated button" tabindex="0">
 											<div class="hidden content">add to cart</div>
 											<div class="visible content">
@@ -410,9 +472,15 @@ include 'functions.php';
 						</div>
 					<?php
 					} else {
+						cart();
 					?>
 						<div class="col-lg-3 col-12 col-md-6 border">
-							<img src="includes/product_images/<?php echo $pro_image; ?>" alt="">
+							<div class="product-box">
+								<img src="includes/product_images/<?php echo $pro_image; ?>" alt="">
+								<button class="view_pro_btn" name="view_pro" id="<?php echo $pro_id; ?>">View</button>
+								<a href="wishlist.php?add_wishlist=<?php echo $pro_id; ?>" class="wishlist_btn" name="view_pro" id="<?php echo $pro_id; ?>" data-toggle="tooltip" data-html="true" title="Add to wishlist"><i class="fa fa-heart"></i></a>
+								<?php wishlist(); ?>
+							</div>
 							<div class="row">
 								<div class="col-lg-12">
 									<h4><?php echo $pro_title; ?></h4>
@@ -446,10 +514,10 @@ include 'functions.php';
 
 	<div class="container c-f-2 awakened-last">
 		<div class="row align-items-center">
-			<div class="col-lg-3 col-12">
-				<h1 style="white-space:nowrap">Awakened Magazines</h1>
+			<div class="col-lg-4-custom-2 pl-0 col-12">
+				<h1 style="white-space:nowrap" class="ml-3">Awakened Magazines</h1>
 			</div>
-			<div class="col-lg-9 col-12">
+			<div class="col-lg-8-custom-2 col-12">
 				<div class="heading-line">
 				</div>
 			</div>
@@ -460,55 +528,22 @@ include 'functions.php';
 			<div class="mini-slider-outer">
 				<div class="responsive-slide">
 					<div class="new-arrivals-magzine">
-						<h4>aWAKENINGS NEW iSSUE</h4>
-						<img src="assets/img/magzine-1.jpg" alt="">
+
+						<a href="assets/pdf/AWAKENINGS_ISSUE_16_ONLINE.pdf"><img src="assets/img/magzine-5.jpg" alt="">
+						</a>
 					</div>
 					<div>
-						<h4>JAN - FEB 2018</h4>
-						<img src="assets/img/magzine-2.jpg" alt="">
+
+						<a href="assets/pdf/AwakeningsMag_Issue_15.pdf"><img src="assets/img/magzine-2.jpg" alt="">
+						</a>
 					</div>
 					<div>
-						<h4>DEC - JAN 2018</h4>
-						<img src="assets/img/magzine-3.jpg" alt="">
-					</div>
-					<div>
-						<h4>OCT - NOV 2018</h4>
-						<img src="assets/img/magzine-4.jpg" alt="">
-					</div>
-					<div>
-						<h4>JAN - FEB 2018</h4>
-						<img src="assets/img/magzine-2.jpg" alt="">
-					</div>
-					<div>
-						<h4>DEC - JAN 2018</h4>
-						<img src="assets/img/magzine-3.jpg" alt="">
-					</div>
-					<div>
-						<h4>OCT - NOV 2018</h4>
-						<img src="assets/img/magzine-4.jpg" alt="">
+						
+						<a href="assets/pdf/AwakeningsMag_Issue_14.pdf"><img src="assets/img/magzine-3.jpg" alt="">
+						</a>
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="magzine-note mt-3">
-					<p>Don't miss your copy of Awakenings Middle East magazine - your guide to wellness and healthy living in the UAE. You can buy it for yourself or as a gift for a loved one or friend.</p>
-					<br>
-					<p>Not sure if we need to have subscribe and advertise with us near the top somewhere...</p>
-				</div>
-			</div>
-			<!-- <div class="magzine-btns text-center">
-				<div class="row">
-					<div class="col-lg-4">
-						<a href="#">subscribe</a>
-					</div>
-					<div class="col-lg-4">
-						<a href="#">Read Online</a>
-					</div>
-					<div class="col-lg-4">
-						<a href="#">Media Pack</a>
-					</div>
-				</div>
-			</div> -->
 		</div>
 	</div>
 	<!-- .magzines end-->

@@ -91,7 +91,7 @@ include '../functions.php';
                     <thead>
                       <tr>
                         <th>#</th>
-                        <th>Customer Email</th>
+                        <th>Customer/Guest Email</th>
                         <th>Product (S)</th>
                         <th>Paid Amount</th>
                         <th>Transaction ID</th>
@@ -116,6 +116,7 @@ include '../functions.php';
                       $payment_date = $row_payment['payment_date'];
                       $pro_id = $row_payment['product_id'];
                       $c_id = $row_payment['customer_id'];
+                      $guest_id = $row_payment['guest_id'];
 
                       $i++;
 
@@ -134,11 +135,16 @@ include '../functions.php';
 
                       $c_email = $row_c['customer_email'];
 
+                      $get_g = "select * from guests where guest_id='$guest_id'";
+                      $run_g = mysqli_query($con, $get_g);
+
+                      $row_g = mysqli_fetch_array($run_g);
+                      $g_email = $row_g['guest_email'];
                       ?>
                       <tbody>
                         <tr>
                           <td><?php echo $i; ?></td>
-                          <td><?php echo $c_email; ?></td>
+                          <td><?php echo $g_email; echo $c_email ?></td>
                           <td>
                             <?php echo $pro_title; ?></td>
                           <td>$<?php echo $per_item_price; ?></td>

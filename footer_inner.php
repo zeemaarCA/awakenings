@@ -5,8 +5,7 @@
         <div class="col-lg-4">
           <div class="footer-items">
             <h3>RETURNS, REFUNDS AND EXCHANGES</h3>
-            <a href="terms_use.php">Click here for our policy on returns and
-              subscription cancellations</a>
+            <a href="terms_use.php">Click here for our policy on returns</a>
           </div>
         </div>
         <div class="col-lg-4">

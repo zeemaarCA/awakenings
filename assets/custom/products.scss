@@ -77,6 +77,15 @@ img{
   .single-product{
     border: $border;
     margin-bottom: 1.9rem;
+    position: relative;
+        &:hover {
+          .view_pro_btn {
+            display: inline;
+          }
+          .wishlist_btn{
+            display: inline;
+          }
+        }
   }
   h3{
     color: $blue;
@@ -93,6 +102,42 @@ img{
     color: $blue;
     font-weight: 600;
   }
+    .view_pro_btn {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      background: #d8b966;
+      color: #fff;
+      padding: 1px 8px;
+      border-radius: 6px;
+      border: 0;
+      display: none;
+    }
+        .wishlist_btn {
+          position: absolute;
+          top: 10px;
+          left: 10px;
+          color: #fff;
+          padding: 1px 8px;
+          border-radius: 6px;
+          border: 0;
+          display: none;
+          .fa-heart {
+            color: #ccc;
+            font-size: 18px;
+            float: right;
+            position: relative;
+            top: 6px;
+            cursor: pointer;
+            -webkit-transition: .2s;
+            transition: .2s;
+            &:hover{
+              color: #ea4e3a;
+            }
+          }
+        }
+
+
   .ui.animated.button {
     font-family: $default_font;
     position: relative;

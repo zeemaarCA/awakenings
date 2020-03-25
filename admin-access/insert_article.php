@@ -6,6 +6,7 @@ if (isset($_POST['insert_article'])) {
   $article_main_cat = $_POST['article_main_cat'];
   $article_sub_cat = $_POST['article_sub_cat'];
   $article_page_name = $_POST['article_page_name'];
+  $article_tag = $_POST['article_tag'];
   $article_desc = $_POST['article_desc'];
   // getting images
   $article_image = $_FILES['article_image']['name'];
@@ -14,7 +15,7 @@ if (isset($_POST['insert_article'])) {
   move_uploaded_file($article_image_tmp,"../includes/article_images/$article_image");
 
 
-  $insert_article = "INSERT INTO articles (article_title,article_main_cat,article_sub_cat,page_name,article_text,featured_image) VALUES ('$article_title','$article_main_cat','$article_sub_cat','$article_page_name','$article_desc','$article_image')";
+  $insert_article = "INSERT INTO articles (article_title,article_main_cat,article_sub_cat,page_name,article_tag,article_text,featured_image) VALUES ('$article_title','$article_main_cat','$article_sub_cat','$article_page_name','$article_tag','$article_desc','$article_image')";
 
 
   $insert_arc = mysqli_query($con, $insert_article);

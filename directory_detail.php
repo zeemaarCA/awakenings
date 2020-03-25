@@ -22,7 +22,7 @@ $dir_id = $_GET['dir_id'];
 
   while ($row_dir_name = mysqli_fetch_array($run_dir_name)) {
     $dir_title = $row_dir_name['dir_name'];
-    ?>
+  ?>
     <div class="container">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -57,13 +57,13 @@ $dir_id = $_GET['dir_id'];
           $post_detail = $row_dir_detail['post_detail'];
           $dir_name = $row_dir_detail['dir_name'];
 
-          ?>
+        ?>
           <div class="review-box">
             <div class="row">
               <div class="col-lg-2">
                 <img src="includes/holistic_images/<?php echo $post_img; ?>" alt="">
               </div>
-              <div class="col-lg-9">
+              <div class="col-lg-9 border-0">
                 <h2><?php echo $post_name; ?></h2>
                 <div><?php echo $post_detail; ?></div>
               </div>

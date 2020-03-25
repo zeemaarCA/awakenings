@@ -141,7 +141,7 @@ include '../includes/conn.php';
                   </div>
                   <div class="form-group">
                     <label>Article Body</label>
-                    <textarea name="post_desc" class="form-control"></textarea>
+                    <textarea name="article_desc" class="form-control"></textarea>
                   </div>
                   <div class="form-group">
                     <input type="submit" name="insert_post" value="Post" class="btn btn-primary">

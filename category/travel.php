@@ -20,7 +20,7 @@ include '../modals_inner.php';
         <li class="breadcrumb-item"><i class="fa fa-home"></i> YOU ARE AT</li>
         <li class="breadcrumb-item"><a href="../index.php">Home</a></li>
         <li class="breadcrumb-item"><a href="#">Category</a></li>
-        <li class="breadcrumb-item"><a href="#">Cars</a></li>
+        <li class="breadcrumb-item"><a href="#">Travel</a></li>
       </ol>
     </nav>
   </div>
@@ -28,7 +28,7 @@ include '../modals_inner.php';
     <div class="row">
       <div class="col-lg-9 px-0">
         <div class="body-heading">
-          <h1>awakened Posts</h1>
+          <h1 class="browsing">Browsing : &nbsp; travel</h1>
         </div>
         <div class="row">
           <?php
@@ -42,21 +42,37 @@ include '../modals_inner.php';
             $article_desc = $row_article['article_text'];
             $article_image = $row_article['featured_image'];
             $posted_at = $row_article['posted_at'];
-            $trim_desc = (strlen($article_desc) > 100) ? substr($article_desc, 0, 150) . '...' : $article_desc;
-            ?>
+            $trim_desc = (strlen($article_desc) > 100) ? substr($article_desc, 0, 200) . '...' : $article_desc;
+            $string_x = strip_tags($trim_desc);
+            $string_y = trim($string_x);
+            $timestamp = strtotime($posted_at);
+          ?>
             <div class="col-lg-6">
               <div class="full-body-content">
                 <div class="row">
                   <div class="col-lg-12">
-                    <div class="article-bg-img" style="background: url(../includes/article_images/<?php echo $article_image; ?>)"></div>
-                    <div class="body-lower-content">
-                      <h2><?php echo $article_title ?></h2>
-                      <i><?php echo $posted_at ?></i>
-                      <div class="categories-article">
-                        <span class="badge badge-pill badge-success text-white"><?php echo $article_main_cat ?></span>
-                        <span class="badge badge-pill badge-warning text-white"><?php echo $article_sub_cat ?></span>
+                    <a href="article_detail.php?article_id=<?php echo $article_id ?>">
+                      <div class="article-bg-img" style="background: url(../includes/article_images/<?php echo $article_image; ?>)">
+                        <div class="date-line date_font">
+                          <?php echo date('d/m/Y', $timestamp); ?>
+                          <?php
+                          $get_comments = "SELECT * FROM comments WHERE article_id = $article_id ";
+                          $run_comments = mysqli_query($con, $get_comments);
+                          $count_comments = mysqli_num_rows($run_comments);
+
+                          ?>
+                          <i class="fa fa-comment float-right pr-2"> <?php echo $count_comments; ?></i>
+                        </div>
                       </div>
-                      <a href="article_detail.php?article_id=<?php echo $article_id ?>">read Article</a>
+                    </a>
+                    <div class="box">
+                      <span class="green-b"><?php echo $article_main_cat ?></span>
+                    </div>
+                    <div class="body-lower-content">
+                      <a href="article_detail.php?article_id=<?php echo $article_id ?>">
+                        <h2><?php echo $article_title ?></h2>
+                        <p class="mt-3"><?php echo $string_y; ?></p>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -68,9 +84,7 @@ include '../modals_inner.php';
         </div>
       </div>
       <div class="col-lg-3">
-        <div class="right-img-directory">
-          &nbsp;
-        </div>
+        <?php include '../right_column.php' ?>
       </div>
     </div>
   </div>
@@ -88,24 +102,35 @@ include '../modals_inner.php';
 
   <div class="container related-post">
     <div class="row">
-      <div class="col-lg-4">
-        <img src="../assets/img/body1.jpg" alt="">
-        <div class="top-pics-heading">
-          <h4>anti ageing tips</h4>
+      <?php
+      $get_article = "SELECT * FROM articles order by RAND() LIMIT 3";
+      $run_article = mysqli_query($con, $get_article);
+      while ($row_article = mysqli_fetch_array($run_article)) {
+        $article_id = $row_article['article_id'];
+        $article_title = $row_article['article_title'];
+        $article_main_cat = $row_article['article_main_cat'];
+        $article_sub_cat = $row_article['article_sub_cat'];
+        $article_desc = $row_article['article_text'];
+        $article_image = $row_article['featured_image'];
+        $posted_at = $row_article['posted_at'];
+        $trim_desc = (strlen($article_desc) > 100) ? substr($article_desc, 0, 150) . '...' : $article_desc;
+      ?>
+        <div class="col-lg-4">
+          <a href="article_detail.php?article_id=<?php echo $article_id ?>">
+            <img src="../includes/article_images/<?php echo $article_image; ?>" alt="">
+          </a>
+          <div class="box">
+            <span class="green-b"><?php echo $article_main_cat ?></span>
+          </div>
+          <div class="top-pics-heading">
+            <a href="article_detail.php?article_id=<?php echo $article_id ?>">
+              <h4><?php echo $article_title ?></h4>
+            </a>
+          </div>
         </div>
-      </div>
-      <div class="col-lg-4">
-        <img src="../assets/img/body2.jpg" alt="">
-        <div class="top-pics-heading">
-          <h4>the year of the dog</h4>
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <img src="../assets/img/body3.jpg" alt="">
-        <div class="top-pics-heading">
-          <h4>how to get the universe on your side</h4>
-        </div>
-      </div>
+      <?php
+      }
+      ?>
     </div>
   </div>
 

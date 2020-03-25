@@ -97,10 +97,11 @@ $article_id = $_GET['edit'];
                 $article_main_cat = $row_article['article_main_cat'];
                 $article_sub_cat = $row_article['article_sub_cat'];
                 $article_page_name = $row_article['page_name'];
+                $article_tag = $row_article['article_tag'];
                 $article_text = $row_article['article_text'];
                 $article_image = $row_article['featured_image'];
 
-                ?>
+              ?>
                 <div class="card-body">
                   <p>Fill all the fields.</p>
                   <form action="edit_article_script.php" method="post" enctype="multipart/form-data">
@@ -160,56 +161,70 @@ $article_id = $_GET['edit'];
                         ?>
                       </select>
                     </div>
-                    <!-- <div class="form-group">
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label>Choose new image</label>
+                          <input type="file" placeholder="Image" name="article_image" value="<?php echo $article_image ?>" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                      <div class="form-group">
                         <label>Product Image</label>
-                        <input type="file" placeholder="Image" name="article_image" value="<?php echo $article_image ?>" class="form-control">
-                      </div> -->
-                    <div class="form-group">
-                      <label>Product Description</label>
-                      <textarea name="article_desc" class="form-control" value=""><?php echo $article_text; ?></textarea>
-                    </div>
-                    <div class="form-group">
-                      <input type="submit" name="update_article" value="Update Article" class="btn btn-primary">
-                    </div>
-                  </form>
+                        <img class="img-thumbnail" src="../includes/article_images/<?php echo $article_image ?>" alt="">
+                      </div>
+                      </div>
                 </div>
-              <?php } ?>
+                <div class="form-group">
+                  <label>Article Tags</label>
+                  <input type="text" name="article_tag" class="form-control" placeholder="Separate with commas" value="<?php echo $article_tag ?>">
+                </div>
+                <div class="form-group">
+                  <label>Article Description</label>
+                  <textarea name="article_desc" class="form-control" value=""><?php echo $article_text; ?></textarea>
+                </div>
+                <div class="form-group">
+                  <input type="submit" name="update_article" value="Update Article" class="btn btn-primary">
+                </div>
+                </form>
             </div>
+          <?php } ?>
           </div>
         </div>
       </div>
-    </section>
-    <?php
-    if (isset($_POST['update_product'])) {
+  </div>
+  </section>
+  <?php
+  if (isset($_POST['update_product'])) {
 
-      //getting the text data from the fields
+    //getting the text data from the fields
 
-      // $update_id = $pro_id;
+    // $update_id = $pro_id;
 
-      $product_title = $_POST['product_title'];
-      $product_cat = $_POST['product_cat'];
-      $product_price = $_POST['product_price'];
-      $product_desc = $_POST['product_desc'];
+    $product_title = $_POST['product_title'];
+    $product_cat = $_POST['product_cat'];
+    $product_price = $_POST['product_price'];
+    $product_desc = $_POST['product_desc'];
 
-      //getting the image from the field
-      $product_image = $_FILES['product_image']['name'];
-      $product_image_tmp = $_FILES['product_image']['tmp_name'];
+    //getting the image from the field
+    $product_image = $_FILES['product_image']['name'];
+    $product_image_tmp = $_FILES['product_image']['tmp_name'];
 
-      move_uploaded_file($product_image_tmp, "../includes/product_images/$product_image");
+    move_uploaded_file($product_image_tmp, "../includes/product_images/$product_image");
 
-      $update_product = "UPDATE products SET product_cat='$product_cat', product_title='$product_title',product_price='$product_price',product_desc='$product_desc',product_image='$product_image' WHERE product_id='$pro_id'";
+    $update_product = "UPDATE products SET product_cat='$product_cat', product_title='$product_title',product_price='$product_price',product_desc='$product_desc',product_image='$product_image' WHERE product_id='$pro_id'";
 
-      $run_product = mysqli_query($con, $update_product);
+    $run_product = mysqli_query($con, $update_product);
 
-      if ($run_product) {
+    if ($run_product) {
 
-        echo "<script>alert('Product has been updated!')</script>";
+      echo "<script>alert('Product has been updated!')</script>";
 
-        echo "<script>window.open('tables.php', '_self')</script>";
-      }
+      echo "<script>window.open('tables.php', '_self')</script>";
     }
-    ?>
-    <?php include 'footer.php'; ?>
+  }
+  ?>
+  <?php include 'footer.php'; ?>
 </body>
 
 </html>
