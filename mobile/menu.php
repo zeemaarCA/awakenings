@@ -21,8 +21,8 @@
               <li><a href="category/spirituality.php">Spirituality & Energy healing</a></li>
             </ul>
           </li>
-
-          <li><a href="category/lifestyle.php">eco &amp; lifestyle &nbsp;&nbsp; </a> <i class="fas fa-caret-down mb-nav twoo"></i>
+          <li><a href="category/mind.php">Mind</a></li>
+          <li><a href="category/lifestyle.php">Lifestyle &nbsp;&nbsp; </a> <i class="fas fa-caret-down mb-nav twoo"></i>
             <ul class="mobile-nav s-twoo">
               <li><a href="category/cars.php">cars</a></li>
               <li><a href="category/gadgets.php">gadgets</a></li>
@@ -34,7 +34,8 @@
               <li><a href="category/travel.php">travel</a></li>
             </ul>
           </li>
-          <li><a href="directory.php">UAE holistic directory</a></li>
+          <li><a href="events.php">Events</a></li>
+          <li><a href="directory.php">UAE directory</a></li>
           <li><a href="products.php">shop</a></li>
           <li><a href="about-us.php">about us &nbsp;&nbsp;</a> <i class="fas fa-caret-down mb-nav threee"></i>
             <ul class="mobile-nav s-threee">
@@ -46,7 +47,8 @@
           <?php if (!isset($_SESSION['customer_name'])) {
           ?>
 
-            <li><a href="javascript:void(0)" data-toggle="modal" data-target="#login">Login</a></li>
+            <li><a href="javascript:void(0)" class="modal-link-login">Login</a></li>
+
           <?php } else {
 
           ?>
@@ -70,6 +72,6 @@
       <form action="search.php" name="test" method="post">
         <h3>Search for...</h3>
         <input type="text" value="" name="search-query" placeholder="type keyword(s) here" autofocus />
-        <button type="submit" name="search-trigger" class="btn">Go for Search</button>
+        <button type="submit" name="search-trigger" class="btn">Search</button>
       </form>
     </div>

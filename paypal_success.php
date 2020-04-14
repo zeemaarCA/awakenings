@@ -215,7 +215,7 @@ include 'modals.php';
 	<?php
 	$headers = "MIME-Version: 1.0" . "\r\n";
 	$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-	$headers .= 'From: <admin@excaliburgold.de>' . "\r\n";
+	$headers .= 'From: <sharon@awakeningsme.com>' . "\r\n";
 
 	$subject = "Order Details";
 
@@ -223,7 +223,7 @@ include 'modals.php';
 			<html>
 			<p>
 
-			Hello dear <b style='color:blue;'>Dear Customer</b> you have ordered some products on our website vigorizante.com, please find your order details, your order will be processed shortly. Thank you!</p>
+			Hello dear <b style='color:blue;'>Dear Customer</b> you have ordered some products on our website awakeningsme.com, please find your order details, your order will be processed shortly. Thank you!</p>
 
 			<table width='600' align='center' bgcolor='#FFCC99' border='2'>
 
@@ -246,10 +246,6 @@ include 'modals.php';
 			</tr>
 
 			</table>
-
-			<h3>Please go to your account and see your order details!</h3>
-
-			<h2> <a href='http://alovep.com'>Click here</a> to login to your account</h2>
 
 			<h3> Thank you for your order @ - Awakenings</h3>
 

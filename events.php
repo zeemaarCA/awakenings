@@ -29,11 +29,49 @@ include 'modals.php';
     </div>
   </div>
 
-  <div class="container about_us_block">
+  <div class="container aw-latest-text">
     <div class="row">
-      <div class="col-lg-9">
-        <div class="about_us">
-          <p>Contents</p>
+      <div class="col-lg-9 px-0">
+        <div class="row">
+          <?php
+          $get_event = "SELECT * FROM events order by posted_at ASC";
+          $run_event = mysqli_query($con, $get_event);
+          while ($row_event = mysqli_fetch_array($run_event)) {
+            $event_id = $row_event['event_id'];
+            $event_title = $row_event['event_title'];
+            $event_detail = $row_event['event_detail'];
+            $event_image = $row_event['event_image'];
+            $posted_at = $row_event['posted_at'];
+            $trim_desc = (strlen($event_detail) > 100) ? substr($event_detail, 0, 200) . '...' : $event_detail;
+            $string_x = strip_tags($trim_desc);
+            $string_y = trim($string_x);
+            $timestamp = strtotime($posted_at);
+
+          ?>
+            <div class="col-lg-6">
+              <div class="full-body-content">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <a href="event_detail.php?event_id=<?php echo $event_id ?>">
+                      <div class="article-bg-img" style="background: url(includes/event_images/<?php echo rawurlencode($event_image); ?>)">
+                        <div class="date-line date_font">
+                          <?php echo date('d/m/Y', $timestamp); ?>
+                        </div>
+                      </div>
+                    </a>
+                    <div class="body-lower-content">
+                      <a href="event_detail.php?event_id=<?php echo $event_id ?>">
+                        <h2><?php echo $event_title ?></h2>
+                        <p class="mt-3"><?php echo $string_y; ?></p>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <?php
+          }
+          ?>
         </div>
       </div>
       <div class="col-lg-3">

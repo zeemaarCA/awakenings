@@ -88,35 +88,38 @@ $dir_id = $_GET['dir_id'];
       </div>
     </div>
   </div>
+
   <div class="container related-post">
     <div class="row">
-      <div class="col-lg-4">
-        <img src="assets/img/girl-cake.jpg" alt="">
-        <div class="box">
-          <span class="green-b">body</span>
+      <?php
+      $get_article = "SELECT * FROM articles order by RAND() LIMIT 3";
+      $run_article = mysqli_query($con, $get_article);
+      while ($row_article = mysqli_fetch_array($run_article)) {
+        $article_id = $row_article['article_id'];
+        $article_title = $row_article['article_title'];
+        $article_main_cat = $row_article['article_main_cat'];
+        $article_sub_cat = $row_article['article_sub_cat'];
+        $article_desc = $row_article['article_text'];
+        $article_image = $row_article['featured_image'];
+        $posted_at = $row_article['posted_at'];
+        $trim_desc = (strlen($article_desc) > 100) ? substr($article_desc, 0, 150) . '...' : $article_desc;
+      ?>
+        <div class="col-lg-4">
+          <a href="category/article_detail.php?article_id=<?php echo $article_id ?>">
+            <img src="includes/article_images/<?php echo $article_image; ?>" alt="">
+          </a>
+          <div class="box">
+            <span class="green-b"><?php echo $article_main_cat ?></span>
+          </div>
+          <div class="top-pics-heading">
+            <a href="category/article_detail.php?article_id=<?php echo $article_id ?>">
+              <h4><?php echo $article_title ?></h4>
+            </a>
+          </div>
         </div>
-        <div class="top-pics-heading">
-          <h4>Food Allergy or Food Intolerance?</h4>
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <img src="assets/img/girl-air.jpg" alt="">
-        <div class="box">
-          <span class="orange-b">meditation</span>
-        </div>
-        <div class="top-pics-heading">
-          <h4>10 easy ways to practice Mindfulness</h4>
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <img src="assets/img/girl-cake.jpg" alt="">
-        <div class="box">
-          <span class="green-b">body</span>
-        </div>
-        <div class="top-pics-heading">
-          <h4>To live longer, cleanse now</h4>
-        </div>
-      </div>
+      <?php
+      }
+      ?>
     </div>
   </div>
   <!-- footer -->

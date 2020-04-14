@@ -1,5 +1,7 @@
 <?php
 include 'includes/conn.php';
+
+error_reporting(E_ALL ^ E_WARNING); 
 // get ip address of User
 function getIp() {
   $ip = $_SERVER['REMOTE_ADDR'];
@@ -190,6 +192,15 @@ function total_cart_quantity()
   $run_cart_quantity = mysqli_query($con, $get_cart_quantity);
   $count_cart_quantity = mysqli_num_rows($run_cart_quantity);
   echo $count_cart_quantity;
+}
+
+function total_directories()
+{
+  global $con;
+  $get_dir = "SELECT * FROM holistic_posts";
+  $run_dir = mysqli_query($con, $get_dir);
+  $count_dir = mysqli_num_rows($run_dir);
+  echo $count_dir;
 }
 
 

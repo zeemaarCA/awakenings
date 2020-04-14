@@ -16,10 +16,10 @@ include 'modals.php';
   <!-- products page -->
   <div class="container c-f-2 awakened-last">
     <div class="row align-items-center">
-      <div class="col-lg-3 col-12">
+      <div class="col-lg-2 col-12">
         <h1>Products</h1>
       </div>
-      <div class="col-lg-9 col-12">
+      <div class="col-lg-10 col-12">
         <div class="heading-line">
         </div>
       </div>
@@ -34,37 +34,6 @@ include 'modals.php';
   //
   ?>
   <div class="container products-section all-pro">
-    <div class="row">
-      <div class="cat-btns">
-        <ul class="nav nav-tabs" role="tablist">
-          <li class="nav-item col-lg-3">
-            <a class="nav-link active" data-toggle="tab" href="#candles">candles</a>
-          </li>
-          <li class="nav-item col-lg-3">
-            <a class="nav-link" data-toggle="tab" href="#tarrot-cards">tarrot cards</a>
-          </li>
-          <li class="nav-item col-lg-3">
-            <a class="nav-link" data-toggle="tab" href="#healing-bracelets">healing bracelets</a>
-          </li>
-          <li class="nav-item col-lg-3">
-            <a class="nav-link" data-toggle="tab" href="#essentials-oil">essentials oils</a>
-          </li>
-          <li class="nav-item col-lg-3">
-            <a class="nav-link" data-toggle="tab" href="#crystals">crystals</a>
-          </li>
-          <li class="nav-item col-lg-3">
-            <a class="nav-link" data-toggle="tab" href="#healing-crystals">healing crystals</a>
-          </li>
-          <li class="nav-item col-lg-3">
-            <a class="nav-link" data-toggle="tab" href="#protection-stones">protection stones</a>
-          </li>
-          <li class="nav-item col-lg-3">
-            <a class="nav-link" data-toggle="tab" href="#angel-cards">angel cards</a>
-          </li>
-        </ul>
-
-      </div>
-    </div>
     <div class="tab-content">
       <div class="tab-pane active" id="candles">
         <div class="row">
@@ -79,6 +48,9 @@ include 'modals.php';
             $pro_price = $row_pro['product_price'];
             $pro_desc = $row_pro['product_desc'];
             $pro_image = $row_pro['product_image'];
+            $trim_title = (strlen($pro_title) > 1) ? substr($pro_title, 0, 30) . '...' : $pro_title;
+            $string_x = strip_tags($trim_title);
+            $string_y = trim($string_x);
 
             if (!isset($_SESSION['customer_name'])) {
               guest_cart();
@@ -92,8 +64,7 @@ include 'modals.php';
                     <?php wishlist_guest(); ?>
 
                   </div>
-                  <h3><?php echo $pro_title; ?></h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+                  <h3><?php echo $string_y; ?></h3>
                   <h4>&dollar;<?php echo $pro_price; ?></h4>
                   <a href="products.php?add_cart=<?php echo $pro_id; ?>">
                     <div class="ui vertical animated button" tabindex="0">
@@ -118,8 +89,7 @@ include 'modals.php';
                     <a href="wishlist.php?add_wishlist=<?php echo $pro_id; ?>" class="wishlist_btn" name="view_pro" id="<?php echo $pro_id; ?>" data-toggle="tooltip" data-html="true" title="Add to wishlist"><i class="fa fa-heart"></i></a>
                     <?php wishlist(); ?>
                   </div>
-                  <h3><?php echo $pro_title; ?></h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+                  <h3><?php echo $string_y; ?></h3>
                   <h4>&dollar;<?php echo $pro_price; ?></h4>
                   <a href="products.php?add_cart=<?php echo $pro_id; ?>">
                     <div class="ui vertical animated button" tabindex="0">

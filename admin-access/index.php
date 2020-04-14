@@ -13,7 +13,7 @@ session_start();
       <div class="container">
         <div class="form-outer text-center d-flex align-items-center">
           <div class="form-inner">
-            <div class="logo text-uppercase"><span>ZMT</span><strong class="text-primary">Login</strong></div>
+            <div class="logo text-uppercase"><span>Awakenings</span><strong class="text-primary">Login</strong></div>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
             <form method="post" action="backend/login.php" class="text-left form-validate" id="admin_login">
               <div class="form-group-material">

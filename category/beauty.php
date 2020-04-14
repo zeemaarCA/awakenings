@@ -87,7 +87,7 @@ include '../modals_inner.php';
         </div>
       </div>
       <div class="col-lg-3">
-        <?php include '../right_column.php' ?>
+        <?php include 'right_column.php' ?>
       </div>
     </div>
   </div>

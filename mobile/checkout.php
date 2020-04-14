@@ -51,7 +51,8 @@ if (isset($_POST['update_cart'])) {
               <div class="col-lg-12 col-12">
                 <img src="assests/img/van.png" alt="">
                 <h3>SHIPPING ADDRESS</h3>
-                <h4>Continue as guest or <a class="d-inline" href="javascript:void(0)" data-toggle="modal" data-target="#login">Login</a></h4>
+                <h4>Continue as guest or <a href="javascript:void(0)" class="modal-link-login d-inline">Login</a>
+                </h4>
               </div>
             </div>
           </div>
@@ -503,17 +504,23 @@ if (isset($_POST['update_cart'])) {
             <a href="cart.php" class="back-btn w_100 d-sm-block">back</a>
           </div>
           <div class="col-lg-6 col-6 px-0">
-            <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top" class="float-right w_100">
+          <?php
+          if (!isset($_SESSION['customer_name']) && !isset($_SESSION['guest_name'])) {
+            echo '';
+          }
+          else{
+          ?>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="float-right w_100">
               <input type="hidden" name="cmd" value="_xclick">
-              <input type="hidden" name="business" value="zmt@gmail.com">
+              <input type="hidden" name="business" value="sharon@awakeningsme.com">
               <input type="hidden" name="lc" value="US">
-              <input type="hidden" name="item_name" value="Power Max + Products">
+              <input type="hidden" name="item_name" value="Awakenings Products">
               <input type="hidden" name="item_number" value="<?php echo $pro_id ?>">
               <input type="hidden" name="amount" value="<?php echo $total; ?>">
 
               <input type="hidden" name="currency_code" value="USD">
-              <input type="hidden" name="return" value="http://zeemaar.com/paypal_success.php">
-              <input type="hidden" name="cancel_return" value="http://zeemaar.com/paypal_cancel.php">
+              <input type="hidden" name="return" value="http://awakeningsme.com/mobile/paypal_success.php">
+              <input type="hidden" name="cancel_return" value="http://awakeningsme.com/mobile/paypal_cancel.php">
               <input type="hidden" name="button_subtype" value="services">
               <input type="hidden" name="no_note" value="0">
 
@@ -521,6 +528,10 @@ if (isset($_POST['update_cart'])) {
               <input type="image" src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/buy-logo-large.png" alt="Buy now with PayPal" border="0" name="submit">
 
             </form>
+            <?php
+            }
+
+            ?>
           </div>
         </div>
       </div>

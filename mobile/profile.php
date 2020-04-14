@@ -75,8 +75,8 @@ include 'modals.php';
                         </div>
                       </div>
                       <div class="row">
-                        <a href="#" class="text-center mb-3 primary-btn col-12" data-toggle="modal" data-target="#updateprofile"><i class="fas fa-pencil-alt"></i> update</a>
-                        <a href="#" data-toggle="modal" data-target="#changePass" class="primary-btn col-12 text-center"><i class="fa fa-cog"></i> change password</a>
+                        <a href="javascript:void(0)" class="text-center mb-3 primary-btn col-12 modal-link-address"><i class="fas fa-pencil-alt"></i> update</a>
+                        <a href="javascript:void(0)" class="primary-btn col-12 text-center modal-link-password"><i class="fa fa-cog"></i> change password</a>
                       </div>
                     </form>
                   </div>
@@ -184,7 +184,7 @@ include 'modals.php';
       </div>
     </div>
     <!-- update profile -->
-    <div class="modal fade animated zoomIn" id="updateprofile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-wrapper address-modal" style="display: none;">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -463,7 +463,7 @@ include 'modals.php';
         </div>
       </div>
     </div>
-    <div class="modal fade animated zoomIn" id="changePass" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-wrapper password-modal" style="display: none;">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">

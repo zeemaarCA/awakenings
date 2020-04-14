@@ -6,7 +6,7 @@
       <div class="container">
         <div class="form-outer text-center d-flex align-items-center">
           <div class="form-inner">
-            <div class="logo text-uppercase"><span>ZMT</span><strong class="text-primary">Register</strong></div>
+            <div class="logo text-uppercase"><span>Awakenings</span><strong class="text-primary">Register</strong></div>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
             <form class="text-left form-validate">
               <div class="form-group-material">

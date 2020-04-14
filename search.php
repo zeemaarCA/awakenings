@@ -1,11 +1,16 @@
 <?php
 session_start();
 include 'functions.php';
+include 'head.php';
+include 'modals.php';
 ?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <?php
 include 'head.php';
+header("Cache-Control: no cache");
+session_cache_limiter("private_no_expire");
+
 ?>
 
 <body>
@@ -50,28 +55,46 @@ include 'head.php';
                 $article_main_cat = $search_row['article_main_cat'];
                 $article_sub_cat = $search_row['article_sub_cat'];
                 $article_image = $search_row['featured_image'];
+                $article_desc = $search_row['article_text'];
                 $posted_at = $search_row['posted_at'];
+                $trim_desc = (strlen($article_desc) > 100) ? substr($article_desc, 0, 200) . '...' : $article_desc;
+                $string_x = strip_tags($trim_desc);
+                $string_y = trim($string_x);
+                $timestamp = strtotime($posted_at);
 
-                ?>
+          ?>
                 <div class="col-lg-6">
                   <div class="full-body-content">
                     <div class="row">
                       <div class="col-lg-12">
-                        <div class="article-bg-img" style="background: url(includes/article_images/<?php echo $article_image; ?>)"></div>
-                        <div class="body-lower-content">
-                          <h2><?php echo $article_title ?></h2>
-                          <i><?php echo $posted_at ?></i>
-                          <div class="categories-article">
-                            <span class="badge badge-pill badge-success text-white"><?php echo $article_main_cat ?></span>
-                            <span class="badge badge-pill badge-warning text-white"><?php echo $article_sub_cat ?></span>
+                        <a href="category/article_detail.php?article_id=<?php echo $article_id ?>">
+                          <div class="article-bg-img" style="background: url(includes/article_images/<?php echo $article_image; ?>)">
+                            <div class="date-line date_font">
+                              <?php echo date('d/m/Y', $timestamp); ?>
+                              <?php
+                              $get_comments = "SELECT * FROM comments WHERE article_id = $article_id ";
+                              $run_comments = mysqli_query($con, $get_comments);
+                              $count_comments = mysqli_num_rows($run_comments);
+
+                              ?>
+                              <i class="fa fa-comment float-right pr-2"> <?php echo $count_comments; ?></i>
+                            </div>
                           </div>
-                          <a href="category/article_detail.php?article_id=<?php echo $article_id ?>">read Article</a>
+                        </a>
+                        <div class="box">
+                          <span class="green-b"><?php echo $article_main_cat ?></span>
+                        </div>
+                        <div class="body-lower-content">
+                          <a href="article_detail.php?article_id=<?php echo $article_id ?>">
+                            <h2><?php echo $article_title ?></h2>
+                            <p class="mt-3"><?php echo $string_y; ?></p>
+                          </a>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              <?php }
+          <?php }
             } else {
               echo "There are no results matching your search!";
             }
@@ -80,23 +103,6 @@ include 'head.php';
       </div>
       <div class="col-lg-3">
         <?php include 'right_column.php'; ?>
-      </div>
-    </div>
-  </div>
-  <div class="container color-bg">
-    <div class="row">
-      <div class="col-lg-12">
-        <ul>
-          <li>For more information and to book your appointment please call: 800 ALLIED (255433)</li>
-          <li>Phone: 04 3328111 / 04 3329928</li>
-          <li>Fax: 04 3328222
-          </li>
-          <li>www.facebook.com/AlliedMedCenter
-          </li>
-          <li>www.instagram.com/alliedmedicalcenter
-          </li>
-          <li>Email: dubai-adc@allieddiagnostics.net</li>
-        </ul>
       </div>
     </div>
   </div>
@@ -113,33 +119,35 @@ include 'head.php';
   </div>
   <div class="container related-post">
     <div class="row">
-      <div class="col-lg-4">
-        <img src="assets/img/girl-cake.jpg" alt="">
-        <div class="box">
-          <span class="green-b">body</span>
+      <?php
+      $get_article = "SELECT * FROM articles order by RAND() LIMIT 3";
+      $run_article = mysqli_query($con, $get_article);
+      while ($row_article = mysqli_fetch_array($run_article)) {
+        $article_id = $row_article['article_id'];
+        $article_title = $row_article['article_title'];
+        $article_main_cat = $row_article['article_main_cat'];
+        $article_sub_cat = $row_article['article_sub_cat'];
+        $article_desc = $row_article['article_text'];
+        $article_image = $row_article['featured_image'];
+        $posted_at = $row_article['posted_at'];
+        $trim_desc = (strlen($article_desc) > 100) ? substr($article_desc, 0, 150) . '...' : $article_desc;
+      ?>
+        <div class="col-lg-4">
+          <a href="category/article_detail.php?article_id=<?php echo $article_id ?>">
+            <img src="includes/article_images/<?php echo $article_image; ?>" alt="">
+          </a>
+          <div class="box">
+            <span class="green-b"><?php echo $article_main_cat ?></span>
+          </div>
+          <div class="top-pics-heading">
+            <a href="article_detail.php?article_id=<?php echo $article_id ?>">
+              <h4><?php echo $article_title ?></h4>
+            </a>
+          </div>
         </div>
-        <div class="top-pics-heading">
-          <h4>Food Allergy or Food Intolerance?</h4>
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <img src="assets/img/girl-air.jpg" alt="">
-        <div class="box">
-          <span class="orange-b">meditation</span>
-        </div>
-        <div class="top-pics-heading">
-          <h4>10 easy ways to practice Mindfulness</h4>
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <img src="assets/img/girl-cake.jpg" alt="">
-        <div class="box">
-          <span class="green-b">body</span>
-        </div>
-        <div class="top-pics-heading">
-          <h4>To live longer, cleanse now</h4>
-        </div>
-      </div>
+      <?php
+      }
+      ?>
     </div>
   </div>
   <?php include 'footer.php'; ?>

@@ -5,7 +5,6 @@
       <div class="dropdown">
         <a href="body.php"><button class="dropbtn">Body</button> <i class="fa fa-caret-down"></i></a>
         <div class="dropdown-content">
-          <a href="mind.php">Mind</a>
           <a href="meditation.php">Meditation</a>
           <a href="yoga.php">Yoga</a>
           <a href="nutrition.php">Nutrition</a>
@@ -17,9 +16,10 @@
         </div>
       </div>
     </li>
+    <li><a href="mind.php">Mind</a></li>
     <li>
       <div class="dropdown">
-        <a href="lifestyle.php"><button class="dropbtn">EcoLife & Style</button> <i class="fa fa-caret-down"></i></a>
+        <a href="lifestyle.php"><button class="dropbtn">Lifestyle</button> <i class="fa fa-caret-down"></i></a>
         <div class="dropdown-content">
           <a href="cars.php">cars</a>
           <a href="gadgets.php">gadgets</a>
@@ -32,7 +32,8 @@
         </div>
       </div>
     </li>
-    <li><a href="../directory.php">uae holistic directory</a></li>
+    <li><a href="../events.php">Events</a></li>
+    <li><a href="../directory.php">uae directory</a></li>
     <li><a href="../products.php">shop</a></li>
     <li>
       <div class="dropdown">
@@ -45,11 +46,11 @@
       </div>
     </li>
     <?php if (!isset($_SESSION['customer_name'])) {
-      ?>
+    ?>
       <li><a href="javascript:void(0)" data-toggle="modal" data-target="#login">Login</a></li>
     <?php } else {
 
-      ?>
+    ?>
       <li>
         <div class="dropdown">
           <button class="dropbtn"><a href="../profile.php"><?php echo $_SESSION['customer_name']; ?></a></button> <i class="fa fa-caret-down"></i>
@@ -59,7 +60,7 @@
         </div>
       </li>
     <?php } ?>
-      <li><a href="../cart.php"><i class="fa fa-cart-arrow-down"></i></a></li>
+    <li><a href="../cart.php"><i class="fa fa-cart-arrow-down"></i></a></li>
     <li><i class="fa fa-search search-icon" id="search-icon"></i></li>
   </ul>
 
@@ -71,9 +72,9 @@
     <?php if (!isset($_SESSION['customer_name'])) {
       echo "";
     } else {
-      ?>
+    ?>
       <a id="resp-menu" class="responsive-menu col-4" href="../cart.php"><i class="fa fa-cart-arrow-down"></i> Cart</a>
-      <?php
+    <?php
     }
     ?>
     <a id="resp-menu" class="responsive-menu col-2" href="#"><i class="fa fa-search search-icon"></i></a>
@@ -121,11 +122,11 @@
       </ul>
     </li>
     <?php if (!isset($_SESSION['customer_name'])) {
-      ?>
+    ?>
       <li><a href="javascript:void(0)" data-toggle="modal" data-target="#login">Login</a></li>
     <?php } else {
 
-      ?>
+    ?>
       <li><a class="homer" href="javascript:void(0)"><?php echo $_SESSION['customer_name']; ?> <i class="fa fa-caret-down"></i></a>
         <ul class="sub-menu">
           <li><a href="../profile.php"><?php echo $_SESSION['customer_name']; ?></a></li>
@@ -142,6 +143,6 @@
   <form action="../search.php" name="test" method="post">
     <h3>Search for...</h3>
     <input type="text" value="" name="search-query" placeholder="type keyword(s) here" autofocus />
-    <button type="submit" name="search-trigger" class="btn">Go for Search</button>
+    <button type="submit" name="search-trigger" class="btn">Search</button>
   </form>
 </div>

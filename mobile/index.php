@@ -30,55 +30,6 @@
     ?>
 
     <div class="body-wrapper">
-      <div class="posts-heading">
-        <h2>Popular <span class="gold">posts</span></h2>
-      </div>
-      <?php
-      $get_article = "SELECT * FROM articles order by RAND() LIMIT 4";
-      $run_article = mysqli_query($con, $get_article);
-      while ($row_article = mysqli_fetch_array($run_article)) {
-        $article_id = $row_article['article_id'];
-        $article_title = $row_article['article_title'];
-        $article_main_cat = $row_article['article_main_cat'];
-        $article_sub_cat = $row_article['article_sub_cat'];
-        $article_desc = $row_article['article_text'];
-        $article_image = $row_article['featured_image'];
-        $posted_at = $row_article['posted_at'];
-        $trim_desc = (strlen($article_desc) > 100) ? substr($article_desc, 0, 150) . '...' : $article_desc;
-        $dt = new DateTime($posted_at);
-        $timestamp = strtotime($posted_at);
-
-      ?>
-
-        <div class="random-posts">
-          <a href="category/article_detail.php?article_id=<?php echo $article_id ?>">
-            <div class="feature-img">
-              <div class="bg-img" style="background: url(../includes/article_images/<?php echo $article_image; ?>)">
-              </div>
-
-            </div>
-            <div class="feature-text">
-              <!-- <div class="date">
-                <span class="numeric"><?php echo $dt->format('Y-m-d'); ?></span>
-              </div> -->
-              <div class="title">
-                <h3><?php echo $article_title ?></h3>
-              </div>
-              <div class="categories">
-                <span><?php echo $article_main_cat ?></span><span><?php echo $article_sub_cat ?></span>
-                <div class="date">
-                  <span class="article_date">
-                    <?php echo date('d/m/Y', $timestamp); ?>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-      <?php
-      }
-      ?>
-
       <!-- latest-posts start -->
       <div class="posts-heading">
         <h2>latest <span class="gold">posts</span></h2>
@@ -280,15 +231,13 @@
               <div class="col-12 col-sm-8 col-md-6 col-lg-4 p-0 my-3">
                 <div class="card">
                   <div class="card-img-div">
-                    <img class="card-img" src="../includes/product_images/<?php echo $pro_image; ?>" alt="">
+                    <a id="single_image" class="d-block" href="../includes/product_images/<?php echo $pro_image; ?>"><img class="card-img" src="../includes/product_images/<?php echo $pro_image; ?>" alt=""></a>
                     <button class="view_pro_btn" name="view_pro" id="<?php echo $pro_id; ?>">View</button>
                     <a href="index.php?add_wishlist=<?php echo $pro_id; ?>" class="wishlist_btn" name="view_pro" id="<?php echo $pro_id; ?>" data-toggle="tooltip" data-html="true" title="Add to wishlist"><i class="fa fa-heart"></i></a>
                     <?php wishlist_guest(); ?>
                   </div>
                   <div class="card-body">
                     <h4 class="card-title"><?php echo $pro_title; ?></h4>
-                    <p class="card-text">
-                      <?php echo $pro_desc; ?></p>
                     <div class="buy d-flex justify-content-between align-items-center">
                       <div class="price">
                         <h5 class="mt-4 numeric">&dollar;<?php echo $pro_price; ?></h5>
@@ -305,13 +254,11 @@
               <div class="col-12 col-sm-8 col-md-6 col-lg-4 p-0 my-3">
                 <div class="card">
                   <div class="card-img-div">
-                    <img class="card-img" src="../includes/product_images/<?php echo $pro_image; ?>" alt="">
+                    <a id="single_image" class="d-block" href="../includes/product_images/<?php echo $pro_image; ?>"><img class="card-img" src="../includes/product_images/<?php echo $pro_image; ?>" alt=""></a>
                     <button class="view_pro_btn" name="view_pro" id="<?php echo $pro_id; ?>">View</button>
                   </div>
                   <div class="card-body">
                     <h4 class="card-title"><?php echo $pro_title; ?></h4>
-                    <p class="card-text">
-                      <?php echo $pro_desc; ?></p>
                     <div class="buy d-flex justify-content-between align-items-center">
                       <div class="price">
                         <h5 class="mt-4 numeric">&dollar;<?php echo $pro_price; ?></h5>

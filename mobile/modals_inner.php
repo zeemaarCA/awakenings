@@ -1,6 +1,6 @@
 <!-- modals -->
 <!-- login popup -->
-<div class="modal fade animated zoomIn" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-wrapper login-modal" style="display: none;">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -23,16 +23,18 @@
             <button type="submit" name="login">Sign me in!</button>
           </div>
         </form>
-        <p>Not registerd yet? <a href="javascript:void(0)" data-toggle="modal" data-target="#signup" data-dismiss="modal">Register
+        <p>Not registerd yet? <a href="javascript:void(0)" class="modal-link-signup">Register
             here</a></p>
       </div>
     </div>
   </div>
 </div>
+<div class="modal-bg" style="display: none;">
+</div>
 <!-- login popup -->
 
 <!-- signup popup -->
-<div class="modal fade animated zoomIn" id="signup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-wrapper signup-modal" style="display: none;">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -324,68 +326,3 @@
   </div>
 </div>
 <!-- signup popup -->
-
-<!-- about-us model -->
-<div class="modal fade animated zoomIn" id="about-us" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog contact-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="title">About Us</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="row align-items-center">
-          <div class="col-lg-4 col-xl-4">
-            <img src="assets/img/tab-box.png" alt="">
-          </div>
-          <div class="col-lg-8 col-xl-8">
-            <div class="about-us-text">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo quas ipsa illo minima cupiditate
-                dignissimos, autem hic quos laudantium quae dolores quam repellendus ipsam voluptatem ullam impedit.
-                Explicabo debitis facere suscipit iusto dolorum. Numquam ad nemo totam enim similique error eos
-                assumenda rem aliquid quasi, unde, harum eligendi nisi quisquam amet doloremque. Possimus pariatur
-                minus, illo eligendi aliquam magni quas a perferendis nesciunt deserunt similique nostrum voluptate
-                reiciendis tenetur voluptas quibusdam molestias voluptatum accusantium distinctio harum ullam fugit
-                soluta. Libero.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- about-us model -->
-<!-- contact-us model -->
-<div class="modal fade animated zoomIn" id="contact-us" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog contact-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="title">Contact Us</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="contact-form">
-          <form action="#">
-            <div class="form-group">
-              <input type="text" name="username" value="" placeholder="Your Name">
-            </div>
-            <div class="form-group">
-              <input type="text" name="subject" value="" placeholder="Your Subject">
-            </div>
-            <div class="form-group">
-              <textarea name="name" rows="4" placeholder="Your Message"></textarea>
-            </div>
-            <button type="submit" class="primary-btn d-block w-100">Send <i class="fas fa-paper-plane"></i></button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- contact-us model -->

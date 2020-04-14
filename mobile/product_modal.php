@@ -36,7 +36,7 @@ if (isset($_POST['product_id'])) {
           $output .= '
                 <tr>
                      <td width="30%"><label><b>Product Image</b></label></td>
-                     <td width="70%"><img src=../includes/product_images/' . $row_pro["product_image"] . '></td>
+                     <td width="70%"><img src=../includes/product_images/'. rawurlencode($row_pro["product_image"]) . '></td>
                 </tr>
                 <tr>
                      <td width="30%"><label><b>Product Name</b></label></td>

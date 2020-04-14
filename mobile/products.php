@@ -34,15 +34,13 @@ include 'modals.php';
             <div class="col-12 col-sm-8 col-md-6 col-lg-4 p-0 my-3">
               <div class="card">
                 <div class="card-img-div">
-                  <img class="card-img" src="../includes/product_images/<?php echo $pro_image; ?>" alt="">
+                  <a id="single_image" class="d-block" href="../includes/product_images/<?php echo $pro_image; ?>"><img class="card-img" src="../includes/product_images/<?php echo $pro_image; ?>" alt=""></a>
                   <button class="view_pro_btn" name="view_pro" id="<?php echo $pro_id; ?>">View</button>
                   <a href="index.php?add_wishlist=<?php echo $pro_id; ?>" class="wishlist_btn" name="view_pro" id="<?php echo $pro_id; ?>" data-toggle="tooltip" data-html="true" title="Add to wishlist"><i class="fa fa-heart"></i></a>
                   <?php wishlist_guest(); ?>
                 </div>
                 <div class="card-body">
                   <h4 class="card-title"><?php echo $pro_title; ?></h4>
-                  <p class="card-text">
-                    <?php echo $pro_desc; ?></p>
                   <div class="buy d-flex justify-content-between align-items-center">
                     <div class="price">
                       <h5 class="mt-4 numeric">&dollar;<?php echo $pro_price; ?></h5>
@@ -59,15 +57,13 @@ include 'modals.php';
             <div class="col-12 col-sm-8 col-md-6 col-lg-4 p-0 my-3">
               <div class="card">
                 <div class="card-img-div">
-                  <img class="card-img" src="../includes/product_images/<?php echo $pro_image; ?>" alt="">
+                  <a id="single_image" class="d-block" href="../includes/product_images/<?php echo $pro_image; ?>"><img class="card-img" src="../includes/product_images/<?php echo $pro_image; ?>" alt=""></a>
                   <button class="view_pro_btn" name="view_pro" id="<?php echo $pro_id; ?>">View</button>
                   <a href="wishlist.php?add_wishlist=<?php echo $pro_id; ?>" class="wishlist_btn" name="view_pro" id="<?php echo $pro_id; ?>" data-toggle="tooltip" data-html="true" title="Add to wishlist"><i class="fa fa-heart"></i></a>
                   <?php wishlist(); ?>
                 </div>
                 <div class="card-body">
                   <h4 class="card-title"><?php echo $pro_title; ?></h4>
-                  <p class="card-text">
-                    <?php echo $pro_desc; ?></p>
                   <div class="buy d-flex justify-content-between align-items-center">
                     <div class="price">
                       <h5 class="mt-4 numeric">&dollar;<?php echo $pro_price; ?></h5>

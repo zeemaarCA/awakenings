@@ -2,7 +2,7 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         # FIX: Replace this email with recipient email
-        $mail_to = "contact@alovep.xyz";
+        $mail_to = "sharon@awakeningsme.com";
 
         # Sender Data
         $subject = trim($_POST["subject"]);

@@ -25,60 +25,7 @@ include '../functions.php';
                 <div class="brand-text d-none d-md-inline-block"><strong class="text-primary">Awakenings</strong></div>
               </a></div>
             <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
-              <!-- Notifications dropdown-->
-              <li class="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-bell"></i><span class="badge badge-warning">12</span></a>
-                <ul aria-labelledby="notifications" class="dropdown-menu">
-                  <li><a rel="nofollow" href="#" class="dropdown-item">
-                      <div class="notification d-flex justify-content-between">
-                        <div class="notification-content"><i class="fa fa-envelope"></i>You have 6 new messages </div>
-                        <div class="notification-time"><small>4 minutes ago</small></div>
-                      </div>
-                    </a></li>
-                  <li><a rel="nofollow" href="#" class="dropdown-item">
-                      <div class="notification d-flex justify-content-between">
-                        <div class="notification-content"><i class="fa fa-twitter"></i>You have 2 followers</div>
-                        <div class="notification-time"><small>4 minutes ago</small></div>
-                      </div>
-                    </a></li>
-                  <li><a rel="nofollow" href="#" class="dropdown-item">
-                      <div class="notification d-flex justify-content-between">
-                        <div class="notification-content"><i class="fa fa-upload"></i>Server Rebooted</div>
-                        <div class="notification-time"><small>4 minutes ago</small></div>
-                      </div>
-                    </a></li>
-                  <li><a rel="nofollow" href="#" class="dropdown-item">
-                      <div class="notification d-flex justify-content-between">
-                        <div class="notification-content"><i class="fa fa-twitter"></i>You have 2 followers</div>
-                        <div class="notification-time"><small>10 minutes ago</small></div>
-                      </div>
-                    </a></li>
-                  <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong> <i class="fa fa-bell"></i>view all notifications </strong></a></li>
-                </ul>
-              </li>
-              <!-- Messages dropdown-->
-              <li class="nav-item dropdown"> <a id="messages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-envelope"></i><span class="badge badge-info">10</span></a>
-                <ul aria-labelledby="notifications" class="dropdown-menu">
-                  <li><a rel="nofollow" href="#" class="dropdown-item d-flex">
-                      <div class="msg-profile"> <img src="img/avatar-1.jpg" alt="..." class="img-fluid rounded-circle"></div>
-                      <div class="msg-body">
-                        <h3 class="h5">Jason Doe</h3><span>sent you a direct message</span><small>3 days ago at 7:58 pm - 10.06.2014</small>
-                      </div>
-                    </a></li>
-                  <li><a rel="nofollow" href="#" class="dropdown-item d-flex">
-                      <div class="msg-profile"> <img src="img/avatar-2.jpg" alt="..." class="img-fluid rounded-circle"></div>
-                      <div class="msg-body">
-                        <h3 class="h5">Frank Williams</h3><span>sent you a direct message</span><small>3 days ago at 7:58 pm - 10.06.2014</small>
-                      </div>
-                    </a></li>
-                  <li><a rel="nofollow" href="#" class="dropdown-item d-flex">
-                      <div class="msg-profile"> <img src="img/avatar-3.jpg" alt="..." class="img-fluid rounded-circle"></div>
-                      <div class="msg-body">
-                        <h3 class="h5">Ashley Wood</h3><span>sent you a direct message</span><small>3 days ago at 7:58 pm - 10.06.2014</small>
-                      </div>
-                    </a></li>
-                  <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong> <i class="fa fa-envelope"></i>Read all messages </strong></a></li>
-                </ul>
-              </li>
+
               <!-- username -->
               <li class="nav-item"><a href="javascript:void(0)" class="nav-link logout"> <span class="d-none d-sm-inline-block"><?php echo $_SESSION['user_email']; ?></span><i class="fa fa-user"></i></a></li>
               <!-- Log out-->
@@ -142,22 +89,13 @@ include '../functions.php';
             <div class="card income text-center">
               <div class="icon"><i class="icon-line-chart"></i></div>
               <div class="number"><?php echo total_price_sum(); ?></div><strong class="text-primary">All Income</strong>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>
             </div>
           </div>
           <div class="col-lg-6">
             <!-- User Actibity-->
-            <div class="card user-activity">
-              <h2 class="display h4">User Activity</h2>
-              <div class="number">210</div>
-              <h3 class="h4 display">Social Users</h3>
-              <div class="progress">
-                <div role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar bg-primary"></div>
-              </div>
-              <div class="page-statistics d-flex justify-content-between">
-                <div class="page-statistics-left"><span>Pages Visits</span><strong>230</strong></div>
-                <div class="page-statistics-right"><span>New Visits</span><strong>73.4%</strong></div>
-              </div>
+            <div class="card income text-center">
+              <div class="icon"><i class="icon-padnote"></i></div>
+              <div class="number"><?php echo total_directories(); ?></div><strong class="text-primary">Holistic Posts</strong>
             </div>
           </div>
         </div>

@@ -29,9 +29,8 @@
         <div class="col-lg-7 col-md-12 footer-logo">
           <img src="assets/img/footer-logo.png" alt="">
           <div class="social-icons">
-            <a href="#" class="hvr-grow-rotate" title="Facebook"><i class="fa fa-facebook"></i></a>
-            <a href="#" class="hvr-grow-rotate" title="Twitter"><i class="fa fa-twitter"></i></a>
-            <a href="#" class="hvr-grow-rotate" title="Instagram"><i class="fa fa-instagram"></i></a>
+            <a href="https://www.facebook.com/AwakeningsME/?ref=aymt_homepage_panel&eid=ARA4IEgONYH_d1XT4VceayxwuSsmDTTsPFWsEVFBDGIcXxwUYWflgpDHw5Dm8d1UMAzGvYESp-GANZmU" class="hvr-grow-rotate" target="_blank" title="Facebook"><i class="fa fa-facebook"></i></a>
+            <a href="https://www.instagram.com/awakeningsme/?igshid=stajz86p5yl7" class="hvr-grow-rotate" title="Instagram" target="_blank"><i class="fa fa-instagram"></i></a>
           </div>
         </div>
         <div class="col-lg-5">

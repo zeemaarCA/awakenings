@@ -27,14 +27,15 @@ $article_id = $_GET['article_id'];
   <meta name="author" content="">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
   <meta name="format-detection" content="telephone=no">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,900|Open+Sans:300,400,600,700|Roboto:300,400,500,500i,700" rel="stylesheet">
-  <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../assets/css/mobile.min.css">
-  <link rel="stylesheet" href="../../assets/css/animate.css">
+  <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:400,400i,500,500i,600,700|Roboto:300,400,500,700&display=swap" rel="stylesheet">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css' />
+  <link rel="stylesheet" href="../assets/css/mobile.min.css?<?php echo date('YmdHis'); ?>">
+  <link rel="stylesheet" href="../assets/css/modals.min.css?<?php echo date('YmdHis'); ?>">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.1/animate.min.css' />
   <link rel="stylesheet" href="../../assets/css/button.min.css">
-  <link rel="stylesheet" href="../../assets/css/hover-min.css">
-  <link rel="stylesheet" href="../../assets/css/slick.css">
-  <link rel="stylesheet" href="../../assets/css/slick-theme.css">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css' />
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css' />
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css' />
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css' />
   <script type="text/javascript">
     if (screen.width >= 699) {
@@ -42,7 +43,7 @@ $article_id = $_GET['article_id'];
     }
   </script>
 </head>
-<?php include '../../modals_inner.php'; ?>
+<?php include '../modals_inner.php'; ?>
 
 <body>
   <?php
@@ -153,6 +154,7 @@ $article_id = $_GET['article_id'];
                 $comment_time = strtotime($posted_comment_at);
 
 
+
               ?>
                 <div class="col-12">
                   <div class="card card-white post border-0">
@@ -196,26 +198,28 @@ $article_id = $_GET['article_id'];
       $article_image = $row_article['featured_image'];
       $posted_at = $row_article['posted_at'];
       $trim_desc = (strlen($article_desc) > 100) ? substr($article_desc, 0, 150) . '...' : $article_desc;
+      $timestamp = strtotime($posted_at);
     ?>
       <div class="random-posts">
-        <div class="feature-img">
-          <img class="img-fluid" src="../../includes/article_images/<?php echo $article_image; ?>" alt="">
-        </div>
-        <div class="feature-text">
-          <div class="title">
-            <h3><?php echo $article_title ?></h3>
+        <a href="article_detail.php?article_id=<?php echo $article_id ?>">
+          <div class="feature-img">
+            <div class="bg-img" style="background: url(../../includes/article_images/<?php echo $article_image; ?>)">
+            </div>
           </div>
-          <div class="categories">
-            <span><?php echo $article_main_cat ?></span>
+          <div class="feature-text">
+            <div class="title">
+              <h3><?php echo $article_title ?></h3>
+            </div>
+            <div class="categories">
+              <span><?php echo $article_main_cat ?></span>
+            </div>
+            <div class="date">
+              <span class="article_date">
+                <?php echo date('d/m/Y', $timestamp); ?>
+              </span>
+            </div>
           </div>
-          <div class="date">
-            <span>12-04-2020</span>
-          </div>
-          <hr>
-          <div class="read-more">
-            <a href="article_detail.php?article_id=<?php echo $article_id ?>">read more</a>
-          </div>
-        </div>
+        </a>
       </div>
     <?php
     }

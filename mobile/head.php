@@ -10,14 +10,16 @@
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
   <meta name="format-detection" content="telephone=no">
   <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:400,400i,500,500i,600,700|Roboto:300,400,500,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css' />
   <link rel="stylesheet" href="assets/css/mobile.min.css?<?php echo date('YmdHis'); ?>">
   <link rel="stylesheet" href="assets/css/cart.min.css?<?php echo date('YmdHis'); ?>">
-  <link rel="stylesheet" href="../assets/css/animate.css">
+  <link rel="stylesheet" href="assets/css/modals.min.css?<?php echo date('YmdHis'); ?>">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css' />
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.1/animate.min.css' />
   <link rel="stylesheet" href="../assets/css/button.min.css">
-  <link rel="stylesheet" href="../assets/css/hover-min.css">
-  <link rel="stylesheet" href="../assets/css/slick.css">
-  <link rel="stylesheet" href="../assets/css/slick-theme.css">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css' />
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css' />
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css' />
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css' />
   <script type="text/javascript">
     if (screen.width >= 699) {

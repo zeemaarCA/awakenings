@@ -37,7 +37,7 @@ $(document).ready(function () {
       },
       success: function (data) {
         $("#pro_detail").html(data);
-        $('#product_detail').modal("show");
+        $('#product_detail').show();
       }
 
     });
@@ -100,16 +100,38 @@ $(window).bind('scroll', function () {
   }
 });
 
-// on-particles
-// $(function () {
-//   $('.feature-text').onScreen({
-//     tolerance: 10,
-//     toggleClass: false,
-//     doIn: function () {
-//       $('.feature-text').addClass('darker-bg');
-//     },
-//     doOut: function () {
-//       $('.feature-text').removeClass('darker-bg');
-//     }
-//   });
-// });
+$(document).ready(function () {
+  $('.modal-link-login').click(function () {
+    $('.login-modal').show();
+    $('.login-modal').addClass('slideInLeft');
+    $('.modal-bg').show();
+  });
+  $('.modal-wrapper .close').click(function () {
+    $('.login-modal').hide();
+    $('.modal-bg').hide();
+  });
+    $('.modal-link-signup').click(function () {
+      $('.signup-modal').show();
+      $('.modal-bg').show();
+    });
+    $('.modal-wrapper .close').click(function () {
+      $('.signup-modal').hide();
+      $('.modal-bg').hide();
+    });
+      $('.modal-link-address').click(function () {
+        $('.address-modal').show();
+        $('.modal-bg').show();
+      });
+      $('.modal-wrapper .close').click(function () {
+        $('.address-modal').hide();
+        $('.modal-bg').hide();
+      });
+        $('.modal-link-password').click(function () {
+          $('.password-modal').show();
+          $('.modal-bg').show();
+        });
+        $('.modal-wrapper .close').click(function () {
+          $('.password-modal').hide();
+          $('.modal-bg').hide();
+        });
+});

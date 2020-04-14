@@ -546,17 +546,17 @@ if (isset($_POST['update_cart'])) {
           <a href="cart.php" class="back-btn w_100 d-none d-sm-block">back</a>
         </div>
         <div class="col-lg-6 col-12 px-0">
-          <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top" class="float-right w_100">
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="float-right w_100">
             <input type="hidden" name="cmd" value="_xclick">
-            <input type="hidden" name="business" value="zmt@gmail.com">
+            <input type="hidden" name="business" value="sharon@awakeningsme.com">
             <input type="hidden" name="lc" value="US">
             <input type="hidden" name="item_name" value="Awakenings Products">
             <input type="hidden" name="item_number" value="<?php echo $pro_id ?>">
             <input type="hidden" name="amount" value="<?php echo $total; ?>">
 
             <input type="hidden" name="currency_code" value="USD">
-            <input type="hidden" name="return" value="http://alovep.xyz/paypal_success.php">
-            <input type="hidden" name="cancel_return" value="http://alovep.xyz/paypal_cancel.php">
+            <input type="hidden" name="return" value="http://awakeningsme.com/paypal_success.php">
+            <input type="hidden" name="cancel_return" value="http://awakeningsme.com/paypal_cancel.php">
             <input type="hidden" name="button_subtype" value="services">
             <input type="hidden" name="no_note" value="0">
 
@@ -576,24 +576,32 @@ if (isset($_POST['update_cart'])) {
           <a href="cart.php" class="back-btn w_100 d-none d-sm-block">back</a>
         </div>
         <div class="col-lg-6 col-12 px-0">
-          <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top" class="float-right w_100">
-            <input type="hidden" name="cmd" value="_xclick">
-            <input type="hidden" name="business" value="zmt@gmail.com">
-            <input type="hidden" name="lc" value="US">
-            <input type="hidden" name="item_name" value="Awakenings Products">
-            <input type="hidden" name="item_number" value="<?php echo $pro_id ?>">
-            <input type="hidden" name="amount" value="<?php echo $total; ?>">
+          <?php
+          if (!isset($_SESSION['customer_name']) && !isset($_SESSION['guest_name'])) {
+            echo 'sfssfsf';
+          } else {
+          ?>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="float-right w_100">
+              <input type="hidden" name="cmd" value="_xclick">
+              <input type="hidden" name="business" value="sharon@awakeningsme.com">
+              <input type="hidden" name="lc" value="US">
+              <input type="hidden" name="item_name" value="Awakenings Products">
+              <input type="hidden" name="item_number" value="<?php echo $pro_id ?>">
+              <input type="hidden" name="amount" value="<?php echo $total; ?>">
 
-            <input type="hidden" name="currency_code" value="USD">
-            <input type="hidden" name="return" value="http://alovep.xyz/paypal_success.php">
-            <input type="hidden" name="cancel_return" value="http://alovep.xyz/paypal_cancel.php">
-            <input type="hidden" name="button_subtype" value="services">
-            <input type="hidden" name="no_note" value="0">
+              <input type="hidden" name="currency_code" value="USD">
+              <input type="hidden" name="return" value="http://alovep.xyz/paypal_success.php">
+              <input type="hidden" name="cancel_return" value="http://alovep.xyz/paypal_cancel.php">
+              <input type="hidden" name="button_subtype" value="services">
+              <input type="hidden" name="no_note" value="0">
 
-            <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHostedGuest">
-            <input type="image" src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/buy-logo-large.png" alt="Buy now with PayPal" border="0" name="submit">
+              <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHostedGuest">
+              <input type="image" src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/buy-logo-large.png" alt="Buy now with PayPal" border="0" name="submit">
+            </form>
+          <?php
+          }
 
-          </form>
+          ?>
         </div>
       </div>
     </div>

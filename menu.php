@@ -5,7 +5,6 @@
       <div class="dropdown">
         <a href="category/body.php"><button class="dropbtn">Body</button> <i class="fa fa-caret-down"></i></a>
         <div class="dropdown-content">
-          <a href="category/mind.php">Mind</a>
           <a href="category/meditation.php">Meditation</a>
           <a href="category/yoga.php">Yoga</a>
           <a href="category/nutrition.php">Nutrition</a>
@@ -17,9 +16,10 @@
         </div>
       </div>
     </li>
+    <li><a href="category/mind.php">Mind</a></li>
     <li>
       <div class="dropdown">
-        <a href="category/lifestyle.php"><button class="dropbtn">EcoLife & Style</button> <i class="fa fa-caret-down"></i></a>
+        <a href="category/lifestyle.php"><button class="dropbtn">Lifestyle</button> <i class="fa fa-caret-down"></i></a>
         <div class="dropdown-content">
           <a href="category/cars.php">cars</a>
           <a href="category/gadgets.php">gadgets</a>
@@ -32,7 +32,8 @@
         </div>
       </div>
     </li>
-    <li><a href="directory.php">uae holistic directory</a></li>
+    <li><a href="events.php">events</a></li>
+    <li><a href="directory.php">uae directory</a></li>
     <li><a href="products.php">shop</a></li>
     <li>
       <div class="dropdown">
@@ -47,6 +48,7 @@
     <?php if (!isset($_SESSION['customer_name'])) {
     ?>
       <li><a href="javascript:void(0)" data-toggle="modal" data-target="#login">Login</a></li>
+
     <?php } else {
 
     ?>
@@ -120,11 +122,13 @@
         <li><a href="write_for_us.php">write for us</a></li>
         <li><a href="advertise.php">advertise with awakenings</a></li>
         <li><a href="events.php">UAE events</a></li>
+
       </ul>
     </li>
     <?php if (!isset($_SESSION['customer_name'])) {
     ?>
       <li><a href="javascript:void(0)" data-toggle="modal" data-target="#login">Login</a></li>
+
     <?php } else {
 
     ?>
@@ -144,6 +148,6 @@
   <form action="search.php" name="test" method="post">
     <h3>Search for...</h3>
     <input type="text" value="" name="search-query" placeholder="type keyword(s) here" autofocus />
-    <button type="submit" name="search-trigger" class="btn">Go for Search</button>
+    <button type="submit" name="search-trigger" class="btn">Search</button>
   </form>
 </div>

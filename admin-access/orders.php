@@ -24,36 +24,6 @@ include '../functions.php';
                 <div class="brand-text d-none d-md-inline-block"><strong class="text-primary">Awakenings</strong></div>
               </a></div>
             <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
-              <!-- Notifications dropdown-->
-              <li class="nav-item dropdown"> <a id="notifications" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-bell"></i><span class="badge badge-warning">12</span></a>
-                <ul aria-labelledby="notifications" class="dropdown-menu">
-                  <li><a rel="nofollow" href="#" class="dropdown-item">
-                      <div class="notification d-flex justify-content-between">
-                        <div class="notification-content"><i class="fa fa-envelope"></i>You have 6 new messages </div>
-                        <div class="notification-time"><small>4 minutes ago</small></div>
-                      </div>
-                    </a></li>
-                  <li><a rel="nofollow" href="#" class="dropdown-item">
-                      <div class="notification d-flex justify-content-between">
-                        <div class="notification-content"><i class="fa fa-twitter"></i>You have 2 followers</div>
-                        <div class="notification-time"><small>4 minutes ago</small></div>
-                      </div>
-                    </a></li>
-                  <li><a rel="nofollow" href="#" class="dropdown-item">
-                      <div class="notification d-flex justify-content-between">
-                        <div class="notification-content"><i class="fa fa-upload"></i>Server Rebooted</div>
-                        <div class="notification-time"><small>4 minutes ago</small></div>
-                      </div>
-                    </a></li>
-                  <li><a rel="nofollow" href="#" class="dropdown-item">
-                      <div class="notification d-flex justify-content-between">
-                        <div class="notification-content"><i class="fa fa-twitter"></i>You have 2 followers</div>
-                        <div class="notification-time"><small>10 minutes ago</small></div>
-                      </div>
-                    </a></li>
-                  <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong> <i class="fa fa-bell"></i>view all notifications </strong></a></li>
-                </ul>
-              </li>
 
               <!-- username -->
               <li class="nav-item"><a href="javascript:void(0)" class="nav-link logout"> <span class="d-none d-sm-inline-block"><?php echo $_SESSION['user_email']; ?></span><i class="fa fa-user"></i></a></li>
@@ -111,7 +81,7 @@ include '../functions.php';
                     $c_id = $row_c['customer_id'];
                     $c_email = $row_c['customer_email'];
                     $c_name = $row_c['customer_name'];
-                    echo $c_id;
+
 
                     $get_customer_order = "SELECT * FROM orders WHERE c_id = '$c_id'";
 
@@ -188,7 +158,16 @@ include '../functions.php';
                 <div class="table-responsive">
                   <table class="table">
                     <thead>
-   
+                      <tr>
+                        <th>#</th>
+                        <th>Guest Email</th>
+                        <th>Product (S)</th>
+                        <th>Quantity</th>
+                        <th>Invoice No</th>
+                        <th>Order Date</th>
+                        <th>Status</th>
+                        <th>Action <i class="fa fa-check"></i></th>
+                      </tr>
                     </thead>
                     <?php
 
@@ -215,7 +194,7 @@ include '../functions.php';
                       $order_date = $row_order['order_date'];
                       $status = $row_order['status'];
                       $i++;
-echo $pro_id;
+
                       $get_pro = "select * from products where product_id='$pro_id'";
                       $run_pro = mysqli_query($con, $get_pro);
 
@@ -227,25 +206,32 @@ echo $pro_id;
 
                       <tbody>
                         <tr>
-                          <th scope="row"><?php echo $i; ?></th>
-                          <td><?php echo $g_email; ?></td>
-                          <td><?php echo $pro_title; ?></td>
-                          <td><?php echo $qty; ?></td>
-                          <td><?php echo $invoice_no; ?></td>
-                          <td><?php echo $order_date; ?></td>
-                          <td><?php echo $status; ?></td>
-                          <?php if ($status == 'Completed') {
+                          <? if ($g_id != NULL) {
                           ?>
-                            <td>
-                              <i class="fa fa-check" style="color: #19c719;"></i>
-                            <?php
-                          } else {
+                            <th scope="row"><?php echo $i; ?></th>
+                            <td><?php echo $g_email; ?></td>
+                            <td><?php echo $pro_title; ?></td>
+                            <td><?php echo $qty; ?></td>
+                            <td><?php echo $invoice_no; ?></td>
+                            <td><?php echo $order_date; ?></td>
+                            <td><?php echo $status; ?></td>
+                            <?php if ($status == 'Completed') {
                             ?>
-                            <td><a style="color: orange;" href="confirm_order.php?confirm_order=<?php echo $order_id; ?>"><i class="fa fa-check"></i> Complete Order</td>
-                          <?php
-                          }
-                          ?>
-                          </td>
+                              <td>
+                                <i class="fa fa-check" style="color: #19c719;"></i>
+                              <?php
+                            } else {
+                              ?>
+                              <td><a style="color: orange;" href="confirm_order.php?confirm_order=<?php echo $order_id; ?>"><i class="fa fa-check"></i> Complete Order</td>
+                            <?php
+                            }
+                            ?>
+                            </td>
+                          <?
+                          } else {
+                            echo 'No guest order yet';
+                          } ?>
+
 
 
 

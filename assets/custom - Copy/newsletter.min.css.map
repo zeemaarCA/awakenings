@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,IAAI,AAAA,CACF,MAAM,CAAE,CAAC,CACT,OAAO,CAAE,CAAC,CACX",
-    "sources": [
-        "newsletter.scss"
-    ],
-    "names": [],
-    "file": "newsletter.min.css"
-}
